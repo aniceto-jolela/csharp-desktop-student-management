@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "eHBz9TC0VMk=",
+  "dgSpecHash": "jwxhYu1yUGI=",
   "success": true,
   "projectFilePath": "C:\\Users\\Other\\Documents\\Dev\\csharp-desktop-student-management\\cpqi\\cpqi.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Other\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -6,6 +6,14 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
+      "cpqi/1.0.0": {
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.0"
+        },
+        "runtime": {
+          "cpqi.dll": {}
+        }
+      },
       "CommunityToolkit.Mvvm/8.4.0": {
         "runtime": {
           "lib/net8.0/CommunityToolkit.Mvvm.dll": {
@@ -17,6 +25,11 @@
     }
   },
   "libraries": {
+    "cpqi/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
     "CommunityToolkit.Mvvm/8.4.0": {
       "type": "package",
       "serviceable": true,
