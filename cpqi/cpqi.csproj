@@ -16,10 +16,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Assets\Images\" />
+    <Folder Include="Assets\Icons\" />
     <Folder Include="Models\" />
     <Folder Include="Helpers\" />
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Assistant\" />
+    <Folder Include="Views\Teacher\" />
   </ItemGroup>
 
 </Project>

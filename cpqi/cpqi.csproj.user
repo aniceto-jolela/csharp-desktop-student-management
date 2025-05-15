@@ -1,6 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Views\Admin\Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Admin\RegisterAdministrativeAssistant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Admin\RegisterStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Admin\RegisterTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Admin\ViewAgendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Admin\ViewAttendances.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Admin\ViewEnrollments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Admin\ViewInvoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Admin\ViewRegistrationForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Admin\ViewStudents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\Admin\ViewTeachers.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
