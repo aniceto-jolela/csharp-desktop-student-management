@@ -44,10 +44,22 @@
             label3 = new Label();
             tabPage5 = new TabPage();
             lbl_datatime = new Label();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
+            button7 = new Button();
+            button8 = new Button();
+            button9 = new Button();
+            button10 = new Button();
+            label4 = new Label();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
             tabPage4.SuspendLayout();
+            tabPage5.SuspendLayout();
             SuspendLayout();
             // 
             // BottomToolStripPanel
@@ -138,7 +150,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(326, 193);
+            label1.Location = new Point(285, 144);
             label1.Name = "label1";
             label1.Size = new Size(58, 15);
             label1.TabIndex = 1;
@@ -146,6 +158,9 @@
             // 
             // tabPage3
             // 
+            tabPage3.Controls.Add(button3);
+            tabPage3.Controls.Add(button2);
+            tabPage3.Controls.Add(button1);
             tabPage3.Controls.Add(label2);
             tabPage3.Location = new Point(84, 4);
             tabPage3.Name = "tabPage3";
@@ -157,7 +172,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(329, 193);
+            label2.Location = new Point(301, 69);
             label2.Name = "label2";
             label2.Size = new Size(53, 15);
             label2.TabIndex = 1;
@@ -165,6 +180,13 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(button10);
+            tabPage4.Controls.Add(button9);
+            tabPage4.Controls.Add(button8);
+            tabPage4.Controls.Add(button7);
+            tabPage4.Controls.Add(button6);
+            tabPage4.Controls.Add(button5);
+            tabPage4.Controls.Add(button4);
             tabPage4.Controls.Add(label3);
             tabPage4.Location = new Point(84, 4);
             tabPage4.Name = "tabPage4";
@@ -176,7 +198,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(327, 193);
+            label3.Location = new Point(310, 78);
             label3.Name = "label3";
             label3.Size = new Size(56, 15);
             label3.TabIndex = 1;
@@ -184,6 +206,7 @@
             // 
             // tabPage5
             // 
+            tabPage5.Controls.Add(label4);
             tabPage5.Location = new Point(84, 4);
             tabPage5.Name = "tabPage5";
             tabPage5.Size = new Size(711, 401);
@@ -198,7 +221,106 @@
             lbl_datatime.Name = "lbl_datatime";
             lbl_datatime.Size = new Size(58, 15);
             lbl_datatime.TabIndex = 10;
-            lbl_datatime.Text = "Data time";
+            lbl_datatime.Text = "Date time";
+            // 
+            // button1
+            // 
+            button1.Location = new Point(61, 169);
+            button1.Name = "button1";
+            button1.Size = new Size(189, 23);
+            button1.TabIndex = 2;
+            button1.Text = "ASSISTENTE ADMINISTRATIVA";
+            button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(314, 168);
+            button2.Name = "button2";
+            button2.Size = new Size(120, 23);
+            button2.TabIndex = 3;
+            button2.Text = "PROFESSOR";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(479, 168);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 4;
+            button3.Text = "ALUNO";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(32, 138);
+            button4.Name = "button4";
+            button4.Size = new Size(180, 23);
+            button4.TabIndex = 2;
+            button4.Text = "ASSISTENTES ADMINISTRATIVA";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(227, 138);
+            button5.Name = "button5";
+            button5.Size = new Size(107, 23);
+            button5.TabIndex = 3;
+            button5.Text = "PROFESSORES";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(354, 142);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 4;
+            button6.Text = "ALUNOS";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(452, 142);
+            button7.Name = "button7";
+            button7.Size = new Size(144, 23);
+            button7.TabIndex = 5;
+            button7.Text = "FICHAS DE INSCRIÇÕES";
+            button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(68, 215);
+            button8.Name = "button8";
+            button8.Size = new Size(75, 23);
+            button8.TabIndex = 6;
+            button8.Text = "FATURAS";
+            button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(178, 221);
+            button9.Name = "button9";
+            button9.Size = new Size(75, 23);
+            button9.TabIndex = 7;
+            button9.Text = "PRESENÇA";
+            button9.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            button10.Location = new Point(295, 220);
+            button10.Name = "button10";
+            button10.Size = new Size(75, 23);
+            button10.TabIndex = 8;
+            button10.Text = "PAUTAS";
+            button10.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(289, 176);
+            label4.Name = "label4";
+            label4.Size = new Size(22, 15);
+            label4.TabIndex = 0;
+            label4.Text = "???";
             // 
             // admin_home
             // 
@@ -217,6 +339,8 @@
             tabPage3.PerformLayout();
             tabPage4.ResumeLayout(false);
             tabPage4.PerformLayout();
+            tabPage5.ResumeLayout(false);
+            tabPage5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -240,5 +364,16 @@
         private Label label2;
         private TabPage tabPage4;
         private Label label3;
+        private Button button1;
+        private Button button3;
+        private Button button2;
+        private Button button6;
+        private Button button5;
+        private Button button4;
+        private Button button7;
+        private Button button10;
+        private Button button9;
+        private Button button8;
+        private Label label4;
     }
 }

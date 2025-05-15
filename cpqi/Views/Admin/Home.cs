@@ -29,7 +29,7 @@ namespace cpqi.Views.Admin
             timer.Tick += Timer_Tick;
             timer.Start();
 
-            
+
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
