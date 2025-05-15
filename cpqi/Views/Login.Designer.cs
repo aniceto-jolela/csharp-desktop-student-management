@@ -36,6 +36,7 @@
             label4 = new Label();
             btn_login = new Button();
             lbl_version = new Label();
+            label5 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -108,11 +109,21 @@
             lbl_version.TabIndex = 7;
             lbl_version.Text = "Version";
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(373, 415);
+            label5.Name = "label5";
+            label5.Size = new Size(48, 15);
+            label5.TabIndex = 8;
+            label5.Text = " © 2025";
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
             Controls.Add(lbl_version);
             Controls.Add(btn_login);
             Controls.Add(label4);
@@ -137,5 +148,6 @@
         private Label label4;
         private Button btn_login;
         private Label lbl_version;
+        private Label label5;
     }
 }

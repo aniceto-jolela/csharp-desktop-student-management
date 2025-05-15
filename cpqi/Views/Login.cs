@@ -15,8 +15,6 @@ namespace cpqi
             admin_home admin = new admin_home();
             admin.Show();
             this.Hide();
-            
-
         }
     }
 }

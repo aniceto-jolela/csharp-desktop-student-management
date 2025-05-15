@@ -12,9 +12,60 @@ namespace cpqi.Views.Admin
 {
     public partial class admin_home : Form
     {
+        private System.Windows.Forms.Timer timer;
+        private TimeZoneInfo angolaTimeZone;
+
         public admin_home()
         {
             InitializeComponent();
+            //TABE CONTROL HORIZONTAL
+            tabControl1.DrawItem += new DrawItemEventHandler(tabControl1_DrawItem);
+
+            // TIMEZONE
+            angolaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Africa/Luanda");
+            // Initialize timer
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000; //1 second
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
+            
+        }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            Login.ActiveForm.Close();
+        }
+
+        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            TabControl tabControl = sender as TabControl;
+            TabPage tabPage = tabControl.TabPages[e.Index];
+            Rectangle tabBounds = tabControl.GetTabRect(e.Index);
+
+            // Draw background
+            e.Graphics.FillRectangle(SystemBrushes.Control, tabBounds);
+
+            // Draw tab text horizontally
+            StringFormat stringFlags = new StringFormat();
+            stringFlags.Alignment = StringAlignment.Center;
+            stringFlags.LineAlignment = StringAlignment.Center;
+
+            // Draw the tab text
+            e.Graphics.DrawString(
+                tabPage.Text,
+                this.Font,
+                SystemBrushes.ControlText,
+                tabBounds,
+                stringFlags
+            );
+
+        }
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            DateTime utcNow = DateTime.UtcNow;
+            DateTime angolaTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, angolaTimeZone);
+            lbl_datatime.Text = angolaTime.ToString("yyyy-MM-dd  HH:mm:ss");
         }
     }
 }
