@@ -5,7 +5,6 @@ C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\ne
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\cpqi.pdb
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\CommunityToolkit.Mvvm.dll
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.csproj.AssemblyReference.cache
-C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Form1.resources
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Form2.resources
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.csproj.GenerateResource.cache
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.GeneratedMSBuildEditorConfig.editorconfig
@@ -19,3 +18,16 @@ C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\ne
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.pdb
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.genruntimeconfig.cache
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\ref\cpqi.dll
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.Profile.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.RegisterAdministrativeAssistant.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.RegisterStudent.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.RegisterTeacher.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewAgendas.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewAttendances.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewEnrollments.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewInvoices.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewRegistrationForms.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewStudents.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewTeachers.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Login.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.admin_home.resources
