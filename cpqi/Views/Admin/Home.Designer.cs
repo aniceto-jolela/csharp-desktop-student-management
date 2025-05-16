@@ -39,22 +39,23 @@
             tabPage2 = new TabPage();
             label1 = new Label();
             tabPage3 = new TabPage();
+            button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
             label2 = new Label();
             tabPage4 = new TabPage();
+            button10 = new Button();
+            button9 = new Button();
+            button8 = new Button();
+            button7 = new Button();
+            button6 = new Button();
+            button5 = new Button();
+            button4 = new Button();
             label3 = new Label();
             tabPage5 = new TabPage();
-            lbl_datatime = new Label();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
-            button6 = new Button();
-            button7 = new Button();
-            button8 = new Button();
-            button9 = new Button();
-            button10 = new Button();
             label4 = new Label();
+            lbl_datatime = new Label();
+            btn_profile = new Button();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
@@ -169,6 +170,34 @@
             tabPage3.Text = "REGISTRAR";
             tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            button3.Location = new Point(479, 168);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 4;
+            button3.Text = "ALUNO";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(314, 168);
+            button2.Name = "button2";
+            button2.Size = new Size(120, 23);
+            button2.TabIndex = 3;
+            button2.Text = "PROFESSOR";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(61, 169);
+            button1.Name = "button1";
+            button1.Size = new Size(189, 23);
+            button1.TabIndex = 2;
+            button1.Text = "ASSISTENTE ADMINISTRATIVA";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -195,6 +224,69 @@
             tabPage4.Text = "VISUALIZAR";
             tabPage4.UseVisualStyleBackColor = true;
             // 
+            // button10
+            // 
+            button10.Location = new Point(295, 220);
+            button10.Name = "button10";
+            button10.Size = new Size(75, 23);
+            button10.TabIndex = 8;
+            button10.Text = "PAUTAS";
+            button10.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            button9.Location = new Point(178, 221);
+            button9.Name = "button9";
+            button9.Size = new Size(75, 23);
+            button9.TabIndex = 7;
+            button9.Text = "PRESENÇA";
+            button9.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            button8.Location = new Point(68, 215);
+            button8.Name = "button8";
+            button8.Size = new Size(75, 23);
+            button8.TabIndex = 6;
+            button8.Text = "FATURAS";
+            button8.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            button7.Location = new Point(452, 142);
+            button7.Name = "button7";
+            button7.Size = new Size(144, 23);
+            button7.TabIndex = 5;
+            button7.Text = "FICHAS DE INSCRIÇÕES";
+            button7.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(354, 142);
+            button6.Name = "button6";
+            button6.Size = new Size(75, 23);
+            button6.TabIndex = 4;
+            button6.Text = "ALUNOS";
+            button6.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(227, 138);
+            button5.Name = "button5";
+            button5.Size = new Size(107, 23);
+            button5.TabIndex = 3;
+            button5.Text = "PROFESSORES";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(32, 138);
+            button4.Name = "button4";
+            button4.Size = new Size(180, 23);
+            button4.TabIndex = 2;
+            button4.Text = "ASSISTENTES ADMINISTRATIVA";
+            button4.UseVisualStyleBackColor = true;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -214,105 +306,6 @@
             tabPage5.Text = "Page5";
             tabPage5.UseVisualStyleBackColor = true;
             // 
-            // lbl_datatime
-            // 
-            lbl_datatime.AutoSize = true;
-            lbl_datatime.Location = new Point(331, 16);
-            lbl_datatime.Name = "lbl_datatime";
-            lbl_datatime.Size = new Size(58, 15);
-            lbl_datatime.TabIndex = 10;
-            lbl_datatime.Text = "Date time";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(61, 169);
-            button1.Name = "button1";
-            button1.Size = new Size(189, 23);
-            button1.TabIndex = 2;
-            button1.Text = "ASSISTENTE ADMINISTRATIVA";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(314, 168);
-            button2.Name = "button2";
-            button2.Size = new Size(120, 23);
-            button2.TabIndex = 3;
-            button2.Text = "PROFESSOR";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(479, 168);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 4;
-            button3.Text = "ALUNO";
-            button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            button4.Location = new Point(32, 138);
-            button4.Name = "button4";
-            button4.Size = new Size(180, 23);
-            button4.TabIndex = 2;
-            button4.Text = "ASSISTENTES ADMINISTRATIVA";
-            button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            button5.Location = new Point(227, 138);
-            button5.Name = "button5";
-            button5.Size = new Size(107, 23);
-            button5.TabIndex = 3;
-            button5.Text = "PROFESSORES";
-            button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            button6.Location = new Point(354, 142);
-            button6.Name = "button6";
-            button6.Size = new Size(75, 23);
-            button6.TabIndex = 4;
-            button6.Text = "ALUNOS";
-            button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            button7.Location = new Point(452, 142);
-            button7.Name = "button7";
-            button7.Size = new Size(144, 23);
-            button7.TabIndex = 5;
-            button7.Text = "FICHAS DE INSCRIÇÕES";
-            button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            button8.Location = new Point(68, 215);
-            button8.Name = "button8";
-            button8.Size = new Size(75, 23);
-            button8.TabIndex = 6;
-            button8.Text = "FATURAS";
-            button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            button9.Location = new Point(178, 221);
-            button9.Name = "button9";
-            button9.Size = new Size(75, 23);
-            button9.TabIndex = 7;
-            button9.Text = "PRESENÇA";
-            button9.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            button10.Location = new Point(295, 220);
-            button10.Name = "button10";
-            button10.Size = new Size(75, 23);
-            button10.TabIndex = 8;
-            button10.Text = "PAUTAS";
-            button10.UseVisualStyleBackColor = true;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -322,11 +315,30 @@
             label4.TabIndex = 0;
             label4.Text = "???";
             // 
+            // lbl_datatime
+            // 
+            lbl_datatime.AutoSize = true;
+            lbl_datatime.Location = new Point(331, 16);
+            lbl_datatime.Name = "lbl_datatime";
+            lbl_datatime.Size = new Size(58, 15);
+            lbl_datatime.TabIndex = 10;
+            lbl_datatime.Text = "Date time";
+            // 
+            // btn_profile
+            // 
+            btn_profile.Location = new Point(592, 12);
+            btn_profile.Name = "btn_profile";
+            btn_profile.Size = new Size(75, 23);
+            btn_profile.TabIndex = 11;
+            btn_profile.Text = "Perfil";
+            btn_profile.UseVisualStyleBackColor = true;
+            // 
             // admin_home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btn_profile);
             Controls.Add(lbl_datatime);
             Controls.Add(btn_logout);
             Controls.Add(tabControl1);
@@ -375,5 +387,6 @@
         private Button button9;
         private Button button8;
         private Label label4;
+        private Button btn_profile;
     }
 }

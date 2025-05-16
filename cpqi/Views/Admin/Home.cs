@@ -67,5 +67,11 @@ namespace cpqi.Views.Admin
             DateTime angolaTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, angolaTimeZone);
             lbl_datatime.Text = angolaTime.ToString("yyyy-MM-dd  HH:mm:ss");
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RegisterAdministrativeAssistant raa = new RegisterAdministrativeAssistant();
+            raa.ShowDialog();
+        }
     }
 }
