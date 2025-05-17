@@ -56,6 +56,7 @@
             label4 = new Label();
             lbl_datatime = new Label();
             btn_profile = new Button();
+            btn_rule = new Button();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
@@ -209,6 +210,7 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(btn_rule);
             tabPage4.Controls.Add(button10);
             tabPage4.Controls.Add(button9);
             tabPage4.Controls.Add(button8);
@@ -253,7 +255,7 @@
             // 
             // button7
             // 
-            button7.Location = new Point(452, 142);
+            button7.Location = new Point(550, 138);
             button7.Name = "button7";
             button7.Size = new Size(144, 23);
             button7.TabIndex = 5;
@@ -262,7 +264,7 @@
             // 
             // button6
             // 
-            button6.Location = new Point(354, 142);
+            button6.Location = new Point(452, 138);
             button6.Name = "button6";
             button6.Size = new Size(75, 23);
             button6.TabIndex = 4;
@@ -271,7 +273,7 @@
             // 
             // button5
             // 
-            button5.Location = new Point(227, 138);
+            button5.Location = new Point(325, 134);
             button5.Name = "button5";
             button5.Size = new Size(107, 23);
             button5.TabIndex = 3;
@@ -280,11 +282,11 @@
             // 
             // button4
             // 
-            button4.Location = new Point(32, 138);
+            button4.Location = new Point(83, 138);
             button4.Name = "button4";
-            button4.Size = new Size(180, 23);
+            button4.Size = new Size(221, 23);
             button4.TabIndex = 2;
-            button4.Text = "ASSISTENTES ADMINISTRATIVA";
+            button4.Text = "ASSISTENTES ADMINISTRATIVO(A)S";
             button4.UseVisualStyleBackColor = true;
             // 
             // label3
@@ -332,6 +334,17 @@
             btn_profile.TabIndex = 11;
             btn_profile.Text = "Perfil";
             btn_profile.UseVisualStyleBackColor = true;
+            btn_profile.Click += btn_profile_Click;
+            // 
+            // btn_rule
+            // 
+            btn_rule.Location = new Point(37, 181);
+            btn_rule.Name = "btn_rule";
+            btn_rule.Size = new Size(75, 23);
+            btn_rule.TabIndex = 9;
+            btn_rule.Text = "Cargos";
+            btn_rule.UseVisualStyleBackColor = true;
+            btn_rule.Click += btn_rule_Click;
             // 
             // admin_home
             // 
@@ -388,5 +401,6 @@
         private Button button8;
         private Label label4;
         private Button btn_profile;
+        private Button btn_rule;
     }
 }

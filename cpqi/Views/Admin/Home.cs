@@ -73,5 +73,17 @@ namespace cpqi.Views.Admin
             RegisterAdministrativeAssistant raa = new RegisterAdministrativeAssistant();
             raa.ShowDialog();
         }
+
+        private void btn_profile_Click(object sender, EventArgs e)
+        {
+            Profile p = new Profile();
+            p.ShowDialog();
+        }
+
+        private void btn_rule_Click(object sender, EventArgs e)
+        {
+            ViewRules rules = new ViewRules();
+            rules.ShowDialog();
+        }
     }
 }
