@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             label1 = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
@@ -43,7 +44,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F);
-            label1.Location = new Point(387, 89);
+            label1.Location = new Point(627, 66);
             label1.Name = "label1";
             label1.Size = new Size(76, 30);
             label1.TabIndex = 0;
@@ -132,6 +133,7 @@
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";
             Text = "Entrar";
             ResumeLayout(false);

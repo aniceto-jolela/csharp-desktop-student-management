@@ -28,31 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
+            txtUserName = new TextBox();
             Usuário = new Label();
-            textBox2 = new TextBox();
+            txtEmail = new TextBox();
             label1 = new Label();
-            textBox3 = new TextBox();
+            txtPhone = new TextBox();
             label2 = new Label();
             label3 = new Label();
-            textBox4 = new TextBox();
+            txtFullName = new TextBox();
             label4 = new Label();
-            label5 = new Label();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
             label6 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            button1 = new Button();
-            textBox5 = new TextBox();
+            dtpDateOfBirth = new DateTimePicker();
+            btnRegister = new Button();
+            txtPassword = new TextBox();
             label7 = new Label();
+            cbSex = new ComboBox();
+            label5 = new Label();
+            ckbIsActive = new CheckBox();
+            ckbIsStaff = new CheckBox();
+            ckbIsSuperUser = new CheckBox();
             SuspendLayout();
             // 
-            // textBox1
+            // txtUserName
             // 
-            textBox1.Location = new Point(270, 101);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(359, 23);
-            textBox1.TabIndex = 0;
+            txtUserName.Location = new Point(270, 101);
+            txtUserName.Name = "txtUserName";
+            txtUserName.Size = new Size(359, 23);
+            txtUserName.TabIndex = 0;
             // 
             // Usuário
             // 
@@ -63,12 +65,12 @@
             Usuário.TabIndex = 1;
             Usuário.Text = "Usuário : ";
             // 
-            // textBox2
+            // txtEmail
             // 
-            textBox2.Location = new Point(270, 217);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(357, 23);
-            textBox2.TabIndex = 2;
+            txtEmail.Location = new Point(270, 217);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(357, 23);
+            txtEmail.TabIndex = 2;
             // 
             // label1
             // 
@@ -79,12 +81,12 @@
             label1.TabIndex = 3;
             label1.Text = "Email : ";
             // 
-            // textBox3
+            // txtPhone
             // 
-            textBox3.Location = new Point(270, 263);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(359, 23);
-            textBox3.TabIndex = 4;
+            txtPhone.Location = new Point(270, 263);
+            txtPhone.Name = "txtPhone";
+            txtPhone.Size = new Size(359, 23);
+            txtPhone.TabIndex = 4;
             // 
             // label2
             // 
@@ -104,12 +106,12 @@
             label3.TabIndex = 6;
             label3.Text = "ASSISTENTE ADMINISTRATIVA";
             // 
-            // textBox4
+            // txtFullName
             // 
-            textBox4.Location = new Point(270, 145);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(359, 23);
-            textBox4.TabIndex = 7;
+            txtFullName.Location = new Point(270, 145);
+            txtFullName.Name = "txtFullName";
+            txtFullName.Size = new Size(359, 23);
+            txtFullName.TabIndex = 7;
             // 
             // label4
             // 
@@ -120,37 +122,6 @@
             label4.TabIndex = 8;
             label4.Text = "Nome Completo : ";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(272, 186);
-            label5.Name = "label5";
-            label5.Size = new Size(41, 15);
-            label5.TabIndex = 9;
-            label5.Text = "Sexo : ";
-            // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Checked = true;
-            radioButton1.Location = new Point(315, 186);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(36, 19);
-            radioButton1.TabIndex = 10;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "M";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(365, 187);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(31, 19);
-            radioButton2.TabIndex = 11;
-            radioButton2.Text = "F";
-            radioButton2.UseVisualStyleBackColor = true;
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -160,28 +131,28 @@
             label6.TabIndex = 12;
             label6.Text = "Data de Nascimento";
             // 
-            // dateTimePicker1
+            // dtpDateOfBirth
             // 
-            dateTimePicker1.Location = new Point(559, 188);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(70, 23);
-            dateTimePicker1.TabIndex = 13;
+            dtpDateOfBirth.Location = new Point(559, 188);
+            dtpDateOfBirth.Name = "dtpDateOfBirth";
+            dtpDateOfBirth.Size = new Size(70, 23);
+            dtpDateOfBirth.TabIndex = 13;
             // 
-            // button1
+            // btnRegister
             // 
-            button1.Location = new Point(390, 375);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 15;
-            button1.Text = "REGISTRAR";
-            button1.UseVisualStyleBackColor = true;
+            btnRegister.Location = new Point(428, 459);
+            btnRegister.Name = "btnRegister";
+            btnRegister.Size = new Size(75, 23);
+            btnRegister.TabIndex = 15;
+            btnRegister.Text = "REGISTRAR";
+            btnRegister.UseVisualStyleBackColor = true;
             // 
-            // textBox5
+            // txtPassword
             // 
-            textBox5.Location = new Point(271, 315);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(358, 23);
-            textBox5.TabIndex = 16;
+            txtPassword.Location = new Point(271, 315);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(358, 23);
+            txtPassword.TabIndex = 16;
             // 
             // label7
             // 
@@ -192,28 +163,78 @@
             label7.TabIndex = 17;
             label7.Text = "Palavra passe : ";
             // 
+            // cbSex
+            // 
+            cbSex.FormattingEnabled = true;
+            cbSex.Items.AddRange(new object[] { "M", "F", "O" });
+            cbSex.Location = new Point(270, 180);
+            cbSex.Name = "cbSex";
+            cbSex.Size = new Size(121, 23);
+            cbSex.TabIndex = 18;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(183, 188);
+            label5.Name = "label5";
+            label5.Size = new Size(32, 15);
+            label5.TabIndex = 19;
+            label5.Text = "Sexo";
+            // 
+            // ckbIsActive
+            // 
+            ckbIsActive.AutoSize = true;
+            ckbIsActive.Location = new Point(275, 354);
+            ckbIsActive.Name = "ckbIsActive";
+            ckbIsActive.Size = new Size(67, 19);
+            ckbIsActive.TabIndex = 20;
+            ckbIsActive.Text = "IsActive";
+            ckbIsActive.UseVisualStyleBackColor = true;
+            // 
+            // ckbIsStaff
+            // 
+            ckbIsStaff.AutoSize = true;
+            ckbIsStaff.Location = new Point(392, 354);
+            ckbIsStaff.Name = "ckbIsStaff";
+            ckbIsStaff.Size = new Size(58, 19);
+            ckbIsStaff.TabIndex = 21;
+            ckbIsStaff.Text = "IsStaff";
+            ckbIsStaff.UseVisualStyleBackColor = true;
+            // 
+            // ckbIsSuperUser
+            // 
+            ckbIsSuperUser.AutoSize = true;
+            ckbIsSuperUser.Location = new Point(512, 354);
+            ckbIsSuperUser.Name = "ckbIsSuperUser";
+            ckbIsSuperUser.Size = new Size(87, 19);
+            ckbIsSuperUser.TabIndex = 22;
+            ckbIsSuperUser.Text = "IsSuperUser";
+            ckbIsSuperUser.UseVisualStyleBackColor = true;
+            // 
             // RegisterAdministrativeAssistant
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(label7);
-            Controls.Add(textBox5);
-            Controls.Add(button1);
-            Controls.Add(dateTimePicker1);
-            Controls.Add(label6);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
+            ClientSize = new Size(896, 511);
+            Controls.Add(ckbIsSuperUser);
+            Controls.Add(ckbIsStaff);
+            Controls.Add(ckbIsActive);
             Controls.Add(label5);
+            Controls.Add(cbSex);
+            Controls.Add(label7);
+            Controls.Add(txtPassword);
+            Controls.Add(btnRegister);
+            Controls.Add(dtpDateOfBirth);
+            Controls.Add(label6);
             Controls.Add(label4);
-            Controls.Add(textBox4);
+            Controls.Add(txtFullName);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(textBox3);
+            Controls.Add(txtPhone);
             Controls.Add(label1);
-            Controls.Add(textBox2);
+            Controls.Add(txtEmail);
             Controls.Add(Usuário);
-            Controls.Add(textBox1);
+            Controls.Add(txtUserName);
             Name = "RegisterAdministrativeAssistant";
             Text = "RegisterAdministrativeAssistant";
             ResumeLayout(false);
@@ -222,22 +243,24 @@
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox txtUserName;
         private Label Usuário;
-        private TextBox textBox2;
+        private TextBox txtEmail;
         private Label label1;
-        private TextBox textBox3;
+        private TextBox txtPhone;
         private Label label2;
         private Label label3;
-        private TextBox textBox4;
+        private TextBox txtFullName;
         private Label label4;
-        private Label label5;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
         private Label label6;
-        private DateTimePicker dateTimePicker1;
-        private Button button1;
-        private TextBox textBox5;
+        private DateTimePicker dtpDateOfBirth;
+        private Button btnRegister;
+        private TextBox txtPassword;
         private Label label7;
+        private ComboBox cbSex;
+        private Label label5;
+        private CheckBox ckbIsActive;
+        private CheckBox ckbIsStaff;
+        private CheckBox ckbIsSuperUser;
     }
 }

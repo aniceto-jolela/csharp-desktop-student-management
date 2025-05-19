@@ -78,3 +78,4 @@ C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\ne
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewRules.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewAdministrativeAssistant.resources

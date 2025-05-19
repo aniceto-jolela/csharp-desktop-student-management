@@ -4,6 +4,7 @@
 [![microsoft data sqlclient](https://img.shields.io/badge/microsoft_data_sqlclient-6.0.2-blue)](https://www.nuget.org/packages/Microsoft.Data.SqlClient/6.0.2)
 [![microsoft visual studio installer projects 2022](https://img.shields.io/badge/microsoft_visual_studio_installer_projects_2022-2.0.1-vert)](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects)
 [![community toolkit mvvm](https://img.shields.io/badge/community_toolkit_mvvm-8.4.0-orange)](https://www.nuget.org/packages/CommunityToolkit.Mvvm#supportedframeworks-body-tab)
+[![sql server 2022 express](https://img.shields.io/badge/icon-iconify-black)](https://iconify.design/)
 
 
 <p align="center">

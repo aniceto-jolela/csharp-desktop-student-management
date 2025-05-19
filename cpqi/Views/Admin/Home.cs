@@ -85,5 +85,11 @@ namespace cpqi.Views.Admin
             ViewRules rules = new ViewRules();
             rules.ShowDialog();
         }
+
+        private void btnViewAdminAssistant_Click(object sender, EventArgs e)
+        {
+            ViewAdministrativeAssistant viewAdminAssistant = new ViewAdministrativeAssistant();
+            viewAdminAssistant.ShowDialog();
+        }
     }
 }

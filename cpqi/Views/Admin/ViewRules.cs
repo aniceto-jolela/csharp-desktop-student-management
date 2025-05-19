@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using cpqi.DAL;
 using Microsoft.Data.SqlClient;
 
 namespace cpqi.Views.Admin
@@ -20,10 +21,10 @@ namespace cpqi.Views.Admin
         }
         private void LoadData()
         {
-            string connect = "Data Source=localhost\\SQLEXPRESS;Initial Catalog=CpqiDB;Integrated Security=True;Trust Server Certificate=True";
+            
             string query = "SELECT * FROM Role";
 
-            using (SqlConnection conn = new SqlConnection(connect))
+            using (SqlConnection conn = DatabaseConfig.GetConnection())
             {
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                 DataTable table = new DataTable();

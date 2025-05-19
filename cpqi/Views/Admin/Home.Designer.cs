@@ -44,19 +44,19 @@
             button1 = new Button();
             label2 = new Label();
             tabPage4 = new TabPage();
+            btn_rule = new Button();
             button10 = new Button();
             button9 = new Button();
             button8 = new Button();
             button7 = new Button();
             button6 = new Button();
             button5 = new Button();
-            button4 = new Button();
+            btnViewAdminAssistant = new Button();
             label3 = new Label();
             tabPage5 = new TabPage();
             label4 = new Label();
             lbl_datatime = new Label();
             btn_profile = new Button();
-            btn_rule = new Button();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             tabPage3.SuspendLayout();
@@ -195,7 +195,7 @@
             button1.Name = "button1";
             button1.Size = new Size(189, 23);
             button1.TabIndex = 2;
-            button1.Text = "ASSISTENTE ADMINISTRATIVA";
+            button1.Text = "ASSISTENTE ADMINISTRATIVO(A)";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -217,7 +217,7 @@
             tabPage4.Controls.Add(button7);
             tabPage4.Controls.Add(button6);
             tabPage4.Controls.Add(button5);
-            tabPage4.Controls.Add(button4);
+            tabPage4.Controls.Add(btnViewAdminAssistant);
             tabPage4.Controls.Add(label3);
             tabPage4.Location = new Point(84, 4);
             tabPage4.Name = "tabPage4";
@@ -225,6 +225,16 @@
             tabPage4.TabIndex = 4;
             tabPage4.Text = "VISUALIZAR";
             tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btn_rule
+            // 
+            btn_rule.Location = new Point(37, 181);
+            btn_rule.Name = "btn_rule";
+            btn_rule.Size = new Size(75, 23);
+            btn_rule.TabIndex = 9;
+            btn_rule.Text = "Cargos";
+            btn_rule.UseVisualStyleBackColor = true;
+            btn_rule.Click += btn_rule_Click;
             // 
             // button10
             // 
@@ -280,14 +290,15 @@
             button5.Text = "PROFESSORES";
             button5.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnViewAdminAssistant
             // 
-            button4.Location = new Point(83, 138);
-            button4.Name = "button4";
-            button4.Size = new Size(221, 23);
-            button4.TabIndex = 2;
-            button4.Text = "ASSISTENTES ADMINISTRATIVO(A)S";
-            button4.UseVisualStyleBackColor = true;
+            btnViewAdminAssistant.Location = new Point(83, 138);
+            btnViewAdminAssistant.Name = "btnViewAdminAssistant";
+            btnViewAdminAssistant.Size = new Size(221, 23);
+            btnViewAdminAssistant.TabIndex = 2;
+            btnViewAdminAssistant.Text = "ASSISTENTES ADMINISTRATIVO(A)S";
+            btnViewAdminAssistant.UseVisualStyleBackColor = true;
+            btnViewAdminAssistant.Click += btnViewAdminAssistant_Click;
             // 
             // label3
             // 
@@ -335,16 +346,6 @@
             btn_profile.Text = "Perfil";
             btn_profile.UseVisualStyleBackColor = true;
             btn_profile.Click += btn_profile_Click;
-            // 
-            // btn_rule
-            // 
-            btn_rule.Location = new Point(37, 181);
-            btn_rule.Name = "btn_rule";
-            btn_rule.Size = new Size(75, 23);
-            btn_rule.TabIndex = 9;
-            btn_rule.Text = "Cargos";
-            btn_rule.UseVisualStyleBackColor = true;
-            btn_rule.Click += btn_rule_Click;
             // 
             // admin_home
             // 
@@ -394,7 +395,7 @@
         private Button button2;
         private Button button6;
         private Button button5;
-        private Button button4;
+        private Button btnViewAdminAssistant;
         private Button button7;
         private Button button10;
         private Button button9;
