@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(admin_home));
             BottomToolStripPanel = new ToolStripPanel();
             TopToolStripPanel = new ToolStripPanel();
             RightToolStripPanel = new ToolStripPanel();
@@ -102,6 +103,7 @@
             // 
             // btn_logout
             // 
+            btn_logout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btn_logout.Location = new Point(691, 12);
             btn_logout.Name = "btn_logout";
             btn_logout.Size = new Size(75, 23);
@@ -113,7 +115,6 @@
             // tabControl1
             // 
             tabControl1.Alignment = TabAlignment.Left;
-            tabControl1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
@@ -356,8 +357,12 @@
             Controls.Add(lbl_datatime);
             Controls.Add(btn_logout);
             Controls.Add(tabControl1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "admin_home";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
+            FormClosing += admin_home_FormClosing;
             tabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();

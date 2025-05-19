@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Profile));
             label1 = new Label();
             splitContainer1 = new SplitContainer();
             label9 = new Label();
@@ -183,7 +184,12 @@
             Controls.Add(lbl_Counter);
             Controls.Add(splitContainer1);
             Controls.Add(label1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "Profile";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Profile";
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();

@@ -14,6 +14,7 @@ namespace cpqi.Views.Admin
     {
         private System.Windows.Forms.Timer timer;
         private TimeZoneInfo angolaTimeZone;
+        private bool closeAllowed = false;
 
         public admin_home()
         {
@@ -34,7 +35,8 @@ namespace cpqi.Views.Admin
 
         private void btn_logout_Click(object sender, EventArgs e)
         {
-            Login.ActiveForm.Close();
+            closeAllowed = true; // Allow closing the form
+            Application.Exit();
         }
 
         private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
@@ -90,6 +92,16 @@ namespace cpqi.Views.Admin
         {
             ViewAdministrativeAssistant viewAdminAssistant = new ViewAdministrativeAssistant();
             viewAdminAssistant.ShowDialog();
+        }
+
+        private void admin_home_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!closeAllowed && e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true; // Cancel the close event button [x]
+                MessageBox.Show("Por favor usa o botão sair para ausentar-se da aplicação.", "Aviso",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+            }
         }
     }
 }
