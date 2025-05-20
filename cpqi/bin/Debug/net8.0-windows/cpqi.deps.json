@@ -9,6 +9,11 @@
       "cpqi/1.0.0": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.4.0",
+          "Krypton.Docking": "95.25.4.111",
+          "Krypton.Navigator": "95.25.4.111",
+          "Krypton.Ribbon": "95.25.4.111",
+          "Krypton.Toolkit": "95.25.4.111",
+          "Krypton.Workspace": "95.25.4.111",
           "Microsoft.Data.SqlClient": "6.0.2"
         },
         "runtime": {
@@ -55,6 +60,61 @@
           "lib/net8.0/CommunityToolkit.Mvvm.dll": {
             "assemblyVersion": "8.4.0.0",
             "fileVersion": "8.4.0.1"
+          }
+        }
+      },
+      "Krypton.Docking/95.25.4.111": {
+        "dependencies": {
+          "Krypton.Navigator": "95.25.4.111",
+          "Krypton.Toolkit": "95.25.4.111",
+          "Krypton.Workspace": "95.25.4.111"
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/Krypton.Docking.dll": {
+            "assemblyVersion": "95.25.4.111",
+            "fileVersion": "95.25.4.111"
+          }
+        }
+      },
+      "Krypton.Navigator/95.25.4.111": {
+        "dependencies": {
+          "Krypton.Toolkit": "95.25.4.111"
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/Krypton.Navigator.dll": {
+            "assemblyVersion": "95.25.4.111",
+            "fileVersion": "95.25.4.111"
+          }
+        }
+      },
+      "Krypton.Ribbon/95.25.4.111": {
+        "dependencies": {
+          "Krypton.Toolkit": "95.25.4.111"
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/Krypton.Ribbon.dll": {
+            "assemblyVersion": "95.25.4.111",
+            "fileVersion": "95.25.4.111"
+          }
+        }
+      },
+      "Krypton.Toolkit/95.25.4.111": {
+        "runtime": {
+          "lib/net8.0-windows7.0/Krypton.Toolkit.dll": {
+            "assemblyVersion": "95.25.4.111",
+            "fileVersion": "95.25.4.111"
+          }
+        }
+      },
+      "Krypton.Workspace/95.25.4.111": {
+        "dependencies": {
+          "Krypton.Navigator": "95.25.4.111",
+          "Krypton.Toolkit": "95.25.4.111"
+        },
+        "runtime": {
+          "lib/net8.0-windows7.0/Krypton.Workspace.dll": {
+            "assemblyVersion": "95.25.4.111",
+            "fileVersion": "95.25.4.111"
           }
         }
       },
@@ -448,6 +508,41 @@
       "sha512": "sha512-tqVU8yc/ADO9oiTRyTnwhFN68hCwvkliMierptWOudIAvWY1mWCh5VFh+guwHJmpMwfg0J0rY+yyd5Oy7ty9Uw==",
       "path": "communitytoolkit.mvvm/8.4.0",
       "hashPath": "communitytoolkit.mvvm.8.4.0.nupkg.sha512"
+    },
+    "Krypton.Docking/95.25.4.111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2SnfgQnkjdBBcEPf7S6NKMwYjwmxu3kzvupkvQlPK3i/xEk8l3wM7z1EJK7YZRZLzlQ0bLylKdKfeQSvVUhdrg==",
+      "path": "krypton.docking/95.25.4.111",
+      "hashPath": "krypton.docking.95.25.4.111.nupkg.sha512"
+    },
+    "Krypton.Navigator/95.25.4.111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QR6/dhlxGfrzEne6XmKk4/Zooo7KLLPwg9IXwx1AzYpT0O04mK6n60LDuUAJPiPYgccap1OyXisVthNia+Keuw==",
+      "path": "krypton.navigator/95.25.4.111",
+      "hashPath": "krypton.navigator.95.25.4.111.nupkg.sha512"
+    },
+    "Krypton.Ribbon/95.25.4.111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-iNG3wRsgnZqnHMs5aSp0K6U0lfaKLEl4mKN7BC47K2eyEL86L7CBA64S2LkSczehwWUQxovMeUf39AQbfRe5eg==",
+      "path": "krypton.ribbon/95.25.4.111",
+      "hashPath": "krypton.ribbon.95.25.4.111.nupkg.sha512"
+    },
+    "Krypton.Toolkit/95.25.4.111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-f+3IaPFmuJGVDwGks1UAWtUaVy2yuBG483kjew7FsZ7DeXxdC9NO+h438WvLifmrIC7w5AlHlOVf0MynVONyMQ==",
+      "path": "krypton.toolkit/95.25.4.111",
+      "hashPath": "krypton.toolkit.95.25.4.111.nupkg.sha512"
+    },
+    "Krypton.Workspace/95.25.4.111": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4nn4HYoNIiiN1/Sd3dwKpp4Q+NWpgC+BnVyMQOnBhu90xWrN0nypDqp5Jkl4RJfEozUR2xPvF+Y9LJ1r2aUlVw==",
+      "path": "krypton.workspace/95.25.4.111",
+      "hashPath": "krypton.workspace.95.25.4.111.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "type": "package",

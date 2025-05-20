@@ -80,3 +80,10 @@ C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\ne
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewRules.resources
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewAdministrativeAssistant.resources
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Properties.Resources.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Krypton.Docking.dll
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Krypton.Navigator.dll
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Krypton.Ribbon.dll
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Krypton.Toolkit.dll
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Krypton.Workspace.dll
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.adHome.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.HomeAdmin.resources

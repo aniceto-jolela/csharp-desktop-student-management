@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtUserName = new TextBox();
+            txtPassword = new TextBox();
             label2 = new Label();
             label3 = new Label();
             btn_login = new Button();
@@ -46,27 +46,27 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // txtUserName
             // 
-            textBox1.AccessibleDescription = "Primeiro teste";
-            textBox1.AccessibleName = "Second test";
-            textBox1.AccessibleRole = AccessibleRole.Text;
-            textBox1.ImeMode = ImeMode.NoControl;
-            textBox1.Location = new Point(359, 139);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Entra com o nome ou com seu email";
-            textBox1.Size = new Size(282, 23);
-            textBox1.TabIndex = 1;
+            txtUserName.AccessibleDescription = "Primeiro teste";
+            txtUserName.AccessibleName = "Second test";
+            txtUserName.AccessibleRole = AccessibleRole.Text;
+            txtUserName.ImeMode = ImeMode.NoControl;
+            txtUserName.Location = new Point(359, 139);
+            txtUserName.Name = "txtUserName";
+            txtUserName.PlaceholderText = "Entra com o nome ou com seu email";
+            txtUserName.Size = new Size(282, 23);
+            txtUserName.TabIndex = 1;
             // 
-            // textBox2
+            // txtPassword
             // 
-            textBox2.Location = new Point(359, 231);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "Palavra passe";
-            textBox2.Size = new Size(282, 23);
-            textBox2.TabIndex = 2;
-            textBox2.UseSystemPasswordChar = true;
-            textBox2.TextChanged += textBox2_TextChanged;
+            txtPassword.Location = new Point(359, 231);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PlaceholderText = "Palavra passe";
+            txtPassword.Size = new Size(282, 23);
+            txtPassword.TabIndex = 2;
+            txtPassword.UseSystemPasswordChar = true;
+            txtPassword.TextChanged += textBox2_TextChanged;
             // 
             // label2
             // 
@@ -177,8 +177,8 @@
             Controls.Add(btn_login);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtPassword);
+            Controls.Add(txtUserName);
             Controls.Add(pictureBox2);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -194,8 +194,8 @@
         }
 
         #endregion
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtUserName;
+        private TextBox txtPassword;
         private Label label2;
         private Label label3;
         private Button btn_login;

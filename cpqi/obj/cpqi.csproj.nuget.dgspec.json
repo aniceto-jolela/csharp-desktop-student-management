@@ -54,6 +54,26 @@
               "target": "Package",
               "version": "[8.4.0, )"
             },
+            "Krypton.Docking": {
+              "target": "Package",
+              "version": "[95.25.4.111, )"
+            },
+            "Krypton.Navigator": {
+              "target": "Package",
+              "version": "[95.25.4.111, )"
+            },
+            "Krypton.Ribbon": {
+              "target": "Package",
+              "version": "[95.25.4.111, )"
+            },
+            "Krypton.Toolkit": {
+              "target": "Package",
+              "version": "[95.25.4.111, )"
+            },
+            "Krypton.Workspace": {
+              "target": "Package",
+              "version": "[95.25.4.111, )"
+            },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[6.0.2, )"

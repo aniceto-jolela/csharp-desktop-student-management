@@ -12,7 +12,8 @@ namespace cpqi
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            admin_home admin = new admin_home();
+            
+            adHome admin = new adHome();
             admin.Show();
             this.Hide();
         }
@@ -36,5 +37,6 @@ namespace cpqi
         {
 
         }
+
     }
 }
