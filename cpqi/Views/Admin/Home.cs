@@ -110,5 +110,23 @@ namespace cpqi.Views.Admin
         {
 
         }
+
+        private void btnRAssistant_Click(object sender, EventArgs e)
+        {
+            RegisterAdministrativeAssistant register = new RegisterAdministrativeAssistant();
+            register.ShowDialog();
+        }
+
+        private void btnViewAdminAssistant_Click(object sender, EventArgs e)
+        {
+            ViewAdministrativeAssistant view = new ViewAdministrativeAssistant();
+            view.ShowDialog();
+        }
+
+        private void btn_rule_Click(object sender, EventArgs e)
+        {
+            ViewRules rules = new ViewRules();
+            rules.ShowDialog();
+        }
     }
 }

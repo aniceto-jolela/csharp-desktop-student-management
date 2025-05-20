@@ -12,7 +12,7 @@ namespace cpqi
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            
+
             adHome admin = new adHome();
             admin.Show();
             this.Hide();
@@ -38,5 +38,11 @@ namespace cpqi
 
         }
 
+        private void btn_login_Click_1(object sender, EventArgs e)
+        {
+            adHome admin = new adHome();
+            admin.Show();
+            this.Hide();
+        }
     }
 }

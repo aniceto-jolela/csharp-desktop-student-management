@@ -33,13 +33,13 @@
             txtPassword = new TextBox();
             label2 = new Label();
             label3 = new Label();
-            btn_login = new Button();
             lbl_version = new Label();
             label5 = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
+            btn_login = new Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -86,20 +86,6 @@
             label3.Size = new Size(83, 15);
             label3.TabIndex = 4;
             label3.Text = "Palavra Passe :";
-            // 
-            // btn_login
-            // 
-            btn_login.BackColor = SystemColors.MenuHighlight;
-            btn_login.Cursor = Cursors.Hand;
-            btn_login.FlatStyle = FlatStyle.Popup;
-            btn_login.ForeColor = SystemColors.HighlightText;
-            btn_login.Location = new Point(359, 291);
-            btn_login.Name = "btn_login";
-            btn_login.Size = new Size(75, 23);
-            btn_login.TabIndex = 6;
-            btn_login.Text = "Entrar";
-            btn_login.UseVisualStyleBackColor = false;
-            btn_login.Click += btn_login_Click;
             // 
             // lbl_version
             // 
@@ -164,17 +150,27 @@
             pictureBox4.TabIndex = 12;
             pictureBox4.TabStop = false;
             // 
+            // btn_login
+            // 
+            btn_login.Location = new Point(361, 289);
+            btn_login.Name = "btn_login";
+            btn_login.Size = new Size(90, 25);
+            btn_login.TabIndex = 13;
+            btn_login.Values.DropDownArrowColor = Color.Empty;
+            btn_login.Values.Text = "ENTRAR";
+            btn_login.Click += btn_login_Click_1;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(704, 450);
+            Controls.Add(btn_login);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox1);
             Controls.Add(label5);
             Controls.Add(lbl_version);
-            Controls.Add(btn_login);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(txtPassword);
@@ -198,12 +194,12 @@
         private TextBox txtPassword;
         private Label label2;
         private Label label3;
-        private Button btn_login;
         private Label lbl_version;
         private Label label5;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
+        private Krypton.Toolkit.KryptonButton btn_login;
     }
 }
