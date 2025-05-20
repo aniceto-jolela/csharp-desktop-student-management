@@ -4,9 +4,6 @@
     <Compile Update="Views\Admin\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\Admin\HomeAdmin.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Views\Admin\Profile.cs">
       <SubType>Form</SubType>
     </Compile>

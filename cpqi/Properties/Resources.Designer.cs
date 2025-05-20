@@ -103,9 +103,49 @@ namespace cpqi.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap flat_color_icons__assistant {
+            get {
+                object obj = ResourceManager.GetObject("flat-color-icons--assistant", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap material_symbols__all_out_rounded {
+            get {
+                object obj = ResourceManager.GetObject("material-symbols--all-out-rounded", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap medical_icon__i_registration {
+            get {
+                object obj = ResourceManager.GetObject("medical-icon--i-registration", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mingcute__user_3_fill {
             get {
                 object obj = ResourceManager.GetObject("mingcute--user-3-fill", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noto__teacher_dark_skin_tone {
+            get {
+                object obj = ResourceManager.GetObject("noto--teacher-dark-skin-tone", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

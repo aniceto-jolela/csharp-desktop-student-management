@@ -118,6 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pbLogout2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAV9JREFUWEft
+        lj9KxEAUh6Mo6AHWVkRvsI2FxVTZedPnHh7AYjs9g4Uu2IgH2FYLEQUR+80fQVDZzkbL+Au8DGHJJhNm
+        NjbzwWs2ed/8dvZlNoHHs8hbGO4lRFPUDyo3qGxGNOB2eyC8X1igtTKiQ263B8JfFs9jorvWkvIkD4I1
+        bren/FaJUjf8Ub/4AC4CFEMJRwbHaef5cBEA/RcVz1U+Hq/zpXZcBEiV2oXjq+q6FWKDLzfjIkBBPBod
+        wPOpfTjcnofDTb68HN1QE2AmpUBFxkV0DNd36UyJXjIhtlhXz7IAEAp9zaakfGJlPfrGFQXALjyysh59
+        8wp+Ajhf36Nom3X1NAXoAg/hXPtcDKEp/Bh+lC5s+3WvjyH+Jc8ri096P4gw6UdYOIHn7F+OYit8ACze
+        6ZUMQS+NJ9wEDM+D3gXTwtBxuz04vfYhLV7Ly51oLqXSOAx3uN3j6UgQ/AFA4y0RV3wXkAAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAkAEBAAAAEAIABoBAAAlgAAABgYAAABACAAiAkAAP4EAAAgIAAAAQAgAKgQAACGDgAAMDAAAAEA

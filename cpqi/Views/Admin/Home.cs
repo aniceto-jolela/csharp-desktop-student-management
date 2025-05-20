@@ -10,12 +10,12 @@ using System.Windows.Forms;
 
 namespace cpqi.Views.Admin
 {
-    public partial class adHome : Krypton.Toolkit.KryptonForm
+    public partial class AdminHome : Krypton.Toolkit.KryptonForm
     {
         private System.Windows.Forms.Timer timer;
         private TimeZoneInfo angolaTimeZone;
         private bool closeAllowed = false;
-        public adHome()
+        public AdminHome()
         {
             InitializeComponent();
 
@@ -42,8 +42,7 @@ namespace cpqi.Views.Admin
 
         private void btn_profile_Click(object sender, EventArgs e)
         {
-            Profile p = new Profile();
-            p.ShowDialog();
+
         }
 
         private void adHome_FormClosing(object sender, FormClosingEventArgs e)
@@ -127,6 +126,18 @@ namespace cpqi.Views.Admin
         {
             ViewRules rules = new ViewRules();
             rules.ShowDialog();
+        }
+
+        private void pbProfile1_Click(object sender, EventArgs e)
+        {
+            Profile profile = new Profile();
+            profile.ShowDialog();
+        }
+
+        private void pbLogout2_Click(object sender, EventArgs e)
+        {
+            closeAllowed = true; // Allow closing the form
+            Application.Exit();
         }
     }
 }

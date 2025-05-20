@@ -30,7 +30,6 @@ C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\ne
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewStudents.resources
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.ViewTeachers.resources
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Login.resources
-C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.admin_home.resources
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Azure.Core.dll
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Azure.Identity.dll
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
@@ -85,5 +84,4 @@ C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\ne
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Krypton.Ribbon.dll
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Krypton.Toolkit.dll
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Krypton.Workspace.dll
-C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.adHome.resources
-C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.HomeAdmin.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.AdminHome.resources
