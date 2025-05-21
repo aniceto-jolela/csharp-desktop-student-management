@@ -50,7 +50,7 @@ namespace cpqi.Views.Admin
             if (!closeAllowed && e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true; // Cancel the close event button [x]
-                MessageBox.Show("Por favor usa o botão sair para ausentar-se da aplicação.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Por favor termina a sessão para ausentar-se da aplicação.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
         }
@@ -138,6 +138,16 @@ namespace cpqi.Views.Admin
         {
             closeAllowed = true; // Allow closing the form
             Application.Exit();
+        }
+
+        private void btnRTeacher_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonButton6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

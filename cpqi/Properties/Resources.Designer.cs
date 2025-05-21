@@ -63,6 +63,16 @@ namespace cpqi.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arcticons__classchartsstudents {
+            get {
+                object obj = ResourceManager.GetObject("arcticons--classchartsstudents", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap backgraoundWave {
             get {
                 object obj = ResourceManager.GetObject("backgraoundWave", resourceCulture);
@@ -93,6 +103,16 @@ namespace cpqi.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap basil__invoice_solid {
+            get {
+                object obj = ResourceManager.GetObject("basil--invoice-solid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cpqi {
             get {
                 object obj = ResourceManager.GetObject("cpqi", resourceCulture);
@@ -113,9 +133,49 @@ namespace cpqi.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap healthicons__health_worker_form {
+            get {
+                object obj = ResourceManager.GetObject("healthicons--health-worker-form", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap marketeq__work {
+            get {
+                object obj = ResourceManager.GetObject("marketeq--work", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap material_symbols__all_out_rounded {
             get {
                 object obj = ResourceManager.GetObject("material-symbols--all-out-rounded", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mdi__register_outline {
+            get {
+                object obj = ResourceManager.GetObject("mdi--register-outline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mdi__user_tie {
+            get {
+                object obj = ResourceManager.GetObject("mdi--user-tie", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,6 +216,26 @@ namespace cpqi.Properties {
         internal static System.Drawing.Bitmap ph__lock_key_thin {
             get {
                 object obj = ResourceManager.GetObject("ph--lock-key-thin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap uis__grid {
+            get {
+                object obj = ResourceManager.GetObject("uis--grid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wpf__add_user {
+            get {
+                object obj = ResourceManager.GetObject("wpf--add-user", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
