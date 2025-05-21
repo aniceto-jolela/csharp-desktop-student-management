@@ -143,6 +143,16 @@ namespace cpqi.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hugeicons__identity_card {
+            get {
+                object obj = ResourceManager.GetObject("hugeicons--identity-card", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap marketeq__work {
             get {
                 object obj = ResourceManager.GetObject("marketeq--work", resourceCulture);
@@ -216,6 +226,16 @@ namespace cpqi.Properties {
         internal static System.Drawing.Bitmap ph__lock_key_thin {
             get {
                 object obj = ResourceManager.GetObject("ph--lock-key-thin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap streamline__business_user_curriculum {
+            get {
+                object obj = ResourceManager.GetObject("streamline--business-user-curriculum", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
