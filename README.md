@@ -5,6 +5,7 @@
 [![microsoft visual studio installer projects 2022](https://img.shields.io/badge/microsoft_visual_studio_installer_projects_2022-2.0.1-vert)](https://marketplace.visualstudio.com/items?itemName=VisualStudioClient.MicrosoftVisualStudio2022InstallerProjects)
 [![community toolkit mvvm](https://img.shields.io/badge/community_toolkit_mvvm-8.4.0-orange)](https://www.nuget.org/packages/CommunityToolkit.Mvvm#supportedframeworks-body-tab)
 [![sql server 2022 express](https://img.shields.io/badge/icon-iconify-black)](https://iconify.design/)
+[![quest pdf](https://img.shields.io/badge/quest_pdf-2025.5.0-red)](https://www.nuget.org/packages/QuestPDF)
 
 
 Toolbox

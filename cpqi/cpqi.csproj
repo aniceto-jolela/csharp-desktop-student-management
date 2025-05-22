@@ -19,10 +19,12 @@
     <PackageReference Include="Krypton.Toolkit" Version="95.25.4.111" />
     <PackageReference Include="Krypton.Workspace" Version="95.25.4.111" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+    <PackageReference Include="QuestPDF" Version="2025.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Helpers\" />
+    <Folder Include="Properties\DataSources\" />
     <Folder Include="Services\" />
     <Folder Include="Views\Assistant\" />
     <Folder Include="Views\Teacher\" />

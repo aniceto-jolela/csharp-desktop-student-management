@@ -124,7 +124,7 @@
             pictureBox2.Image = Properties.Resources.backgreoundBlue;
             pictureBox2.Location = new Point(0, 0);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(703, 438);
+            pictureBox2.Size = new Size(703, 451);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 10;
             pictureBox2.TabStop = false;
@@ -152,6 +152,7 @@
             // 
             // btn_login
             // 
+            btn_login.Cursor = Cursors.Hand;
             btn_login.Location = new Point(361, 289);
             btn_login.Name = "btn_login";
             btn_login.Size = new Size(90, 25);

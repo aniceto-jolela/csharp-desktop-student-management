@@ -28,45 +28,157 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            dgv_Rules = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dgv_Rules).BeginInit();
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewRules));
+            dgvRules = new Krypton.Toolkit.KryptonDataGridView();
+            kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
+            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            pbPdf = new Krypton.Toolkit.KryptonPictureBox();
+            roleBindingSource = new BindingSource(components);
+            roleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            roleNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvRules).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
+            kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbPdf).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)roleBindingSource).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // dgvRules
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(274, 62);
-            label1.Name = "label1";
-            label1.Size = new Size(44, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Cargos";
+            dgvRules.AllowUserToAddRows = false;
+            dgvRules.AllowUserToDeleteRows = false;
+            dgvRules.AllowUserToResizeColumns = false;
+            dgvRules.AllowUserToResizeRows = false;
+            dgvRules.AutoGenerateKryptonColumns = false;
+            dgvRules.BorderStyle = BorderStyle.None;
+            dgvRules.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
+            dgvRules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRules.Columns.AddRange(new DataGridViewColumn[] { roleIDDataGridViewTextBoxColumn, roleNameDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn });
+            dgvRules.Dock = DockStyle.Bottom;
+            dgvRules.ImeMode = ImeMode.NoControl;
+            dgvRules.Location = new Point(0, 123);
+            dgvRules.MultiSelect = false;
+            dgvRules.Name = "dgvRules";
+            dgvRules.ReadOnly = true;
+            dgvRules.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dgvRules.RowTemplate.ReadOnly = true;
+            dgvRules.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvRules.Size = new Size(611, 101);
+            dgvRules.TabIndex = 2;
+            dgvRules.TabStop = false;
             // 
-            // dgv_Rules
+            // kryptonPictureBox1
             // 
-            dgv_Rules.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_Rules.Location = new Point(69, 124);
-            dgv_Rules.Name = "dgv_Rules";
-            dgv_Rules.Size = new Size(662, 150);
-            dgv_Rules.TabIndex = 1;
+            kryptonPictureBox1.Image = Properties.Resources.marketeq__work;
+            kryptonPictureBox1.Location = new Point(239, 13);
+            kryptonPictureBox1.Name = "kryptonPictureBox1";
+            kryptonPictureBox1.Size = new Size(21, 23);
+            kryptonPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            kryptonPictureBox1.TabIndex = 3;
+            kryptonPictureBox1.TabStop = false;
+            // 
+            // kryptonLabel1
+            // 
+            kryptonLabel1.Location = new Point(262, 11);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new Size(86, 30);
+            kryptonLabel1.StateNormal.ShortText.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel1.TabIndex = 4;
+            kryptonLabel1.Values.Text = "CARGOS";
+            kryptonLabel1.Click += kryptonLabel1_Click;
+            // 
+            // kryptonPanel1
+            // 
+            kryptonPanel1.Controls.Add(kryptonPictureBox1);
+            kryptonPanel1.Controls.Add(kryptonLabel1);
+            kryptonPanel1.Dock = DockStyle.Top;
+            kryptonPanel1.Location = new Point(0, 0);
+            kryptonPanel1.Name = "kryptonPanel1";
+            kryptonPanel1.Size = new Size(611, 45);
+            kryptonPanel1.StateNormal.Color1 = SystemColors.ControlLight;
+            kryptonPanel1.TabIndex = 5;
+            // 
+            // pbPdf
+            // 
+            pbPdf.Cursor = Cursors.Hand;
+            pbPdf.Image = Properties.Resources.material_icon_theme__pdf;
+            pbPdf.Location = new Point(562, 79);
+            pbPdf.Name = "pbPdf";
+            pbPdf.Size = new Size(29, 38);
+            pbPdf.SizeMode = PictureBoxSizeMode.Zoom;
+            pbPdf.TabIndex = 6;
+            pbPdf.TabStop = false;
+            pbPdf.Click += pbPdf_Click;
+            // 
+            // roleBindingSource
+            // 
+            roleBindingSource.DataSource = typeof(Models.Role);
+            // 
+            // roleIDDataGridViewTextBoxColumn
+            // 
+            roleIDDataGridViewTextBoxColumn.DataPropertyName = "Nº";
+            roleIDDataGridViewTextBoxColumn.HeaderText = "Nº";
+            roleIDDataGridViewTextBoxColumn.Name = "roleIDDataGridViewTextBoxColumn";
+            roleIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // roleNameDataGridViewTextBoxColumn
+            // 
+            roleNameDataGridViewTextBoxColumn.DataPropertyName = "CARGOS";
+            roleNameDataGridViewTextBoxColumn.HeaderText = "CARGOS";
+            roleNameDataGridViewTextBoxColumn.Name = "roleNameDataGridViewTextBoxColumn";
+            roleNameDataGridViewTextBoxColumn.ReadOnly = true;
+            roleNameDataGridViewTextBoxColumn.Width = 190;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "DESCRIÇÕES";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "DESCRIÇÕES";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn.Width = 280;
             // 
             // ViewRules
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(dgv_Rules);
-            Controls.Add(label1);
+            ClientSize = new Size(611, 224);
+            Controls.Add(pbPdf);
+            Controls.Add(kryptonPanel1);
+            Controls.Add(dgvRules);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "ViewRules";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ViewRules";
-            ((System.ComponentModel.ISupportInitialize)dgv_Rules).EndInit();
+            Load += ViewRules_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvRules).EndInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
+            kryptonPanel1.ResumeLayout(false);
+            kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pbPdf).EndInit();
+            ((System.ComponentModel.ISupportInitialize)roleBindingSource).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
-        private DataGridView dgv_Rules;
+        private Krypton.Toolkit.KryptonDataGridView dgvRules;
+        private Krypton.Toolkit.KryptonPictureBox kryptonPictureBox1;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private Krypton.Toolkit.KryptonPictureBox pbPdf;
+        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn1;
+        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn2;
+        private Krypton.Toolkit.KryptonDataGridViewTextBoxColumn kryptonDataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn roleIDDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn roleNameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private BindingSource roleBindingSource;
     }
 }

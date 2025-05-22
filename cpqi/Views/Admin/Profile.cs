@@ -95,7 +95,7 @@ namespace cpqi.Views.Admin
 
         private void btnPhoto_Click(object sender, EventArgs e)
         {
-            openFileDialog3.Filter = "Arquivo de imagem (*.jpg*,.jpeg*,.png)|*.jpg,*.jpeg,*.png";
+            openFileDialog3.Filter = "Arquivo de imagem (*.jpg*;.jpeg*;.png)|*.jpg;*.jpeg;*.png";
             openFileDialog3.Title = "Selecionar um arquivo";
 
             if (openFileDialog3.ShowDialog() == DialogResult.OK)
@@ -103,6 +103,11 @@ namespace cpqi.Views.Admin
                 string filePath = openFileDialog3.FileName;
                 MessageBox.Show("Arquivo selecionado: " + filePath);
             }
+        }
+
+        private void kryptonTextBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

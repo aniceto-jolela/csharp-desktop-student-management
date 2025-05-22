@@ -163,6 +163,16 @@ namespace cpqi.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap material_icon_theme__pdf {
+            get {
+                object obj = ResourceManager.GetObject("material-icon-theme--pdf", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap material_symbols__all_out_rounded {
             get {
                 object obj = ResourceManager.GetObject("material-symbols--all-out-rounded", resourceCulture);
@@ -236,6 +246,16 @@ namespace cpqi.Properties {
         internal static System.Drawing.Bitmap streamline__business_user_curriculum {
             get {
                 object obj = ResourceManager.GetObject("streamline--business-user-curriculum", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap twemoji__printer {
+            get {
+                object obj = ResourceManager.GetObject("twemoji--printer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

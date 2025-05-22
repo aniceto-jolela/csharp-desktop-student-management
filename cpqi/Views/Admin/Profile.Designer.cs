@@ -373,6 +373,7 @@
             kryptonTextBox2.Name = "kryptonTextBox2";
             kryptonTextBox2.Size = new Size(294, 23);
             kryptonTextBox2.TabIndex = 33;
+            kryptonTextBox2.TextChanged += kryptonTextBox2_TextChanged;
             // 
             // kryptonTextBox1
             // 
