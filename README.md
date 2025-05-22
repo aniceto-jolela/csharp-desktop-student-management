@@ -18,7 +18,7 @@ Toolbox
 
 
 <p align="center">
-  <img src="#" alt="QI primary school">
+  <img src="cpqi\Assets\Images\cpqi.png" alt="QI primary school" >
 </p>
 
 **CPQI** is a primary school from: initiation to 6th grade.  

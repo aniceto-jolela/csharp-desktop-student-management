@@ -21,14 +21,14 @@ namespace cpqi.Views.Admin
 
             _viewModel = new UserViewModel();
 
-            dgvAdminAssistant.DataSource = _viewModel.Users;
+            //dgvAdminAssistant.DataSource = _viewModel.Users;
 
             // Atualizar SelectedUser ao selecionar linha no DataGridView
-            dgvAdminAssistant.SelectionChanged += (s, e) =>
+            /*dgvAdminAssistant.SelectionChanged += (s, e) =>
             {
                 if (dgvAdminAssistant.CurrentRow?.DataBoundItem is User user)
                     _viewModel.SelectedUser = user;
-            };
+            };*/
 
             //btnAdd.Click += (s, e) => _viewModel.AddUserCommand.Execute(null);
             //btnUpdate.Click += (s, e) => _viewModel.UpdateUserCommand.Execute(null);
