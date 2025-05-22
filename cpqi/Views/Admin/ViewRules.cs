@@ -116,7 +116,7 @@ namespace cpqi.Views.Admin
                     string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
 
 
-                    string filePath = Path.Combine(downloadsPath, "invoice.pdf");
+                    string filePath = Path.Combine(downloadsPath, "cargos.pdf");
 
                     if (!Directory.Exists(downloadsPath))
                         Directory.CreateDirectory(downloadsPath);

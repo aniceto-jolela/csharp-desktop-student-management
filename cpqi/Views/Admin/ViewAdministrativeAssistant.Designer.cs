@@ -28,81 +28,83 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvAdminAssistant = new DataGridView();
-            label1 = new Label();
-            btnAdd = new Button();
-            btnUpdate = new Button();
-            btnDelete = new Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewAdministrativeAssistant));
+            dgvAdminAssistant = new Krypton.Toolkit.KryptonDataGridView();
+            kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
+            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)dgvAdminAssistant).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
+            kryptonPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).BeginInit();
             SuspendLayout();
             // 
             // dgvAdminAssistant
             // 
+            dgvAdminAssistant.BorderStyle = BorderStyle.None;
             dgvAdminAssistant.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvAdminAssistant.Location = new Point(68, 97);
+            dgvAdminAssistant.Location = new Point(12, 97);
             dgvAdminAssistant.Name = "dgvAdminAssistant";
-            dgvAdminAssistant.Size = new Size(621, 332);
-            dgvAdminAssistant.TabIndex = 0;  
+            dgvAdminAssistant.Size = new Size(753, 332);
+            dgvAdminAssistant.TabIndex = 5;
             // 
-            // label1
+            // kryptonPanel1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(293, 38);
-            label1.Name = "label1";
-            label1.Size = new Size(187, 15);
-            label1.TabIndex = 1;
-            label1.Text = "ASSISTENTE ADMINISTRATIVO(A)S";
+            kryptonPanel1.Controls.Add(kryptonPictureBox1);
+            kryptonPanel1.Controls.Add(kryptonLabel1);
+            kryptonPanel1.Dock = DockStyle.Top;
+            kryptonPanel1.Location = new Point(0, 0);
+            kryptonPanel1.Name = "kryptonPanel1";
+            kryptonPanel1.Size = new Size(800, 45);
+            kryptonPanel1.StateNormal.Color1 = SystemColors.ControlLight;
+            kryptonPanel1.TabIndex = 6;
             // 
-            // btnAdd
+            // kryptonPictureBox1
             // 
-            btnAdd.Location = new Point(422, 68);
-            btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(75, 23);
-            btnAdd.TabIndex = 2;
-            btnAdd.Text = "Adicionar";
-            btnAdd.UseVisualStyleBackColor = true;
+            kryptonPictureBox1.Image = Properties.Resources.flat_color_icons__assistant;
+            kryptonPictureBox1.Location = new Point(239, 13);
+            kryptonPictureBox1.Name = "kryptonPictureBox1";
+            kryptonPictureBox1.Size = new Size(21, 23);
+            kryptonPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            kryptonPictureBox1.TabIndex = 3;
+            kryptonPictureBox1.TabStop = false;
             // 
-            // btnUpdate
+            // kryptonLabel1
             // 
-            btnUpdate.Location = new Point(512, 68);
-            btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(75, 23);
-            btnUpdate.TabIndex = 3;
-            btnUpdate.Text = "Actualizar";
-            btnUpdate.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Location = new Point(614, 68);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(75, 23);
-            btnDelete.TabIndex = 4;
-            btnDelete.Text = "Excluir";
-            btnDelete.UseVisualStyleBackColor = true;
+            kryptonLabel1.Location = new Point(262, 11);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new Size(308, 30);
+            kryptonLabel1.StateNormal.ShortText.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel1.TabIndex = 4;
+            kryptonLabel1.Values.Text = "ASSISTENTE ADMINISTRATIVO(A)S";
             // 
             // ViewAdministrativeAssistant
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(btnDelete);
-            Controls.Add(btnUpdate);
-            Controls.Add(btnAdd);
-            Controls.Add(label1);
+            Controls.Add(kryptonPanel1);
             Controls.Add(dgvAdminAssistant);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "ViewAdministrativeAssistant";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ViewRegisterAdministrativeAssistant";
+            Load += ViewAdministrativeAssistant_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAdminAssistant).EndInit();
+            ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
+            kryptonPanel1.ResumeLayout(false);
+            kryptonPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private DataGridView dgvAdminAssistant;
-        private Label label1;
-        private Button btnAdd;
-        private Button btnUpdate;
-        private Button btnDelete;
+        private Krypton.Toolkit.KryptonDataGridView dgvAdminAssistant;
+        private Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private Krypton.Toolkit.KryptonPictureBox kryptonPictureBox1;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel1;
     }
 }

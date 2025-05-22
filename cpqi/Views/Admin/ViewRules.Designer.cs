@@ -31,14 +31,14 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewRules));
             dgvRules = new Krypton.Toolkit.KryptonDataGridView();
+            roleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            roleNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             pbPdf = new Krypton.Toolkit.KryptonPictureBox();
             roleBindingSource = new BindingSource(components);
-            roleIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            roleNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvRules).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
@@ -70,6 +70,29 @@
             dgvRules.Size = new Size(611, 101);
             dgvRules.TabIndex = 2;
             dgvRules.TabStop = false;
+            // 
+            // roleIDDataGridViewTextBoxColumn
+            // 
+            roleIDDataGridViewTextBoxColumn.DataPropertyName = "Nº";
+            roleIDDataGridViewTextBoxColumn.HeaderText = "Nº";
+            roleIDDataGridViewTextBoxColumn.Name = "roleIDDataGridViewTextBoxColumn";
+            roleIDDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // roleNameDataGridViewTextBoxColumn
+            // 
+            roleNameDataGridViewTextBoxColumn.DataPropertyName = "CARGOS";
+            roleNameDataGridViewTextBoxColumn.HeaderText = "CARGOS";
+            roleNameDataGridViewTextBoxColumn.Name = "roleNameDataGridViewTextBoxColumn";
+            roleNameDataGridViewTextBoxColumn.ReadOnly = true;
+            roleNameDataGridViewTextBoxColumn.Width = 190;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "DESCRIÇÕES";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "DESCRIÇÕES";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn.Width = 280;
             // 
             // kryptonPictureBox1
             // 
@@ -118,29 +141,6 @@
             // 
             roleBindingSource.DataSource = typeof(Models.Role);
             // 
-            // roleIDDataGridViewTextBoxColumn
-            // 
-            roleIDDataGridViewTextBoxColumn.DataPropertyName = "Nº";
-            roleIDDataGridViewTextBoxColumn.HeaderText = "Nº";
-            roleIDDataGridViewTextBoxColumn.Name = "roleIDDataGridViewTextBoxColumn";
-            roleIDDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // roleNameDataGridViewTextBoxColumn
-            // 
-            roleNameDataGridViewTextBoxColumn.DataPropertyName = "CARGOS";
-            roleNameDataGridViewTextBoxColumn.HeaderText = "CARGOS";
-            roleNameDataGridViewTextBoxColumn.Name = "roleNameDataGridViewTextBoxColumn";
-            roleNameDataGridViewTextBoxColumn.ReadOnly = true;
-            roleNameDataGridViewTextBoxColumn.Width = 190;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            descriptionDataGridViewTextBoxColumn.DataPropertyName = "DESCRIÇÕES";
-            descriptionDataGridViewTextBoxColumn.HeaderText = "DESCRIÇÕES";
-            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            descriptionDataGridViewTextBoxColumn.Width = 280;
-            // 
             // ViewRules
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -156,7 +156,6 @@
             Name = "ViewRules";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ViewRules";
-            Load += ViewRules_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRules).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();

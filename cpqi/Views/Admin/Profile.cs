@@ -109,5 +109,15 @@ namespace cpqi.Views.Admin
         {
 
         }
+
+        private void kryptonTextBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonTextBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

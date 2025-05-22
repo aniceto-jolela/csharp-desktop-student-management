@@ -45,9 +45,13 @@
             kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            kryptonDateTimePicker3 = new Krypton.Toolkit.KryptonDateTimePicker();
             kryptonComboBox2 = new Krypton.Toolkit.KryptonComboBox();
+            kryptonLabel29 = new Krypton.Toolkit.KryptonLabel();
             btnPhoto = new Krypton.Toolkit.KryptonButton();
+            kryptonDateTimePicker2 = new Krypton.Toolkit.KryptonDateTimePicker();
             kryptonLabel28 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel30 = new Krypton.Toolkit.KryptonLabel();
             kryptonTextBox5 = new Krypton.Toolkit.KryptonTextBox();
             btnCV = new Krypton.Toolkit.KryptonButton();
             btnBI = new Krypton.Toolkit.KryptonButton();
@@ -127,9 +131,13 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.BackColor = SystemColors.GradientActiveCaption;
+            splitContainer1.Panel2.Controls.Add(kryptonDateTimePicker3);
             splitContainer1.Panel2.Controls.Add(kryptonComboBox2);
+            splitContainer1.Panel2.Controls.Add(kryptonLabel29);
             splitContainer1.Panel2.Controls.Add(btnPhoto);
+            splitContainer1.Panel2.Controls.Add(kryptonDateTimePicker2);
             splitContainer1.Panel2.Controls.Add(kryptonLabel28);
+            splitContainer1.Panel2.Controls.Add(kryptonLabel30);
             splitContainer1.Panel2.Controls.Add(kryptonTextBox5);
             splitContainer1.Panel2.Controls.Add(btnCV);
             splitContainer1.Panel2.Controls.Add(btnBI);
@@ -274,6 +282,14 @@
             kryptonLabel2.TabIndex = 7;
             kryptonLabel2.Values.Text = "USUÁRIO :";
             // 
+            // kryptonDateTimePicker3
+            // 
+            kryptonDateTimePicker3.Format = DateTimePickerFormat.Short;
+            kryptonDateTimePicker3.Location = new Point(362, 315);
+            kryptonDateTimePicker3.Name = "kryptonDateTimePicker3";
+            kryptonDateTimePicker3.Size = new Size(94, 21);
+            kryptonDateTimePicker3.TabIndex = 55;
+            // 
             // kryptonComboBox2
             // 
             kryptonComboBox2.Cursor = Cursors.Hand;
@@ -282,9 +298,17 @@
             kryptonComboBox2.Items.AddRange(new object[] { "M", "F", "O" });
             kryptonComboBox2.Location = new Point(158, 262);
             kryptonComboBox2.Name = "kryptonComboBox2";
-            kryptonComboBox2.Size = new Size(75, 22);
+            kryptonComboBox2.Size = new Size(57, 22);
             kryptonComboBox2.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
             kryptonComboBox2.TabIndex = 44;
+            // 
+            // kryptonLabel29
+            // 
+            kryptonLabel29.Location = new Point(283, 315);
+            kryptonLabel29.Name = "kryptonLabel29";
+            kryptonLabel29.Size = new Size(83, 20);
+            kryptonLabel29.TabIndex = 54;
+            kryptonLabel29.Values.Text = "VALIDO ATÉ :";
             // 
             // btnPhoto
             // 
@@ -297,6 +321,14 @@
             btnPhoto.Values.Text = "";
             btnPhoto.Click += btnPhoto_Click;
             // 
+            // kryptonDateTimePicker2
+            // 
+            kryptonDateTimePicker2.Format = DateTimePickerFormat.Short;
+            kryptonDateTimePicker2.Location = new Point(162, 315);
+            kryptonDateTimePicker2.Name = "kryptonDateTimePicker2";
+            kryptonDateTimePicker2.Size = new Size(115, 21);
+            kryptonDateTimePicker2.TabIndex = 53;
+            // 
             // kryptonLabel28
             // 
             kryptonLabel28.Location = new Point(158, 380);
@@ -304,6 +336,14 @@
             kryptonLabel28.Size = new Size(48, 20);
             kryptonLabel28.TabIndex = 42;
             kryptonLabel28.Values.Text = "FOTO :";
+            // 
+            // kryptonLabel30
+            // 
+            kryptonLabel30.Location = new Point(28, 316);
+            kryptonLabel30.Name = "kryptonLabel30";
+            kryptonLabel30.Size = new Size(108, 20);
+            kryptonLabel30.TabIndex = 52;
+            kryptonLabel30.Values.Text = "BI - EMITIDO EM :";
             // 
             // kryptonTextBox5
             // 
@@ -313,6 +353,7 @@
             kryptonTextBox5.Size = new Size(294, 23);
             kryptonTextBox5.TabIndex = 41;
             kryptonTextBox5.UseSystemPasswordChar = true;
+            kryptonTextBox5.TextChanged += kryptonTextBox5_TextChanged;
             // 
             // btnCV
             // 
@@ -339,7 +380,7 @@
             // kryptonButton1
             // 
             kryptonButton1.Cursor = Cursors.Hand;
-            kryptonButton1.Location = new Point(235, 458);
+            kryptonButton1.Location = new Point(254, 455);
             kryptonButton1.Name = "kryptonButton1";
             kryptonButton1.Size = new Size(90, 25);
             kryptonButton1.TabIndex = 38;
@@ -348,17 +389,19 @@
             // 
             // kryptonDateTimePicker1
             // 
-            kryptonDateTimePicker1.Location = new Point(174, 345);
+            kryptonDateTimePicker1.Format = DateTimePickerFormat.Short;
+            kryptonDateTimePicker1.Location = new Point(360, 263);
             kryptonDateTimePicker1.Name = "kryptonDateTimePicker1";
-            kryptonDateTimePicker1.Size = new Size(247, 21);
+            kryptonDateTimePicker1.Size = new Size(92, 21);
             kryptonDateTimePicker1.TabIndex = 37;
             // 
             // kryptonTextBox4
             // 
-            kryptonTextBox4.Location = new Point(158, 316);
+            kryptonTextBox4.Location = new Point(158, 344);
             kryptonTextBox4.Name = "kryptonTextBox4";
             kryptonTextBox4.Size = new Size(294, 23);
             kryptonTextBox4.TabIndex = 36;
+            kryptonTextBox4.TextChanged += kryptonTextBox4_TextChanged;
             // 
             // kryptonTextBox3
             // 
@@ -439,7 +482,7 @@
             // 
             // kryptonLabel19
             // 
-            kryptonLabel19.Location = new Point(22, 345);
+            kryptonLabel19.Location = new Point(220, 264);
             kryptonLabel19.Name = "kryptonLabel19";
             kryptonLabel19.Size = new Size(146, 20);
             kryptonLabel19.TabIndex = 25;
@@ -447,7 +490,7 @@
             // 
             // kryptonLabel20
             // 
-            kryptonLabel20.Location = new Point(22, 319);
+            kryptonLabel20.Location = new Point(28, 344);
             kryptonLabel20.Name = "kryptonLabel20";
             kryptonLabel20.Size = new Size(72, 20);
             kryptonLabel20.TabIndex = 24;
@@ -595,5 +638,9 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel28;
         private OpenFileDialog openFileDialog3;
         private Krypton.Toolkit.KryptonComboBox kryptonComboBox2;
+        private Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker3;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel29;
+        private Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker2;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel30;
     }
 }

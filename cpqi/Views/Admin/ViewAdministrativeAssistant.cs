@@ -19,7 +19,7 @@ namespace cpqi.Views.Admin
         {
             InitializeComponent();
 
-           _viewModel = new UserViewModel();
+            _viewModel = new UserViewModel();
 
             dgvAdminAssistant.DataSource = _viewModel.Users;
 
@@ -31,8 +31,13 @@ namespace cpqi.Views.Admin
             };
 
             //btnAdd.Click += (s, e) => _viewModel.AddUserCommand.Execute(null);
-            btnUpdate.Click += (s, e) => _viewModel.UpdateUserCommand.Execute(null);
-            btnDelete.Click += (s, e) => _viewModel.DeleteUserCommand.Execute(null);
+            //btnUpdate.Click += (s, e) => _viewModel.UpdateUserCommand.Execute(null);
+            //btnDelete.Click += (s, e) => _viewModel.DeleteUserCommand.Execute(null);
+        }
+
+        private void ViewAdministrativeAssistant_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
