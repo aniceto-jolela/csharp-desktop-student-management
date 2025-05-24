@@ -11,19 +11,22 @@ namespace cpqi.Models
         public int UserID { get; set; }
         public string UserName { get; set; } = string.Empty;
         public string FullName { get; set; } = string.Empty;
-        public char? Sex { get; set; } // 'M', 'F', 'O' or null
+        public string Sex { get; set; } = string.Empty; // "MASCULINO", "FEMININO", "OUTRO"
         public string? Email { get; set; }
         public string? Phone { get; set; }
         public byte[] PasswordHash { get; set; } = Array.Empty<byte>();
         public string? PhotoPath { get; set; }
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        //public DateTime DateOfBirthNonNull => DateOfBirth ?? DateTime.Today;
         public bool IsStaff { get; set; }
         public bool IsActive { get; set; }
         public bool IsSuperUser { get; set; }
         public DateTime DateJoined { get; set; }
         public string? FileBiPath { get; set; }
-        public DateTime? IssuedOn { get; set; }
-        public DateTime? ValidUntil { get; set; }
+        public DateTime IssuedOn { get; set; }
+        //public DateTime IssuedOnNonNull => IssuedOn ?? DateTime.Today;
+        public DateTime ValidUntil { get; set; }
+        //public DateTime ValidUntilNonNull => ValidUntil ?? DateTime.Today;
         public string? FileCvPath { get; set; }
         public int? RoleID { get; set; }
 
@@ -34,7 +37,7 @@ namespace cpqi.Models
         public string? UpdatedBy { get; set; }
 
         // Navigation property !
-        public Role? Role { get; set; }
+        public virtual Role? Role { get; set; }
 
 
     }

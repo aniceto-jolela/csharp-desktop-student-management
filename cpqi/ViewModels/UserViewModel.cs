@@ -34,13 +34,13 @@ namespace cpqi.ViewModels
         private string fullName = string.Empty;
 
         [ObservableProperty]
-        private char? sex;
+        private string sex = "MASCULINO";
 
         [ObservableProperty]
-        private string email = string.Empty;
+        private string? email = string.Empty;
 
         [ObservableProperty]
-        private string phone = string.Empty;
+        private string? phone = string.Empty;
 
         [ObservableProperty]
         private string password = string.Empty;
@@ -49,7 +49,7 @@ namespace cpqi.ViewModels
         private string photoPath = string.Empty;
 
         [ObservableProperty]
-        private DateTime? dateOfBirth;
+        private DateTime dateOfBirth = DateTime.Today;
 
         [ObservableProperty]
         private bool isStaff;
@@ -61,7 +61,19 @@ namespace cpqi.ViewModels
         private bool isSuperUser;
 
         [ObservableProperty]
-        private int? roleID;
+        private string fileBiPath = string.Empty;
+
+        [ObservableProperty]
+        private DateTime issuedOn = DateTime.Today;
+
+        [ObservableProperty]
+        private DateTime validUntil = DateTime.Today;
+
+        [ObservableProperty]
+        private string? fileCvPath;
+
+        [ObservableProperty]
+        private int roleID = 1;
 
         [ObservableProperty]
         private string createdBy = Environment.UserName;
@@ -93,23 +105,27 @@ namespace cpqi.ViewModels
 
                 if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(FullName) || string.IsNullOrWhiteSpace(Password))
                 {
-                    // Aqui você pode mostrar uma mensagem de erro para o usuário
+                    MessageBox.Show("Preencha todos os campos obrigatórios!");
                     return;
                 }
                 var user = new User
                 {
                     UserName = UserName,
                     FullName = FullName,
-                    Sex = Sex,
-                    Email = string.IsNullOrWhiteSpace(Email) ? null : Email,
-                    Phone = string.IsNullOrWhiteSpace(Phone) ? null : Phone,
-                    PasswordHash = Encoding.UTF8.GetBytes(Password), // Exemplo simples, implemente hash seguro
-                    PhotoPath = string.IsNullOrWhiteSpace(PhotoPath) ? null : PhotoPath,
+                    Sex = Sex, 
+                    Email = Email,
+                    Phone = Phone,
+                    PasswordHash = _userRepository.HashPassword(Password),
+                    PhotoPath = PhotoPath,
                     DateOfBirth = DateOfBirth,
                     IsStaff = IsStaff,
                     IsActive = IsActive,
                     IsSuperUser = IsSuperUser,
                     DateJoined = DateTime.Now,
+                    FileBiPath = FileBiPath,
+                    IssuedOn = IssuedOn, 
+                    ValidUntil = ValidUntil,
+                    FileCvPath = FileCvPath,
                     RoleID = RoleID,
                     CreatedBy = CreatedBy,
                     CreatedAt = DateTime.Now
@@ -123,7 +139,6 @@ namespace cpqi.ViewModels
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show($"Erro: {ex.Message}");
             }
         }
@@ -135,10 +150,10 @@ namespace cpqi.ViewModels
             SelectedUser.UserName = UserName;
             SelectedUser.FullName = FullName;
             SelectedUser.Sex = Sex;
-            SelectedUser.Email = string.IsNullOrWhiteSpace(Email) ? null : Email;
-            SelectedUser.Phone = string.IsNullOrWhiteSpace(Phone) ? null : Phone;
-            SelectedUser.PasswordHash = Encoding.UTF8.GetBytes(Password);
-            SelectedUser.PhotoPath = string.IsNullOrWhiteSpace(PhotoPath) ? null : PhotoPath;
+            SelectedUser.Email = Email;
+            SelectedUser.Phone = Phone;
+            SelectedUser.PasswordHash = _userRepository.HashPassword(Password);
+            SelectedUser.PhotoPath = PhotoPath;
             SelectedUser.DateOfBirth = DateOfBirth;
             SelectedUser.IsStaff = IsStaff;
             SelectedUser.IsActive = IsActive;
@@ -165,18 +180,21 @@ namespace cpqi.ViewModels
         {
             UserName = string.Empty;
             FullName = string.Empty;
-            Sex = null;
+            Sex = "MASCULINO";
             Email = string.Empty;
             Phone = string.Empty;
             Password = string.Empty;
             PhotoPath = string.Empty;
-            DateOfBirth = null;
+            FileBiPath = string.Empty;
+            FileCvPath = string.Empty;
+            DateOfBirth = DateTime.Today;
+            IssuedOn = DateTime.Today;
+            ValidUntil = DateTime.Today;
             IsStaff = false;
             IsActive = true;
             IsSuperUser = false;
-            RoleID = null;
-            SelectedUser = null;
-            UpdatedBy = null;
+            RoleID = 1;
+            //UpdatedBy = null;
             SelectedUser = null;
 
         }
@@ -190,9 +208,18 @@ namespace cpqi.ViewModels
                 Email = value.Email ?? string.Empty;
                 Phone = value.Phone ?? string.Empty;
                 Password = System.Text.Encoding.UTF8.GetString(value.PasswordHash);
+                PhotoPath = value.PhotoPath ?? string.Empty;
+                FileBiPath = value.FileBiPath ?? string.Empty;
+                FileCvPath = value.FileCvPath ?? string.Empty;
+                DateOfBirth = value.DateOfBirth;
+                IssuedOn = value.IssuedOn;
+                ValidUntil = value.ValidUntil;
                 IsStaff = value.IsStaff;
                 IsActive = value.IsActive;
                 IsSuperUser = value.IsSuperUser;
+                RoleID = value.RoleID ?? 1;
+                //CreatedBy = value.CreatedBy;
+                //UpdatedBy = value.UpdatedBy;
             }
             else
             {

@@ -21,7 +21,7 @@ namespace cpqi.Views.Admin
 
             _viewModel = new UserViewModel();
 
-            //dgvAdminAssistant.DataSource = _viewModel.Users;
+            dgvAdminAssistant.DataSource = _viewModel.Users;
 
             // Atualizar SelectedUser ao selecionar linha no DataGridView
             /*dgvAdminAssistant.SelectionChanged += (s, e) =>

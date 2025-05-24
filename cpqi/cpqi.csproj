@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
-    <Folder Include="Properties\DataSources\" />
     <Folder Include="Services\" />
     <Folder Include="Views\Assistant\" />
     <Folder Include="Views\Teacher\" />
