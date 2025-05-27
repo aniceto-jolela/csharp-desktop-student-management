@@ -164,6 +164,52 @@ namespace cpqi.Migrations
                     b.HasIndex("RoleID");
 
                     b.ToTable("User", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserID = 1,
+                            Bi = "00000000000000",
+                            CreatedAt = new DateTime(2025, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "seed",
+                            DateJoined = new DateTime(2025, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1999, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "otecina500@gmail.com",
+                            FullName = "System Administrator",
+                            IsActive = true,
+                            IsStaff = true,
+                            IsSuperUser = true,
+                            IssuedOn = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PasswordHash = new byte[] { 166, 130, 25, 219, 239, 119, 31, 83, 197, 26, 127, 199, 94, 90, 121, 125, 183, 232, 233, 196, 174, 70, 74, 131, 184, 31, 255, 36, 182, 63, 74, 71 },
+                            Phone = "+244935259317",
+                            RoleID = 1,
+                            Salt = new byte[] { 86, 20, 249, 233, 128, 57, 165, 36, 73, 217, 227, 12, 119, 2, 122, 144 },
+                            Sex = "MASCULINO",
+                            UserName = "admin",
+                            ValidUntil = new DateTime(2030, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UserID = 2,
+                            Bi = "11111111111111",
+                            CreatedAt = new DateTime(2025, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "seed",
+                            DateJoined = new DateTime(2025, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1992, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin@cpqi.com",
+                            FullName = "Administrador Padrão",
+                            IsActive = true,
+                            IsStaff = true,
+                            IsSuperUser = true,
+                            IssuedOn = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PasswordHash = new byte[] { 42, 235, 23, 255, 103, 86, 59, 191, 154, 249, 178, 252, 139, 211, 7, 40, 28, 153, 9, 102, 68, 141, 147, 247, 194, 237, 188, 99, 185, 184, 155, 115 },
+                            Phone = "111111111",
+                            RoleID = 1,
+                            Salt = new byte[] { 42, 235, 128, 224, 239, 144, 83, 41, 139, 254, 244, 34, 237, 152, 246, 15 },
+                            Sex = "MASCULINO",
+                            UserName = "admin12345678",
+                            ValidUntil = new DateTime(2030, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("cpqi.Models.User", b =>

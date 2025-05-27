@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cpqi", "cpqi.csproj", "{6AE
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ColégioQI", "..\ColégioQI\ColégioQI.vdproj", "{62CF5EB6-32AF-CE4B-4A4B-DC16CDCE6891}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashGenerator", "..\HashGenerator\HashGenerator.csproj", "{29AF339C-A730-4B27-98BF-543A5FE02B13}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{6AEC63C7-8262-44BE-8F32-41DF9CA980C6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{62CF5EB6-32AF-CE4B-4A4B-DC16CDCE6891}.Debug|Any CPU.ActiveCfg = Debug
 		{62CF5EB6-32AF-CE4B-4A4B-DC16CDCE6891}.Release|Any CPU.ActiveCfg = Release
+		{29AF339C-A730-4B27-98BF-543A5FE02B13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29AF339C-A730-4B27-98BF-543A5FE02B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29AF339C-A730-4B27-98BF-543A5FE02B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29AF339C-A730-4B27-98BF-543A5FE02B13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -22,6 +22,22 @@ namespace cpqi
             _userViewModel = userViewModel;
             _serviceProvider = serviceProvider;
         }
+        private void ShowUniqueForm<T>(bool modal = true, params object[] args) where T : Form
+        {
+            foreach(Form f in Application.OpenForms)
+            {
+                if(f is T)
+                {
+                    f.Focus();
+                    return;
+                }
+            }
+            var form = (T)ActivatorUtilities.CreateInstance(_serviceProvider, typeof(T), args);
+            if (modal)
+                form.ShowDialog();
+            else
+                form.Show();
+        }
         public void ShowDashboardForUser()
         {
             var user = _userViewModel.LoggedUser;
@@ -36,14 +52,13 @@ namespace cpqi
             switch (user.Role.RoleName)
             {
                 case "Administrador":
-                    var adminForm = new AdminHome(user, this, _userViewModel, dbContext);
-                    adminForm.Show();
+                    ShowAdminHomeForm(user);
                     break;
                 case "Assistente administrativa":
-                    new AdminHome(user, this, _userViewModel, dbContext).Show();
+                    new AdminHome(user, this, _userViewModel).Show();
                     break;
                 case "Professor":
-                    new AdminHome(user, this, _userViewModel, dbContext).Show();
+                    new AdminHome(user, this, _userViewModel).Show();
                     break;
                 default:
                     MessageBox.Show("Acesso não autorizado para este papel.");
@@ -52,14 +67,41 @@ namespace cpqi
         }
         public void ShowAdminHomeForm(User user)
         {
-            var dbContext = _serviceProvider.GetRequiredService<CpqiDbContext>();
-            new AdminHome(user, this, _userViewModel, dbContext).Show();
+            ShowUniqueForm<AdminHome>(modal: false, user, this, _userViewModel);
         }
-
         public void ShowLoginForm()
         {
-            var login = _serviceProvider.GetRequiredService<Login>();
-            login.Show();
+            ShowUniqueForm<Login>(modal: false);
         }
+        /// <summary>
+        /// Administrator
+        /// </summary>
+
+        //-------> Register
+        public void ShowAdminRegisterAdministrativeAssistantForm()
+        {
+            ShowUniqueForm<AdminRegisterAdministrativeAssistant>();
+        }
+        //-------> View
+        public void ShowAdminProfileForm()
+        {
+            ShowUniqueForm<AdminProfile>();
+        }
+        public void ShowAdminRolesForm()
+        {
+            ShowUniqueForm<AdminViewRules>();
+        }
+        public void ShowAdminViewAdministrativeAssistantForm()
+        {
+            ShowUniqueForm<AdminViewAdministrativeAssistant>();
+        }
+        /// <summary>
+        /// Admin Assistant
+        /// </summary>
+
+
+        /// <summary>
+        /// Teacher
+        /// </summary>
     }
 }

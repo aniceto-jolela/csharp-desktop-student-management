@@ -1,0 +1,15 @@
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\bin\Debug\net8.0\HashGenerator.exe
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\bin\Debug\net8.0\HashGenerator.deps.json
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\bin\Debug\net8.0\HashGenerator.runtimeconfig.json
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\bin\Debug\net8.0\HashGenerator.dll
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\bin\Debug\net8.0\HashGenerator.pdb
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\obj\Debug\net8.0\HashGenerator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\obj\Debug\net8.0\HashGenerator.AssemblyInfoInputs.cache
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\obj\Debug\net8.0\HashGenerator.AssemblyInfo.cs
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\obj\Debug\net8.0\HashGenerator.csproj.CoreCompileInputs.cache
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\obj\Debug\net8.0\HashGenerator.sourcelink.json
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\obj\Debug\net8.0\HashGenerator.dll
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\obj\Debug\net8.0\refint\HashGenerator.dll
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\obj\Debug\net8.0\HashGenerator.pdb
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\obj\Debug\net8.0\HashGenerator.genruntimeconfig.cache
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\HashGenerator\obj\Debug\net8.0\ref\HashGenerator.dll

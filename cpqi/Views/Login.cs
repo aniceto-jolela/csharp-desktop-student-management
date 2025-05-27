@@ -15,13 +15,12 @@ namespace cpqi
 
             lbl_version.Text = $"Versão : {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
         }
-
-        private void btn_login_Click_1(object sender, EventArgs e)
+        private void Btn_login_Click(object sender, EventArgs e)
         {
             // Here you would typically validate the username and password
             // For demonstration purposes, we will just open the AdminHome form directly
-            var username = txtUserName.Text.Trim();
-            var password = txtPassword.Text;
+            var username = TxtUserName.Text.Trim();
+            var password = TxtPassword.Text;
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
@@ -36,10 +35,11 @@ namespace cpqi
             }
 
             _formManager.ShowDashboardForUser();
-            this.Hide();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
-        private void pbExit_Click(object sender, EventArgs e)
+        private void PbExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

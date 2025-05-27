@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            txtUserName = new TextBox();
-            txtPassword = new TextBox();
+            TxtUserName = new TextBox();
+            TxtPassword = new TextBox();
             label2 = new Label();
             label3 = new Label();
             lbl_version = new Label();
@@ -39,35 +39,35 @@
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
-            btn_login = new Krypton.Toolkit.KryptonButton();
-            pbExit = new Krypton.Toolkit.KryptonPictureBox();
+            Btn_login = new Krypton.Toolkit.KryptonButton();
+            PbExit = new Krypton.Toolkit.KryptonPictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbExit).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PbExit).BeginInit();
             SuspendLayout();
             // 
-            // txtUserName
+            // TxtUserName
             // 
-            txtUserName.AccessibleDescription = "Primeiro teste";
-            txtUserName.AccessibleName = "Second test";
-            txtUserName.AccessibleRole = AccessibleRole.Text;
-            txtUserName.ImeMode = ImeMode.NoControl;
-            txtUserName.Location = new Point(359, 139);
-            txtUserName.Name = "txtUserName";
-            txtUserName.PlaceholderText = "Entra com o nome ou com seu email";
-            txtUserName.Size = new Size(282, 23);
-            txtUserName.TabIndex = 1;
+            TxtUserName.AccessibleDescription = "Primeiro teste";
+            TxtUserName.AccessibleName = "Second test";
+            TxtUserName.AccessibleRole = AccessibleRole.Text;
+            TxtUserName.ImeMode = ImeMode.NoControl;
+            TxtUserName.Location = new Point(359, 139);
+            TxtUserName.Name = "TxtUserName";
+            TxtUserName.PlaceholderText = "Entra com o nome ou com seu email";
+            TxtUserName.Size = new Size(282, 23);
+            TxtUserName.TabIndex = 1;
             // 
-            // txtPassword
+            // TxtPassword
             // 
-            txtPassword.Location = new Point(359, 231);
-            txtPassword.Name = "txtPassword";
-            txtPassword.PlaceholderText = "Palavra passe";
-            txtPassword.Size = new Size(282, 23);
-            txtPassword.TabIndex = 2;
-            txtPassword.UseSystemPasswordChar = true;
+            TxtPassword.Location = new Point(359, 231);
+            TxtPassword.Name = "TxtPassword";
+            TxtPassword.PlaceholderText = "Palavra passe";
+            TxtPassword.Size = new Size(282, 23);
+            TxtPassword.TabIndex = 2;
+            TxtPassword.UseSystemPasswordChar = true;
             // 
             // label2
             // 
@@ -148,35 +148,36 @@
             pictureBox4.TabIndex = 12;
             pictureBox4.TabStop = false;
             // 
-            // btn_login
+            // Btn_login
             // 
-            btn_login.Cursor = Cursors.Hand;
-            btn_login.Location = new Point(361, 289);
-            btn_login.Name = "btn_login";
-            btn_login.Size = new Size(90, 25);
-            btn_login.TabIndex = 13;
-            btn_login.Values.DropDownArrowColor = Color.Empty;
-            btn_login.Values.Text = "ENTRAR";
-            btn_login.Click += btn_login_Click_1;
+            Btn_login.Cursor = Cursors.Hand;
+            Btn_login.Location = new Point(361, 289);
+            Btn_login.Name = "Btn_login";
+            Btn_login.Size = new Size(90, 25);
+            Btn_login.TabIndex = 13;
+            Btn_login.Values.DropDownArrowColor = Color.Empty;
+            Btn_login.Values.Text = "ENTRAR";
+            Btn_login.Click += Btn_login_Click;
             // 
-            // pbExit
+            // PbExit
             // 
-            pbExit.Image = Properties.Resources.material_symbols__all_out_rounded;
-            pbExit.Location = new Point(668, 12);
-            pbExit.Name = "pbExit";
-            pbExit.Size = new Size(24, 22);
-            pbExit.SizeMode = PictureBoxSizeMode.Zoom;
-            pbExit.TabIndex = 14;
-            pbExit.TabStop = false;
-            pbExit.Click += pbExit_Click;
+            PbExit.Cursor = Cursors.Hand;
+            PbExit.Image = Properties.Resources.material_symbols__all_out_rounded;
+            PbExit.Location = new Point(668, 12);
+            PbExit.Name = "PbExit";
+            PbExit.Size = new Size(24, 22);
+            PbExit.SizeMode = PictureBoxSizeMode.Zoom;
+            PbExit.TabIndex = 14;
+            PbExit.TabStop = false;
+            PbExit.Click += PbExit_Click;
             // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(704, 450);
-            Controls.Add(pbExit);
-            Controls.Add(btn_login);
+            Controls.Add(PbExit);
+            Controls.Add(Btn_login);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox1);
@@ -184,8 +185,8 @@
             Controls.Add(lbl_version);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(txtPassword);
-            Controls.Add(txtUserName);
+            Controls.Add(TxtPassword);
+            Controls.Add(TxtUserName);
             Controls.Add(pictureBox2);
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -196,14 +197,14 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbExit).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PbExit).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private TextBox txtUserName;
-        private TextBox txtPassword;
+        private TextBox TxtUserName;
+        private TextBox TxtPassword;
         private Label label2;
         private Label label3;
         private Label lbl_version;
@@ -212,7 +213,7 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
-        private Krypton.Toolkit.KryptonButton btn_login;
-        private Krypton.Toolkit.KryptonPictureBox pbExit;
+        private Krypton.Toolkit.KryptonButton Btn_login;
+        private Krypton.Toolkit.KryptonPictureBox PbExit;
     }
 }

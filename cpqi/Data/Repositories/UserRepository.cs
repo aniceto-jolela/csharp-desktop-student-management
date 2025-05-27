@@ -10,7 +10,6 @@ using Azure.Identity;
 using System.ComponentModel.DataAnnotations;
 using cpqi.Models;
 using System.Security.Cryptography;
-using cpqi.DAL;
 using Microsoft.EntityFrameworkCore;
 
 namespace cpqi.Data.Repositories

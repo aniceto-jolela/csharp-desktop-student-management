@@ -6,6 +6,7 @@ using cpqi.Data.Repositories;
 using cpqi.ViewModels;
 using Microsoft.Extensions.Configuration;
 using cpqi.Views.Admin;
+using System.Security.Cryptography;
 
 namespace cpqi
 {
@@ -23,12 +24,34 @@ namespace cpqi
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Criação do Host para configurar serviços e DI
-            var host = CreateHostBuilder(args).Build();
+            
+            try
+            {
+               
 
-            var loginForm = host.Services.GetRequiredService<Login>();
-            Application.Run(loginForm);
+                while (true)
+                {
+                    // Criação do Host para configurar serviços e DI
+                    var host = CreateHostBuilder(args).Build();
+                    using var scope = host.Services.CreateScope();
+
+                    var services = scope.ServiceProvider;
+                    var loginForm = services.GetRequiredService<Login>();
+                    
+                    var result = loginForm.ShowDialog();
+
+                    var userViewModel = services.GetRequiredService<UserViewModel>();
+                    if (result != DialogResult.OK || userViewModel.LoggedUser == null)
+                        break;
+                    Application.Run();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao iniciar a aplicação: {ex.Message}");
+            }
         }
+       
         public static IHostBuilder CreateHostBuilder(string[] args) =>
            Host.CreateDefaultBuilder(args)
                .ConfigureServices((context, services) =>
@@ -39,6 +62,7 @@ namespace cpqi
                    services.AddScoped<UserRepository>();
                    services.AddScoped<RoleRepository>();
                    services.AddScoped<UserViewModel>();
+                   services.AddScoped<RoleViewModel>();
                    services.AddScoped<FormManager>();
                    services.AddScoped<Login>();
                });
