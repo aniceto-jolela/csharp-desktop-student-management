@@ -16,46 +16,20 @@ namespace cpqi.Views.Admin
 {
     public partial class AdminViewAdministrativeAssistant : Form
     {
-        private readonly CpqiDbContext _context;
-        public AdminViewAdministrativeAssistant(CpqiDbContext context)
+        private readonly UserViewModel _viewModel;
+        public AdminViewAdministrativeAssistant(UserViewModel viewModel)
         {
             InitializeComponent();
-            _context = context;
+            _viewModel = viewModel;
             LoadData();
         }
         private async void LoadData()
         {
             try
             {
-                var users = await _context.Users
-                    .Select(u=>new
-                    {
-                        u.UserID,
-                        u.UserName,
-                        u.FullName,
-                        u.Sex
-                    })
-                    .ToListAsync();
-
-                var table = new DataTable();
-                table.Columns.Add("Nº", typeof(int));
-                table.Columns.Add("USUÁRIOS", typeof(string));
-                table.Columns.Add("NOME COMPLETO", typeof(string));
-                table.Columns.Add("SEXO", typeof(string));
-
-                foreach(var user in users)
-                {
-                    table.Rows.Add(user.UserID, user.UserName);
-                }
-                dgvAdminAssistant.DataSource = table;
-
-                // Atualizar SelectedUser ao selecionar linha no DataGridView
-                /*dgvAdminAssistant.SelectionChanged += (s, e) =>
-                {
-                    if (dgvAdminAssistant.CurrentRow?.DataBoundItem is User user)
-                        _viewModel.SelectedUser = user;
-                };*/
-
+                await _viewModel.LoadUsers();
+                dgvAdminAssistant.DataSource = _viewModel.Users.ToList();
+                
                 //btnAdd.Click += (s, e) => _viewModel.AddUserCommand.Execute(null);
                 //btnUpdate.Click += (s, e) => _viewModel.UpdateUserCommand.Execute(null);
                 //btnDelete.Click += (s, e) => _viewModel.DeleteUserCommand.Execute(null);

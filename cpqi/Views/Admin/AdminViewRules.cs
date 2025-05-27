@@ -28,9 +28,10 @@ namespace cpqi.Views.Admin
             InitializeComponent();
             _viewModel = viewModel;
         }
-        private void ViewRules_Load(object sender, EventArgs e)
+        private async void ViewRules_Load(object sender, EventArgs e)
         {
-            dgvRules.DataSource = _viewModel.Roles;
+            await _viewModel.LoadRolesAsync();
+            dgvRules.DataSource = _viewModel.Roles.ToList();
         }
         
         private void GeneratePdf(DataTable dataTable, string pathFile)
@@ -86,6 +87,7 @@ namespace cpqi.Views.Admin
         {
             try
             {
+                var roles = _viewModel.Roles.ToList();
                 if (dgvRules.DataSource != null)
                 {
                     string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
@@ -95,7 +97,8 @@ namespace cpqi.Views.Admin
                     if (!Directory.Exists(downloadsPath))
                         Directory.CreateDirectory(downloadsPath);
 
-                    GeneratePdf((DataTable)dgvRules.DataSource, filePath);
+                    var dataTable = ConvertRolesToDataTable(roles);
+                    GeneratePdf(dataTable, filePath);
                     MessageBox.Show("PDF gerado com sucesso: " + filePath);
                 }
                 else
@@ -108,9 +111,19 @@ namespace cpqi.Views.Admin
 
                 MessageBox.Show("Erro ao gerar pdf: " + ex.Message);
             }
-
         }
+        private DataTable ConvertRolesToDataTable(IEnumerable<Role> roles)
+        {
+            var table = new DataTable();
+            table.Columns.Add("ID", typeof(int));
+            table.Columns.Add("Nome do Cargo", typeof(string));
+            table.Columns.Add("Descrição", typeof(string));
 
-        
+            foreach (var role in roles)
+            {
+                table.Rows.Add(role.RoleID, role.RoleName, role.Description ?? "");
+            }
+            return table;
+        }
     }
 }

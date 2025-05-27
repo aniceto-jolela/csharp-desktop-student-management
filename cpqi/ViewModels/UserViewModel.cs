@@ -119,7 +119,7 @@ namespace cpqi.ViewModels
         {
             LoggedUser = null!;
         }
-        public async void LoadUsers()
+        public async Task LoadUsers()
         {
             var users = await _userRepository.GetAllUsersAsync();
             Users.Clear();

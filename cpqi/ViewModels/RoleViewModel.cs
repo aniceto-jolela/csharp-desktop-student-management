@@ -14,10 +14,9 @@ namespace cpqi.ViewModels
         public RoleViewModel(RoleRepository roleRepository)
         {
             _roleRepository = roleRepository;
-            LoadRoles();
         }
 
-        public async void LoadRoles()
+        public async Task LoadRolesAsync()
         {
             var roles = await _roleRepository.GetAllRolesAsync();
             Roles.Clear();
