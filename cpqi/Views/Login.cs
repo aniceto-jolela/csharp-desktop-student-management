@@ -15,7 +15,7 @@ namespace cpqi
 
             lbl_version.Text = $"Versão : {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
         }
-        private void Btn_login_Click(object sender, EventArgs e)
+        private async void Btn_login_Click(object sender, EventArgs e)
         {
             // Here you would typically validate the username and password
             // For demonstration purposes, we will just open the AdminHome form directly
@@ -27,7 +27,21 @@ namespace cpqi
                 MessageBox.Show("Preencha nome de usuário e senha.");
                 return;
             }
-            bool success = _userViewModel.Login(username, password);
+            PbLoading.Visible = true;
+            this.UseWaitCursor = true;
+
+            bool success = false;
+
+            await Task.Run(() =>
+            {
+                // Simulates processing time
+                Thread.Sleep(500);
+                success = _userViewModel.Login(username, password);
+            });
+
+            PbLoading.Visible = false;
+            this.UseWaitCursor = false;
+
             if (!success)
             {
                 MessageBox.Show("Credenciais inválidas. Verifique seu nome de usuário ou senha.");

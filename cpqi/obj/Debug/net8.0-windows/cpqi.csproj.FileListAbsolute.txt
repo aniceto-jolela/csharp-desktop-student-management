@@ -251,3 +251,4 @@ C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\ne
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.AdminViewRules.resources
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.AdminViewStudents.resources
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.AdminViewTeachers.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\Resources\Loading.gif

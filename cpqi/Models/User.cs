@@ -79,7 +79,7 @@ namespace cpqi.Models
         public string? UpdatedBy { get; set; }
 
         // Navigation property
-        public virtual Role? Role { get; set; }
+        public Role Role { get; set; } = null!;
     }
 
 }

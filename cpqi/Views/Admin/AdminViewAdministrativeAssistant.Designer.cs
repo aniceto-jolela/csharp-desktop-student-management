@@ -31,6 +31,11 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminViewAdministrativeAssistant));
             dgvAdminAssistant = new Krypton.Toolkit.KryptonDataGridView();
+            userBindingSource = new BindingSource(components);
+            userBindingSource1 = new BindingSource(components);
+            kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
+            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             userIDDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             userNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fullNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -53,12 +58,9 @@
             updatedAtDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             updatedByDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             roleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            userBindingSource = new BindingSource(components);
-            kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
-            kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)dgvAdminAssistant).BeginInit();
             ((System.ComponentModel.ISupportInitialize)userBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)userBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).BeginInit();
@@ -76,8 +78,46 @@
             dgvAdminAssistant.Location = new Point(12, 97);
             dgvAdminAssistant.Name = "dgvAdminAssistant";
             dgvAdminAssistant.ReadOnly = true;
-            dgvAdminAssistant.Size = new Size(873, 332);
+            dgvAdminAssistant.Size = new Size(1261, 332);
             dgvAdminAssistant.TabIndex = 5;
+            // 
+            // userBindingSource
+            // 
+            userBindingSource.DataSource = typeof(Models.User);
+            // 
+            // userBindingSource1
+            // 
+            userBindingSource1.DataSource = typeof(Models.User);
+            // 
+            // kryptonPanel1
+            // 
+            kryptonPanel1.Controls.Add(kryptonPictureBox1);
+            kryptonPanel1.Controls.Add(kryptonLabel1);
+            kryptonPanel1.Dock = DockStyle.Top;
+            kryptonPanel1.Location = new Point(0, 0);
+            kryptonPanel1.Name = "kryptonPanel1";
+            kryptonPanel1.Size = new Size(1273, 45);
+            kryptonPanel1.StateNormal.Color1 = SystemColors.ControlLight;
+            kryptonPanel1.TabIndex = 6;
+            // 
+            // kryptonPictureBox1
+            // 
+            kryptonPictureBox1.Image = Properties.Resources.flat_color_icons__assistant;
+            kryptonPictureBox1.Location = new Point(239, 13);
+            kryptonPictureBox1.Name = "kryptonPictureBox1";
+            kryptonPictureBox1.Size = new Size(21, 23);
+            kryptonPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            kryptonPictureBox1.TabIndex = 3;
+            kryptonPictureBox1.TabStop = false;
+            // 
+            // kryptonLabel1
+            // 
+            kryptonLabel1.Location = new Point(262, 11);
+            kryptonLabel1.Name = "kryptonLabel1";
+            kryptonLabel1.Size = new Size(308, 30);
+            kryptonLabel1.StateNormal.ShortText.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            kryptonLabel1.TabIndex = 4;
+            kryptonLabel1.Values.Text = "ASSISTENTE ADMINISTRATIVO(A)S";
             // 
             // userIDDataGridViewTextBoxColumn
             // 
@@ -228,62 +268,29 @@
             // 
             // roleDataGridViewTextBoxColumn
             // 
-            roleDataGridViewTextBoxColumn.DataPropertyName = "Role";
-            roleDataGridViewTextBoxColumn.HeaderText = "Role";
+            roleDataGridViewTextBoxColumn.DataPropertyName = "RoleName";
+            roleDataGridViewTextBoxColumn.HeaderText = "CARGOS";
             roleDataGridViewTextBoxColumn.Name = "roleDataGridViewTextBoxColumn";
             roleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // userBindingSource
-            // 
-            userBindingSource.DataSource = typeof(Models.User);
-            // 
-            // kryptonPanel1
-            // 
-            kryptonPanel1.Controls.Add(kryptonPictureBox1);
-            kryptonPanel1.Controls.Add(kryptonLabel1);
-            kryptonPanel1.Dock = DockStyle.Top;
-            kryptonPanel1.Location = new Point(0, 0);
-            kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new Size(897, 45);
-            kryptonPanel1.StateNormal.Color1 = SystemColors.ControlLight;
-            kryptonPanel1.TabIndex = 6;
-            // 
-            // kryptonPictureBox1
-            // 
-            kryptonPictureBox1.Image = Properties.Resources.flat_color_icons__assistant;
-            kryptonPictureBox1.Location = new Point(239, 13);
-            kryptonPictureBox1.Name = "kryptonPictureBox1";
-            kryptonPictureBox1.Size = new Size(21, 23);
-            kryptonPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            kryptonPictureBox1.TabIndex = 3;
-            kryptonPictureBox1.TabStop = false;
-            // 
-            // kryptonLabel1
-            // 
-            kryptonLabel1.Location = new Point(262, 11);
-            kryptonLabel1.Name = "kryptonLabel1";
-            kryptonLabel1.Size = new Size(308, 30);
-            kryptonLabel1.StateNormal.ShortText.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            kryptonLabel1.TabIndex = 4;
-            kryptonLabel1.Values.Text = "ASSISTENTE ADMINISTRATIVO(A)S";
-            // 
-            // ViewAdministrativeAssistant
+            // AdminViewAdministrativeAssistant
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(897, 458);
+            ClientSize = new Size(1273, 459);
             Controls.Add(kryptonPanel1);
             Controls.Add(dgvAdminAssistant);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "ViewAdministrativeAssistant";
+            Name = "AdminViewAdministrativeAssistant";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ViewRegisterAdministrativeAssistant";
             Load += ViewAdministrativeAssistant_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAdminAssistant).EndInit();
             ((System.ComponentModel.ISupportInitialize)userBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)userBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
             kryptonPanel1.ResumeLayout(false);
             kryptonPanel1.PerformLayout();
@@ -297,6 +304,7 @@
         private Krypton.Toolkit.KryptonPictureBox kryptonPictureBox1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private BindingSource userBindingSource;
+        private BindingSource userBindingSource1;
         private DataGridViewTextBoxColumn userIDDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn userNameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn fullNameDataGridViewTextBoxColumn;

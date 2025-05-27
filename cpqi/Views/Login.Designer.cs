@@ -41,11 +41,13 @@
             pictureBox4 = new PictureBox();
             Btn_login = new Krypton.Toolkit.KryptonButton();
             PbExit = new Krypton.Toolkit.KryptonPictureBox();
+            PbLoading = new Krypton.Toolkit.KryptonPictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PbExit).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PbLoading).BeginInit();
             SuspendLayout();
             // 
             // TxtUserName
@@ -56,7 +58,7 @@
             TxtUserName.ImeMode = ImeMode.NoControl;
             TxtUserName.Location = new Point(359, 139);
             TxtUserName.Name = "TxtUserName";
-            TxtUserName.PlaceholderText = "Entra com o nome ou com seu email";
+            TxtUserName.PlaceholderText = "Entra com o nome de usuário";
             TxtUserName.Size = new Size(282, 23);
             TxtUserName.TabIndex = 1;
             // 
@@ -171,11 +173,23 @@
             PbExit.TabStop = false;
             PbExit.Click += PbExit_Click;
             // 
+            // PbLoading
+            // 
+            PbLoading.Image = Properties.Resources.Loading;
+            PbLoading.Location = new Point(578, 330);
+            PbLoading.Name = "PbLoading";
+            PbLoading.Size = new Size(114, 87);
+            PbLoading.SizeMode = PictureBoxSizeMode.Zoom;
+            PbLoading.TabIndex = 15;
+            PbLoading.TabStop = false;
+            PbLoading.Visible = false;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(704, 450);
+            Controls.Add(PbLoading);
             Controls.Add(PbExit);
             Controls.Add(Btn_login);
             Controls.Add(pictureBox4);
@@ -198,6 +212,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)PbExit).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PbLoading).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -215,5 +230,6 @@
         private PictureBox pictureBox4;
         private Krypton.Toolkit.KryptonButton Btn_login;
         private Krypton.Toolkit.KryptonPictureBox PbExit;
+        private Krypton.Toolkit.KryptonPictureBox PbLoading;
     }
 }
