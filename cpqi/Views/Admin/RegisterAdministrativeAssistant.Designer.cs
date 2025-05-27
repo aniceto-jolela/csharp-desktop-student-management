@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterAdministrativeAssistant));
             btnRegister = new Krypton.Toolkit.KryptonButton();
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
@@ -62,10 +63,14 @@
             openFileDialog1 = new OpenFileDialog();
             openFileDialog2 = new OpenFileDialog();
             openFileDialog3 = new OpenFileDialog();
+            ePUser = new ErrorProvider(components);
+            ePFullName = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cbSex).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ePUser).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ePFullName).BeginInit();
             SuspendLayout();
             // 
             // btnRegister
@@ -156,7 +161,6 @@
             dtpDateOfBirth.Name = "dtpDateOfBirth";
             dtpDateOfBirth.Size = new Size(115, 21);
             dtpDateOfBirth.TabIndex = 37;
-            dtpDateOfBirth.ValueChanged += kryptonDateTimePicker1_ValueChanged;
             // 
             // txtPhone
             // 
@@ -178,6 +182,7 @@
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(294, 23);
             txtFullName.TabIndex = 33;
+            txtFullName.Validating += txtFullName_Validating;
             // 
             // txtUserName
             // 
@@ -315,7 +320,6 @@
             dtpIssuedOn.Name = "dtpIssuedOn";
             dtpIssuedOn.Size = new Size(115, 21);
             dtpIssuedOn.TabIndex = 49;
-            dtpIssuedOn.ValueChanged += dtpIssuedOn_ValueChanged;
             // 
             // dtpValidUntil
             // 
@@ -324,7 +328,6 @@
             dtpValidUntil.Name = "dtpValidUntil";
             dtpValidUntil.Size = new Size(94, 21);
             dtpValidUntil.TabIndex = 51;
-            dtpValidUntil.ValueChanged += kryptonDateTimePicker3_ValueChanged;
             // 
             // kryptonLabel4
             // 
@@ -333,7 +336,6 @@
             kryptonLabel4.Size = new Size(83, 20);
             kryptonLabel4.TabIndex = 50;
             kryptonLabel4.Values.Text = "VALIDO ATÉ :";
-            kryptonLabel4.Click += kryptonLabel4_Click;
             // 
             // openFileDialog1
             // 
@@ -346,6 +348,14 @@
             // openFileDialog3
             // 
             openFileDialog3.FileName = "CV";
+            // 
+            // ePUser
+            // 
+            ePUser.ContainerControl = this;
+            // 
+            // ePFullName
+            // 
+            ePFullName.ContainerControl = this;
             // 
             // RegisterAdministrativeAssistant
             // 
@@ -387,12 +397,13 @@
             Name = "RegisterAdministrativeAssistant";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RegisterAdministrativeAssistant";
-            Load += RegisterAdministrativeAssistant_Load;
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
             kryptonPanel1.ResumeLayout(false);
             kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)cbSex).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ePUser).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ePFullName).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -431,5 +442,7 @@
         private OpenFileDialog openFileDialog1;
         private OpenFileDialog openFileDialog2;
         private OpenFileDialog openFileDialog3;
+        private ErrorProvider ePUser;
+        private ErrorProvider ePFullName;
     }
 }

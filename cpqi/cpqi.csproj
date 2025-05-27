@@ -19,11 +19,29 @@
     <PackageReference Include="Krypton.Toolkit" Version="95.25.4.111" />
     <PackageReference Include="Krypton.Workspace" Version="95.25.4.111" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.5" />
     <PackageReference Include="QuestPDF" Version="2025.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Helpers\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Resources\Documents\Assistant\" />
+    <Folder Include="Resources\Documents\Admin\" />
+    <Folder Include="Resources\Documents\Teacher\" />
+    <Folder Include="Resources\Images\Assistant\" />
+    <Folder Include="Resources\Images\Admin\" />
+    <Folder Include="Resources\Images\Teacher\" />
     <Folder Include="Services\" />
     <Folder Include="Views\Assistant\" />
     <Folder Include="Views\Teacher\" />

@@ -6,20 +6,27 @@ using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
-using cpqi.DAL;
 using cpqi.Models;
 using System.ComponentModel.DataAnnotations;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using cpqi.Data.Repositories;
+using System.Security.Cryptography;
 
 namespace cpqi.ViewModels
 {
     public partial class UserViewModel:ObservableObject
     {
-        private readonly UserRepository _userRepository = new();
-        private readonly RoleRepository _roleRepository = new();
+        private const int SaltSize = 16; // 128 bit
+        private const int KeySize = 32; // 256 bit
+        private const int Iterations = 100_000;
+        public User? LoggedUser { get; private set; }
+        public bool IsAuthenticated => LoggedUser != null;
+
+        private readonly UserRepository _userRepository;
+        //private readonly RoleRepository _roleRepository;
 
         public ObservableCollection<User> Users { get; } = new();
-        public ObservableCollection<Role> Roles { get; } = new();
+        //public ObservableCollection<Role> Roles { get; } = new();
 
         [ObservableProperty]
         private User? selectedUser;
@@ -41,6 +48,9 @@ namespace cpqi.ViewModels
 
         [ObservableProperty]
         private string? phone = string.Empty;
+
+        [ObservableProperty]
+        private string bi = string.Empty;
 
         [ObservableProperty]
         private string password = string.Empty;
@@ -81,33 +91,55 @@ namespace cpqi.ViewModels
         [ObservableProperty]
         private string? updatedBy;
 
-        public UserViewModel()
+        // Events for view communication validation and error handling
+        public event EventHandler<string>? OnValidationFailed;
+        public event EventHandler<string>? OnErrorOccurred;
+        public event EventHandler<string>? OnSucessMessage;
+
+        public UserViewModel(UserRepository userRepository)
         {
+            _userRepository = userRepository;
             LoadUsers();
         }
-        public void LoadUsers()
+        public bool Login(string username, string password) 
         {
-            Users.Clear();
-            foreach (var user in _userRepository.GetAllUsers())
-                Users.Add(user);
+            var user = _userRepository.GetUserByUsername(username);
+            if (user == null)
+                return false;
 
-            Roles.Clear();
-            foreach (var role in _roleRepository.GetAllRoles())
-                Roles.Add(role);
+            if (VerifyPassword(password, user.Salt, user.PasswordHash))
+            {
+                LoggedUser = user;
+                return true;
+            }
+
+            return false;
+        }
+        public void Logout()
+        {
+            LoggedUser = null!;
+        }
+        public async void LoadUsers()
+        {
+            var users = await _userRepository.GetAllUsersAsync();
+            Users.Clear();
+            foreach (var user in users)
+                Users.Add(user);
         }
 
 
         [RelayCommand]
-        private void AddUser()
+        private async Task AddUser()
         {
             try
             {
-
                 if (string.IsNullOrWhiteSpace(UserName) || string.IsNullOrWhiteSpace(FullName) || string.IsNullOrWhiteSpace(Password))
                 {
-                    MessageBox.Show("Preencha todos os campos obrigatórios!");
+                    OnValidationFailed?.Invoke(this, "Preencha todos os campos obrigatórios!");
                     return;
                 }
+                var passwordHash = HashPassword(Password, out var salt);
+
                 var user = new User
                 {
                     UserName = UserName,
@@ -115,7 +147,9 @@ namespace cpqi.ViewModels
                     Sex = Sex, 
                     Email = Email,
                     Phone = Phone,
-                    PasswordHash = _userRepository.HashPassword(Password),
+                    Bi = Bi,
+                    PasswordHash = passwordHash,
+                    Salt = salt,
                     PhotoPath = PhotoPath,
                     DateOfBirth = DateOfBirth,
                     IsStaff = IsStaff,
@@ -131,50 +165,70 @@ namespace cpqi.ViewModels
                     CreatedAt = DateTime.Now
                 };
 
-                _userRepository.AddUser(user);
+                await _userRepository.AddUserAsync(user);
                 LoadUsers();
                 ClearFields();
-                MessageBox.Show("Usuário cadastrado com sucesso!");
-                
+                OnSucessMessage?.Invoke(this, "Usuário cadastrado com sucesso!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro: {ex.Message}");
+                OnErrorOccurred?.Invoke(this, $"Erro ao cadastrar usuário: {ex.Message}");
             }
         }
         [RelayCommand]
-        private void UpdateUser()
+        private async Task UpdateUser()
         {
             if (SelectedUser == null) return;
 
-            SelectedUser.UserName = UserName;
-            SelectedUser.FullName = FullName;
-            SelectedUser.Sex = Sex;
-            SelectedUser.Email = Email;
-            SelectedUser.Phone = Phone;
-            SelectedUser.PasswordHash = _userRepository.HashPassword(Password);
-            SelectedUser.PhotoPath = PhotoPath;
-            SelectedUser.DateOfBirth = DateOfBirth;
-            SelectedUser.IsStaff = IsStaff;
-            SelectedUser.IsActive = IsActive;
-            SelectedUser.IsSuperUser = IsSuperUser;
-            SelectedUser.RoleID = RoleID;
-            SelectedUser.UpdatedBy = UpdatedBy ?? Environment.UserName;
-            SelectedUser.UpdatedAt = DateTime.Now;
+            try
+            {
+                SelectedUser.UserName = UserName;
+                SelectedUser.FullName = FullName;
+                SelectedUser.Sex = Sex;
+                SelectedUser.Email = Email;
+                SelectedUser.Phone = Phone;
+                SelectedUser.Bi = Bi;
+                if (!string.IsNullOrWhiteSpace(Password))
+                {
+                    SelectedUser.PasswordHash = HashPassword(Password, out var newSalt);
+                    SelectedUser.Salt = newSalt;
+                }
+                SelectedUser.PhotoPath = PhotoPath;
+                SelectedUser.DateOfBirth = DateOfBirth;
+                SelectedUser.IsStaff = IsStaff;
+                SelectedUser.IsActive = IsActive;
+                SelectedUser.IsSuperUser = IsSuperUser;
+                SelectedUser.RoleID = RoleID;
+                SelectedUser.UpdatedBy = UpdatedBy ?? Environment.UserName;
+                SelectedUser.UpdatedAt = DateTime.Now;
 
-            _userRepository.UpdateUser(SelectedUser);
-            LoadUsers();
-            ClearFields();
+                await _userRepository.UpdateUserAsync(SelectedUser);
+                LoadUsers();
+                ClearFields();
+
+                OnSucessMessage?.Invoke(this, "Usuário atualizado com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                OnErrorOccurred?.Invoke(this, $"Erro ao atualizar usuário. Verifique os dados e tente novamente. ( {ex.Message} )");
+            }
         }
 
         [RelayCommand]
-        private void DeleteUser()
+        private async Task DeleteUser()
         {
             if (SelectedUser == null) return;
-
-            _userRepository.DeleteUser(SelectedUser.UserID);
-            LoadUsers();
-            ClearFields();
+            try
+            {
+                await _userRepository.DeleteUserAsync(SelectedUser.UserID);
+                LoadUsers();
+                ClearFields();
+                OnSucessMessage?.Invoke(this, "Usuário excluído com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                OnErrorOccurred?.Invoke(this, $"Erro ao excluir usuário: {ex.Message}");
+            }
         }
         private void ClearFields()
         {
@@ -183,6 +237,7 @@ namespace cpqi.ViewModels
             Sex = "MASCULINO";
             Email = string.Empty;
             Phone = string.Empty;
+            Bi = string.Empty;
             Password = string.Empty;
             PhotoPath = string.Empty;
             FileBiPath = string.Empty;
@@ -194,9 +249,7 @@ namespace cpqi.ViewModels
             IsActive = true;
             IsSuperUser = false;
             RoleID = 1;
-            //UpdatedBy = null;
             SelectedUser = null;
-
         }
         partial void OnSelectedUserChanged(User? value)
         {
@@ -207,7 +260,8 @@ namespace cpqi.ViewModels
                 Sex = value.Sex;
                 Email = value.Email ?? string.Empty;
                 Phone = value.Phone ?? string.Empty;
-                Password = System.Text.Encoding.UTF8.GetString(value.PasswordHash);
+                Bi = value.Bi;
+                Password = string.Empty;
                 PhotoPath = value.PhotoPath ?? string.Empty;
                 FileBiPath = value.FileBiPath ?? string.Empty;
                 FileCvPath = value.FileCvPath ?? string.Empty;
@@ -217,14 +271,30 @@ namespace cpqi.ViewModels
                 IsStaff = value.IsStaff;
                 IsActive = value.IsActive;
                 IsSuperUser = value.IsSuperUser;
-                RoleID = value.RoleID ?? 1;
-                //CreatedBy = value.CreatedBy;
-                //UpdatedBy = value.UpdatedBy;
+                RoleID = value.RoleID;
+                CreatedBy = value.CreatedBy;
+                UpdatedBy = value.UpdatedBy;
             }
             else
             {
                 ClearFields();
             }
         }
+        private byte[] HashPassword(string password, out byte[] salt)
+        {
+            salt = new byte[16]; // 128 bits
+            RandomNumberGenerator.Fill(salt); // Fill the salt with a secure random value
+
+            using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100_000, HashAlgorithmName.SHA256);
+            return pbkdf2.GetBytes(32); // 256-bit hash
+        }
+        private bool VerifyPassword(string password, byte[] salt, byte[] storedHash)
+        {
+            using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100_000, HashAlgorithmName.SHA256);
+            var computedHash = pbkdf2.GetBytes(32);
+
+            return computedHash.SequenceEqual(storedHash);
+        }
+      
     }
 }

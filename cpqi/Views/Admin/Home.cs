@@ -7,42 +7,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using cpqi.Data;
+using cpqi.Models;
+using cpqi.ViewModels;
 
 namespace cpqi.Views.Admin
 {
     public partial class AdminHome : Krypton.Toolkit.KryptonForm
     {
-        private System.Windows.Forms.Timer timer;
-        private TimeZoneInfo angolaTimeZone;
+        private readonly FormManager _formManager;
+        private readonly UserViewModel _userViewModel;
+        private readonly User _user;
+        private readonly CpqiDbContext _context;
+
+        private readonly System.Windows.Forms.Timer timer = new();
+        private readonly TimeZoneInfo angolaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Africa/Luanda");
         private bool closeAllowed = false;
-        public AdminHome()
+        public AdminHome(User user, FormManager formManager, UserViewModel userViewModel, CpqiDbContext context)
         {
             InitializeComponent();
+            _user = user;
+            _formManager = formManager;
+            _userViewModel = userViewModel;
+            _context = context;
+
+            if (_user.Role == null || _user.Role.RoleName != "Administrador")
+            {
+                MessageBox.Show("Acesso negado.");
+                this.Close();
+                return;
+            }
+
 
             // TIMEZONE
-            angolaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Africa/Luanda");
-            // Initialize timer
-            timer = new System.Windows.Forms.Timer();
-            timer.Interval = 1000; //1 second
+            timer.Interval = 1000;
             timer.Tick += Timer_Tick;
             timer.Start();
-        }
 
-        private void btn_logout_Click(object sender, EventArgs e)
-        {
-            closeAllowed = true; // Allow closing the form
-            Application.Exit();
+            lblFullName.Text = $"Bem-vindo, {_user.FullName}";
+            
         }
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object? sender, EventArgs e)
         {
             DateTime utcNow = DateTime.UtcNow;
             DateTime angolaTime = TimeZoneInfo.ConvertTimeFromUtc(utcNow, angolaTimeZone);
             lbl_datatime.Text = angolaTime.ToString("yyyy-MM-dd  HH:mm:ss");
-        }
-
-        private void btn_profile_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void adHome_FormClosing(object sender, FormClosingEventArgs e)
@@ -50,8 +59,8 @@ namespace cpqi.Views.Admin
             if (!closeAllowed && e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true; // Cancel the close event button [x]
-                MessageBox.Show("Por favor termina a sessão para ausentar-se da aplicação.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show("Por favor, use o botão de logout (ícone no topo) para encerrar a sessão.",
+                       "Encerramento Bloqueado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -69,85 +78,44 @@ namespace cpqi.Views.Admin
         {
             kryptonNavigator1.SelectedIndex = 2;
         }
-
-        private void kryptonPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_datatime_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kryptonPictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void adHome_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnPag1_Click_1(object sender, EventArgs e)
         {
             kryptonNavigator1.SelectedIndex = 0;
         }
-
         private void btnPag2_Click_1(object sender, EventArgs e)
         {
             kryptonNavigator1.SelectedIndex = 1;
         }
-
         private void btnPag3_Click_1(object sender, EventArgs e)
         {
             kryptonNavigator1.SelectedIndex = 2;
         }
-
-        private void kryptonPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btnRAssistant_Click(object sender, EventArgs e)
         {
-            RegisterAdministrativeAssistant register = new RegisterAdministrativeAssistant();
-            register.ShowDialog();
+            new RegisterAdministrativeAssistant(_userViewModel).ShowDialog();
         }
 
         private void btnViewAdminAssistant_Click(object sender, EventArgs e)
         {
-            ViewAdministrativeAssistant view = new ViewAdministrativeAssistant();
-            view.ShowDialog();
+            new ViewAdministrativeAssistant(_context).ShowDialog();
         }
 
         private void btn_rule_Click(object sender, EventArgs e)
         {
-            ViewRules rules = new ViewRules();
-            rules.ShowDialog();
+            new ViewRules(_context).ShowDialog();
         }
 
         private void pbProfile1_Click(object sender, EventArgs e)
         {
-            Profile profile = new Profile();
-            profile.ShowDialog();
+            new Profile(_userViewModel).ShowDialog();
         }
 
-        private void pbLogout2_Click(object sender, EventArgs e)
+        private void pbLogout_Click(object sender, EventArgs e)
         {
             closeAllowed = true; // Allow closing the form
-            Application.Exit();
-        }
-
-        private void btnRTeacher_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kryptonButton6_Click(object sender, EventArgs e)
-        {
-
+            this.Close();
+            _userViewModel.Logout();
+            _formManager.ShowLoginForm();
         }
     }
 }

@@ -8,8 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using cpqi.DAL;
+using cpqi.Data;
 using cpqi.Models;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -19,33 +21,42 @@ namespace cpqi.Views.Admin
 {
     public partial class ViewRules : Form
     {
-        private DataTable table;
-        public ViewRules()
+        private readonly CpqiDbContext _context;  
+        public ViewRules(CpqiDbContext context)
         {
             InitializeComponent();
+            _context = context;
             LoadData();
         }
-        private void LoadData()
-        {
+        private async void LoadData()
+        { 
             try
             {
-                string query = "SELECT RoleID as Nº, RoleName as CARGOS, Description as DESCRIÇÕES FROM Role";
+                var roles = await _context.Roles
+                    .Select(r => new
+                    {
+                        r.RoleID,
+                        r.RoleName,
+                        r.Description
+                    })
+                    .ToListAsync();
+                
+                var table = new DataTable();
+                table.Columns.Add("Nº", typeof(int));
+                table.Columns.Add("CARGOS", typeof(string));
+                table.Columns.Add("DESCIÇÕES", typeof(string));
 
-                using (SqlConnection conn = DatabaseConfig.GetConnection())
+                foreach(var role in roles)
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
-                    table = new DataTable();
-                    adapter.Fill(table);
-                    dgvRules.DataSource = table;
+                    table.Rows.Add(role.RoleID, role.RoleName, role.Description);
                 }
+
+                dgvRules.DataSource = table;
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Erro ao carregar dados: " + ex.Message);
             }
-
-
         }
         private void GeneratePdf(DataTable dataTable, string pathFile)
         {
@@ -96,32 +107,20 @@ namespace cpqi.Views.Admin
             })
             .GeneratePdf(pathFile);
         }
-
-        private void ViewRules_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kryptonLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pbPdf_Click(object sender, EventArgs e)
         {
             try
             {
-                if (table != null)
+                if (dgvRules.DataSource != null)
                 {
                     string downloadsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
-
 
                     string filePath = Path.Combine(downloadsPath, "cargos.pdf");
 
                     if (!Directory.Exists(downloadsPath))
                         Directory.CreateDirectory(downloadsPath);
 
-                    GeneratePdf(table, filePath);
+                    GeneratePdf((DataTable)dgvRules.DataSource, filePath);
                     MessageBox.Show("PDF gerado com sucesso: " + filePath);
                 }
                 else

@@ -112,7 +112,6 @@
             kryptonLabel1.StateNormal.ShortText.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
             kryptonLabel1.TabIndex = 4;
             kryptonLabel1.Values.Text = "CARGOS";
-            kryptonLabel1.Click += kryptonLabel1_Click;
             // 
             // kryptonPanel1
             // 

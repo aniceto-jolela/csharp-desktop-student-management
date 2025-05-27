@@ -98,7 +98,6 @@
             kryptonPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             kryptonPictureBox1.TabIndex = 6;
             kryptonPictureBox1.TabStop = false;
-            kryptonPictureBox1.Click += kryptonPictureBox1_Click;
             // 
             // splitContainer1
             // 
@@ -126,7 +125,6 @@
             splitContainer1.Panel1.Controls.Add(kryptonLabel2);
             splitContainer1.Panel1.Controls.Add(kryptonPictureBox1);
             splitContainer1.Panel1.RightToLeft = RightToLeft.No;
-            splitContainer1.Panel1.Paint += splitContainer1_Panel1_Paint;
             // 
             // splitContainer1.Panel2
             // 
@@ -163,7 +161,6 @@
             splitContainer1.Panel2.Controls.Add(kryptonLabel17);
             splitContainer1.Panel2.Controls.Add(kryptonLabel16);
             splitContainer1.Panel2.RightToLeft = RightToLeft.No;
-            splitContainer1.Panel2.Paint += splitContainer1_Panel2_Paint;
             splitContainer1.RightToLeft = RightToLeft.No;
             splitContainer1.Size = new Size(866, 506);
             splitContainer1.SplitterDistance = 379;
@@ -470,7 +467,6 @@
             kryptonLabel26.Size = new Size(32, 20);
             kryptonLabel26.TabIndex = 27;
             kryptonLabel26.Values.Text = "CV :";
-            kryptonLabel26.Click += kryptonLabel26_Click;
             // 
             // kryptonLabel25
             // 
@@ -577,7 +573,6 @@
             Name = "Profile";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Profile";
-            Load += Profile_Load;
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).EndInit();
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();

@@ -1,48 +1,47 @@
+using cpqi.ViewModels;
 using cpqi.Views.Admin;
 
 namespace cpqi
 {
     public partial class Login : Form
     {
-        public Login()
+        private readonly FormManager _formManager;
+        private readonly UserViewModel _userViewModel;
+        public Login(FormManager formManager, UserViewModel userViewModel)
         {
             InitializeComponent();
-            lbl_version.Text = "Versão : " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        }
+            _formManager = formManager;
+            _userViewModel = userViewModel;
 
-        private void btn_login_Click(object sender, EventArgs e)
-        {
-
-            AdminHome admin = new AdminHome();
-            admin.Show();
-            this.Hide();
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
+            lbl_version.Text = $"Versão : {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
         }
 
         private void btn_login_Click_1(object sender, EventArgs e)
         {
-            AdminHome admin = new AdminHome();
-            admin.Show();
+            // Here you would typically validate the username and password
+            // For demonstration purposes, we will just open the AdminHome form directly
+            var username = txtUserName.Text.Trim();
+            var password = txtPassword.Text;
+
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Preencha nome de usuário e senha.");
+                return;
+            }
+            bool success = _userViewModel.Login(username, password);
+            if (!success)
+            {
+                MessageBox.Show("Credenciais inválidas. Verifique seu nome de usuário ou senha.");
+                return;
+            }
+
+            _formManager.ShowDashboardForUser();
             this.Hide();
+        }
+
+        private void pbExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

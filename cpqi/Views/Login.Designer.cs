@@ -40,10 +40,12 @@
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
             btn_login = new Krypton.Toolkit.KryptonButton();
+            pbExit = new Krypton.Toolkit.KryptonPictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pbExit).BeginInit();
             SuspendLayout();
             // 
             // txtUserName
@@ -66,7 +68,6 @@
             txtPassword.Size = new Size(282, 23);
             txtPassword.TabIndex = 2;
             txtPassword.UseSystemPasswordChar = true;
-            txtPassword.TextChanged += textBox2_TextChanged;
             // 
             // label2
             // 
@@ -76,7 +77,6 @@
             label2.Size = new Size(53, 15);
             label2.TabIndex = 3;
             label2.Text = "Usuário :";
-            label2.Click += label2_Click;
             // 
             // label3
             // 
@@ -105,7 +105,6 @@
             label5.Size = new Size(48, 15);
             label5.TabIndex = 8;
             label5.Text = " © 2025";
-            label5.Click += label5_Click;
             // 
             // pictureBox1
             // 
@@ -128,7 +127,6 @@
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 10;
             pictureBox2.TabStop = false;
-            pictureBox2.Click += pictureBox2_Click;
             // 
             // pictureBox3
             // 
@@ -161,11 +159,23 @@
             btn_login.Values.Text = "ENTRAR";
             btn_login.Click += btn_login_Click_1;
             // 
+            // pbExit
+            // 
+            pbExit.Image = Properties.Resources.material_symbols__all_out_rounded;
+            pbExit.Location = new Point(668, 12);
+            pbExit.Name = "pbExit";
+            pbExit.Size = new Size(24, 22);
+            pbExit.SizeMode = PictureBoxSizeMode.Zoom;
+            pbExit.TabIndex = 14;
+            pbExit.TabStop = false;
+            pbExit.Click += pbExit_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(704, 450);
+            Controls.Add(pbExit);
             Controls.Add(btn_login);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
@@ -186,6 +196,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pbExit).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -202,5 +213,6 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
         private Krypton.Toolkit.KryptonButton btn_login;
+        private Krypton.Toolkit.KryptonPictureBox pbExit;
     }
 }

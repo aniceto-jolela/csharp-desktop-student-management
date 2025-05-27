@@ -14,59 +14,11 @@ namespace cpqi.Views.Admin
 {
     public partial class Profile : Form
     {
-        private readonly CounterViewModel _viewModel;
-        public Profile()
+        private readonly UserViewModel _userViewModel;
+        public Profile(UserViewModel userViewModel)
         {
             InitializeComponent();
-        }
-
-        private void kryptonSplitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
-        }
-
-        private void btn_increment_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void Profile_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kryptonPictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kryptonSplitContainer2_SplitterMoved(object sender, SplitterEventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void kryptonComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kryptonButton3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void kryptonLabel26_Click(object sender, EventArgs e)
-        {
-
+            _userViewModel = userViewModel;
         }
 
         private void btnBI_Click(object sender, EventArgs e)
