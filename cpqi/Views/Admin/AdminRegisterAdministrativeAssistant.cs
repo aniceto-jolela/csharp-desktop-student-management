@@ -47,7 +47,7 @@ namespace cpqi.Views.Admin
             {
                 if (ValidateChildren(ValidationConstraints.Enabled))
                 {
-                        await _viewModel.AddUserCommand.ExecuteAsync(null);
+                        await _viewModel.AddUser(); ;
                         //this.Close();
                 }
             };

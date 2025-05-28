@@ -27,8 +27,6 @@ namespace cpqi
             
             try
             {
-               
-
                 while (true)
                 {
                     // Criação do Host para configurar serviços e DI
@@ -56,7 +54,7 @@ namespace cpqi
            Host.CreateDefaultBuilder(args)
                .ConfigureServices((context, services) =>
                {
-                   services.AddDbContext<CpqiDbContext>(options =>
+                   services.AddDbContextFactory<CpqiDbContext>(options =>
                        options.UseSqlServer(context.Configuration.GetConnectionString("CpqiDB")));
 
                    services.AddScoped<UserRepository>();

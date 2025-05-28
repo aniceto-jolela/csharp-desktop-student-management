@@ -5,9 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace cpqi.Models
 {
+    [Index(nameof(UserName), IsUnique = true)]
+    [Index(nameof(Email), IsUnique = true)]
     public class User
     {
         [Key]
@@ -79,7 +82,9 @@ namespace cpqi.Models
         public string? UpdatedBy { get; set; }
 
         // Navigation property
+        [ForeignKey("RoleID")]
         public Role Role { get; set; } = null!;
+        public string RoleName => Role?.RoleName ?? string.Empty;
     }
 
 }

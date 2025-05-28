@@ -16,22 +16,24 @@ namespace cpqi.Data.Repositories
 {
     public class UserRepository
     {
-        private readonly CpqiDbContext _context;
+        private readonly IDbContextFactory<CpqiDbContext> _contextFactory;
 
-        public UserRepository(CpqiDbContext context)
+        public UserRepository(IDbContextFactory<CpqiDbContext> contextFactory)
         {
-            _context = context;
+            _contextFactory = contextFactory;
         }
         public User? GetUserByUsername(string username)
         {
-            return _context.Users
+            using var context = _contextFactory.CreateDbContext();
+            return context.Users
                 .Include(u => u.Role)
                 .FirstOrDefault(u => u.UserName == username);
         }
 
         public async Task<List<User>> GetAllUsersAsync()
         {
-            return await _context.Users
+            using var context = _contextFactory.CreateDbContext();
+            return await context.Users
                 .Include(u => u.Role)
                 .Where(u => u.IsActive)
                 .ToListAsync();
@@ -39,21 +41,24 @@ namespace cpqi.Data.Repositories
     
         public async Task AddUserAsync(User user)
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            using var context = _contextFactory.CreateDbContext();
+            context.Users.Add(user);
+            await context.SaveChangesAsync();
         }
         public async Task UpdateUserAsync(User user)
         {
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
+            using var context = _contextFactory.CreateDbContext();
+            context.Users.Update(user);
+            await context.SaveChangesAsync();
         }
         public async Task DeleteUserAsync(int userId)
         {
-            var user = await _context.Users.FindAsync(userId);
+            using var context = _contextFactory.CreateDbContext();
+            var user = await context.Users.FindAsync(userId);
             if(user is not null)
             {
                 user.IsActive = false; // Soft delete
-                await _context.SaveChangesAsync();
+                await context.SaveChangesAsync();
             }
         }
     }

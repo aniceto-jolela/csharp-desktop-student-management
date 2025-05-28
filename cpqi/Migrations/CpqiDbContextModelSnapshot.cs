@@ -31,17 +31,17 @@ namespace cpqi.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleID"));
 
                     b.Property<string>("Description")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("RoleName")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("RoleID");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Role", (string)null);
 
                     b.HasData(
                         new
@@ -60,7 +60,7 @@ namespace cpqi.Migrations
                         {
                             RoleID = 3,
                             Description = "Usuário responsável por tarefas administrativas",
-                            RoleName = "Assistente administrativa"
+                            RoleName = "Assistente administrativo"
                         });
                 });
 
@@ -161,7 +161,14 @@ namespace cpqi.Migrations
 
                     b.HasKey("UserID");
 
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
+
                     b.HasIndex("RoleID");
+
+                    b.HasIndex("UserName")
+                        .IsUnique();
 
                     b.ToTable("User", (string)null);
 
@@ -217,7 +224,7 @@ namespace cpqi.Migrations
                     b.HasOne("cpqi.Models.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Role");

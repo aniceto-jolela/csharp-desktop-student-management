@@ -12,7 +12,7 @@ using cpqi.Data;
 namespace cpqi.Migrations
 {
     [DbContext(typeof(CpqiDbContext))]
-    [Migration("20250527012632_InitialCreate")]
+    [Migration("20250528092528_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -34,17 +34,17 @@ namespace cpqi.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleID"));
 
                     b.Property<string>("Description")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("RoleName")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("RoleID");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Role", (string)null);
 
                     b.HasData(
                         new
@@ -63,7 +63,7 @@ namespace cpqi.Migrations
                         {
                             RoleID = 3,
                             Description = "Usuário responsável por tarefas administrativas",
-                            RoleName = "Assistente administrativa"
+                            RoleName = "Assistente administrativo"
                         });
                 });
 
@@ -164,9 +164,62 @@ namespace cpqi.Migrations
 
                     b.HasKey("UserID");
 
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
+
                     b.HasIndex("RoleID");
 
+                    b.HasIndex("UserName")
+                        .IsUnique();
+
                     b.ToTable("User", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserID = 1,
+                            Bi = "00000000000000",
+                            CreatedAt = new DateTime(2025, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "seed",
+                            DateJoined = new DateTime(2025, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1999, 2, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "otecina500@gmail.com",
+                            FullName = "System Administrator",
+                            IsActive = true,
+                            IsStaff = true,
+                            IsSuperUser = true,
+                            IssuedOn = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PasswordHash = new byte[] { 166, 130, 25, 219, 239, 119, 31, 83, 197, 26, 127, 199, 94, 90, 121, 125, 183, 232, 233, 196, 174, 70, 74, 131, 184, 31, 255, 36, 182, 63, 74, 71 },
+                            Phone = "+244935259317",
+                            RoleID = 1,
+                            Salt = new byte[] { 86, 20, 249, 233, 128, 57, 165, 36, 73, 217, 227, 12, 119, 2, 122, 144 },
+                            Sex = "MASCULINO",
+                            UserName = "admin",
+                            ValidUntil = new DateTime(2030, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            UserID = 2,
+                            Bi = "11111111111111",
+                            CreatedAt = new DateTime(2025, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CreatedBy = "seed",
+                            DateJoined = new DateTime(2025, 5, 27, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DateOfBirth = new DateTime(1992, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Email = "admin@cpqi.com",
+                            FullName = "Administrador Padrão",
+                            IsActive = true,
+                            IsStaff = true,
+                            IsSuperUser = true,
+                            IssuedOn = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            PasswordHash = new byte[] { 42, 235, 23, 255, 103, 86, 59, 191, 154, 249, 178, 252, 139, 211, 7, 40, 28, 153, 9, 102, 68, 141, 147, 247, 194, 237, 188, 99, 185, 184, 155, 115 },
+                            Phone = "111111111",
+                            RoleID = 1,
+                            Salt = new byte[] { 42, 235, 128, 224, 239, 144, 83, 41, 139, 254, 244, 34, 237, 152, 246, 15 },
+                            Sex = "MASCULINO",
+                            UserName = "admin12345678",
+                            ValidUntil = new DateTime(2030, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("cpqi.Models.User", b =>
@@ -174,7 +227,7 @@ namespace cpqi.Migrations
                     b.HasOne("cpqi.Models.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Role");
