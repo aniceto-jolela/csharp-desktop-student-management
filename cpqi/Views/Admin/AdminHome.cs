@@ -16,25 +16,18 @@ namespace cpqi.Views.Admin
     public partial class AdminHome : Krypton.Toolkit.KryptonForm
     {
         private readonly FormManager _formManager;
-        private readonly UserViewModel _userViewModel;
+        private readonly AuthenticatedUserViewModel _userViewModel;
         private readonly User _user;
 
         private readonly System.Windows.Forms.Timer timer = new();
         private readonly TimeZoneInfo angolaTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Africa/Luanda");
         private bool closeAllowed = false;
-        public AdminHome(User user, FormManager formManager, UserViewModel userViewModel)
+        public AdminHome(User user, FormManager formManager, AuthenticatedUserViewModel userViewModel)
         {
             InitializeComponent();
             _user = user;
             _formManager = formManager;
             _userViewModel = userViewModel;
-
-            if (_user.Role == null || _user.Role.RoleName != "Administrador")
-            {
-                MessageBox.Show("Acesso negado.");
-                this.Close();
-                return;
-            }
 
             // TIMEZONE
             timer.Interval = 1000;

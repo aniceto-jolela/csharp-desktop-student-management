@@ -16,8 +16,8 @@ namespace cpqi.Views.Admin
 {
     public partial class AdminViewAdministrativeAssistant : Form
     {
-        private readonly UserViewModel _viewModel;
-        public AdminViewAdministrativeAssistant(UserViewModel viewModel)
+        private readonly UserFormViewModel _viewModel;
+        public AdminViewAdministrativeAssistant(UserFormViewModel viewModel)
         {
             InitializeComponent();
             _viewModel = viewModel;
@@ -50,6 +50,7 @@ namespace cpqi.Views.Admin
             {
                 HeaderText = "USUÁRIO",
                 DataPropertyName = "UserName",
+                Width = 160,
                 Name = "UserName"
             });
 
@@ -57,15 +58,23 @@ namespace cpqi.Views.Admin
             {
                 HeaderText = "NOME COMPLETO",
                 DataPropertyName = "FullName",
-                Width = 400,
+                Width = 460,
                 Name = "FullName"
+            });
+
+            dgvAdminAssistant.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                HeaderText = "SEXO",
+                DataPropertyName = "Sex",
+                Width = 100,
+                Name = "Sex"
             });
 
             dgvAdminAssistant.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "EMAIL",
                 DataPropertyName = "Email",
-                Width = 300,
+                Width = 330,
                 Name = "Email"
             });
 
@@ -73,6 +82,7 @@ namespace cpqi.Views.Admin
             {
                 HeaderText = "CARGO",
                 DataPropertyName = "RoleName",
+                Width = 170,
                 Name = "RoleName",
                 ReadOnly = true
             });
@@ -80,7 +90,25 @@ namespace cpqi.Views.Admin
 
         private void ViewAdministrativeAssistant_Load(object sender, EventArgs e)
         {
+            /*
+          cbSex.DataSource = new string[] { "MASCULINO", "FEMININO", "OUTRO" };
+          cbRole.DataSource = _viewModel.Roles;
+          cbRole.DisplayMember = "RoleName";
+          cbRole.ValueMember = "RoleID";
 
+          dgvUsers.DataSource = _viewModel.Users;
+          dgvUsers.SelectionChanged += (s, e) =>
+          {
+              if (dgvUsers.CurrentRow?.DataBoundItem is User user)
+                  _viewModel.SelectedUser = user;
+              else
+                  _viewModel.SelectedUser = null;
+          };
+
+          // Botões
+          btnAdd.Click += (s, e) => _viewModel.AddUserCommand.Execute(null);
+          btnUpdate.Click += (s, e) => _viewModel.UpdateUserCommand.Execute(null);
+          btnDelete.Click += (s, e) => _viewModel.DeleteUserCommand.Execute(null);*/
         }
 
         private async void dgvAdminAssistant_CellValueChanged(object sender, DataGridViewCellEventArgs e)

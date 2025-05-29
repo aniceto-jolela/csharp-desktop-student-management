@@ -38,7 +38,7 @@ namespace cpqi
                     
                     var result = loginForm.ShowDialog();
 
-                    var userViewModel = services.GetRequiredService<UserViewModel>();
+                    var userViewModel = services.GetRequiredService<AuthenticatedUserViewModel>();
                     if (result != DialogResult.OK || userViewModel.LoggedUser == null)
                         break;
                     Application.Run();
@@ -59,7 +59,8 @@ namespace cpqi
 
                    services.AddScoped<UserRepository>();
                    services.AddScoped<RoleRepository>();
-                   services.AddScoped<UserViewModel>();
+                   services.AddScoped<AuthenticatedUserViewModel>();
+                   services.AddTransient<UserFormViewModel>();
                    services.AddScoped<RoleViewModel>();
                    services.AddScoped<FormManager>();
                    services.AddScoped<Login>();

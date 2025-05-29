@@ -1,165 +1,308 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using cpqi.ViewModels;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace cpqi.Views.Admin
 {
     public partial class AdminRegisterAdministrativeAssistant : Form
     {
-        private readonly UserViewModel _viewModel;
-        public AdminRegisterAdministrativeAssistant(UserViewModel viewModel)
+        private readonly UserFormViewModel _viewModel;
+        private const long MaxFileSize = 5 * 1024 * 1024; // 5 MB
+        private readonly string[] AllowedImageExtensions = { ".jpg", ".jpeg", ".png" };
+        private readonly string[] AllowedDocumentExtensions = { ".pdf" };
+        public AdminRegisterAdministrativeAssistant(UserFormViewModel viewModel)
         {
             InitializeComponent();
             _viewModel = viewModel;
-            
+            CbSex.SelectedIndex = 0;
+
             // Bindings
-            txtUserName.DataBindings.Add(nameof(txtUserName.Text), _viewModel, nameof(_viewModel.UserName), false, DataSourceUpdateMode.OnPropertyChanged);
-            txtFullName.DataBindings.Add(nameof(txtFullName.Text), _viewModel, nameof(_viewModel.FullName), false, DataSourceUpdateMode.OnPropertyChanged);
-            txtEmail.DataBindings.Add(nameof(txtEmail.Text), _viewModel, nameof(_viewModel.Email), false, DataSourceUpdateMode.OnPropertyChanged);
-            cbSex.SelectedIndex = 0;
-            cbSex.DataBindings.Add(nameof(cbSex.SelectedItem), _viewModel, nameof(_viewModel.Sex), false, DataSourceUpdateMode.OnPropertyChanged);
-            txtPhone.DataBindings.Add(nameof(txtPhone.Text), _viewModel, nameof(_viewModel.Phone), false, DataSourceUpdateMode.OnPropertyChanged);
-            txtPassword.DataBindings.Add(nameof(txtPassword.Text), _viewModel, nameof(_viewModel.Password), false, DataSourceUpdateMode.OnPropertyChanged);
+            TxtUserName.DataBindings.Add(nameof(TxtUserName.Text), _viewModel, nameof(_viewModel.UserName), false, DataSourceUpdateMode.OnPropertyChanged);
+            TxtFullName.DataBindings.Add(nameof(TxtFullName.Text), _viewModel, nameof(_viewModel.FullName), false, DataSourceUpdateMode.OnPropertyChanged);
+            TxtEmail.DataBindings.Add(nameof(TxtEmail.Text), _viewModel, nameof(_viewModel.Email), false, DataSourceUpdateMode.OnPropertyChanged);
+            CbSex.DataBindings.Add(nameof(CbSex.SelectedItem), _viewModel, nameof(_viewModel.Sex), false, DataSourceUpdateMode.OnPropertyChanged);
+            TxtPhone.DataBindings.Add(nameof(TxtPhone.Text), _viewModel, nameof(_viewModel.Phone), false, DataSourceUpdateMode.OnPropertyChanged);
+            TxtPassword.DataBindings.Add(nameof(TxtPassword.Text), _viewModel, nameof(_viewModel.Password), false, DataSourceUpdateMode.OnPropertyChanged);
+            TxtNBI.DataBindings.Add(nameof(TxtNBI.Text), _viewModel, nameof(_viewModel.Bi), false, DataSourceUpdateMode.OnPropertyChanged);
 
-            dtpDateOfBirth.DataBindings.Add(nameof(dtpDateOfBirth.Value), _viewModel, nameof(_viewModel.DateOfBirth), false, DataSourceUpdateMode.OnPropertyChanged);
-            dtpIssuedOn.DataBindings.Add(nameof(dtpIssuedOn.Value), _viewModel, nameof(_viewModel.IssuedOn), false, DataSourceUpdateMode.OnPropertyChanged);
-            dtpValidUntil.DataBindings.Add(nameof(dtpValidUntil.Value), _viewModel, nameof(_viewModel.ValidUntil), false, DataSourceUpdateMode.OnPropertyChanged);
-
-            //txtPhotoPath.DataBindings.Add(nameof(txtPhotoPath.Text), _viewModel, nameof(_viewModel.PhotoPath), false, DataSourceUpdateMode.OnPropertyChanged);
-            //txtFileBiPath.DataBindings.Add(nameof(txtFileBiPath.Text), _viewModel, nameof(_viewModel.FileBiPath), false, DataSourceUpdateMode.OnPropertyChanged);
-            //txtFileCvPath.DataBindings.Add(nameof(txtFileCvPath.Text), _viewModel, nameof(_viewModel.FileCvPath), false, DataSourceUpdateMode.OnPropertyChanged);
-
-
-            _viewModel.RoleID = 3; // Set default role ID for Administrative Assistant
+            DtpDateOfBirth.DataBindings.Add(nameof(DtpDateOfBirth.Value), _viewModel, nameof(_viewModel.DateOfBirth), false, DataSourceUpdateMode.OnPropertyChanged);
+            DtpIssuedOn.DataBindings.Add(nameof(DtpIssuedOn.Value), _viewModel, nameof(_viewModel.IssuedOn), false, DataSourceUpdateMode.OnPropertyChanged);
+            DtpValidUntil.DataBindings.Add(nameof(DtpValidUntil.Value), _viewModel, nameof(_viewModel.ValidUntil), false, DataSourceUpdateMode.OnPropertyChanged);
 
             _viewModel.OnValidationFailed += (s, msg) => MessageBox.Show(msg, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             _viewModel.OnErrorOccurred += (s, msg) => MessageBox.Show(msg, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             _viewModel.OnSucessMessage += (s, msg) => MessageBox.Show(msg, "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            btnRegister.Click += async (s, e) =>
-            {
-                if (ValidateChildren(ValidationConstraints.Enabled))
-                {
-                        await _viewModel.AddUser(); ;
-                        //this.Close();
-                }
-            };
-            /*
-            cbSex.DataSource = new string[] { "MASCULINO", "FEMININO", "OUTRO" };
-            cbRole.DataSource = _viewModel.Roles;
-            cbRole.DisplayMember = "RoleName";
-            cbRole.ValueMember = "RoleID";
-
-            dgvUsers.DataSource = _viewModel.Users;
-            dgvUsers.SelectionChanged += (s, e) =>
-            {
-                if (dgvUsers.CurrentRow?.DataBoundItem is User user)
-                    _viewModel.SelectedUser = user;
-                else
-                    _viewModel.SelectedUser = null;
-            };
-
-            // Botões
-            btnAdd.Click += (s, e) => _viewModel.AddUserCommand.Execute(null);
-            btnUpdate.Click += (s, e) => _viewModel.UpdateUserCommand.Execute(null);
-            btnDelete.Click += (s, e) => _viewModel.DeleteUserCommand.Execute(null);*/
-
-
         }
 
+        #region File Uploads
         private void btnCV_Click(object sender, EventArgs e)
         {
-            openFileDialog3.Filter = "Arquivo de documento (*.pdf)|*.pdf|Todos os arquivos (*.*)|(*.*)";
-            openFileDialog3.Title = "Selecionar um arquivo";
+            openFileDialog3.Filter = "Documento (*.pdf)|*.pdf";
+            openFileDialog3.Title = "Selecionar CV";
 
             if (openFileDialog3.ShowDialog() == DialogResult.OK)
             {
                 string filePath = openFileDialog3.FileName;
-                MessageBox.Show("Arquivo selecionado: " + filePath);
-                _viewModel.FileCvPath = openFileDialog3.FileName;
+                string extension = Path.GetExtension(filePath).ToLower();
+                long fileSize = new FileInfo(filePath).Length;
+
+                // Validate extension
+                if (!AllowedDocumentExtensions.Contains(extension))
+                {
+                    MessageBox.Show("Formato de arquivo inválido. Use PDF.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                // Validate file size (5 MB max)
+                if (fileSize > MaxFileSize) // 5 MB
+                {
+                    MessageBox.Show("O arquivo é muito grande. O tamanho máximo permitido é de 5 MB.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string fileName = $"cv_{TxtUserName.Text}_{DateTime.Now:yyyyMMddHHmmss}.pdf";
+                string sharedFolder = @"localhost\\SQLEXPRESS\SharedAppFiles\CVs\Assistant";
+                if (!Directory.Exists(sharedFolder))
+                {
+                    Directory.CreateDirectory(sharedFolder);
+                }
+                string destPath = Path.Combine(sharedFolder, fileName);
+                try
+                {
+                    File.Copy(filePath, destPath, true); // true = file overwrite
+                    _viewModel.FileCvPath = destPath;
+                    MessageBox.Show("CV salvo em: " + destPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao salvar o arquivo: " + ex.Message);
+                }
             }
         }
         private void btnBI_Click(object sender, EventArgs e)
         {
-            openFileDialog2.Filter = "Arquivo de documento (*.pdf)|*.pdf|Todos os arquivos (*.*)|(*.*)";
-            openFileDialog2.Title = "Selecionar um arquivo";
+            openFileDialog2.Filter = "Documento (*.pdf)|*.pdf";
+            openFileDialog2.Title = "Selecionar BI";
 
             if (openFileDialog2.ShowDialog() == DialogResult.OK)
             {
                 string filePath = openFileDialog2.FileName;
-                MessageBox.Show("Arquivo selecionado: " + filePath);
-                _viewModel.FileBiPath = openFileDialog2.FileName;
-            }
-        }
+                string extension = Path.GetExtension(filePath).ToLower();
+                long fileSize = new FileInfo(filePath).Length;
 
-        private void btnPhoto_Click(object sender, EventArgs e)
-        {
-            openFileDialog1.Filter = "Arquivo de imagem (*.jpg*;.jpeg*;.png)|*.jpg;*.jpeg;*.png";
-            openFileDialog1.Title = "Selecionar um arquivo";
+                // Validate extension
+                if (!AllowedDocumentExtensions.Contains(extension))
+                {
+                    MessageBox.Show("Formato de arquivo inválido. Use PDF.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                // Validate file size (5 MB max)
+                if (fileSize > MaxFileSize) // 5 MB
+                {
+                    MessageBox.Show("O arquivo é muito grande. O tamanho máximo permitido é de 5 MB.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                string filePath = openFileDialog1.FileName;
-                string fileName = Path.GetFileName(filePath);
-
-                string imageFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources/Images/Assistant");
-                string destPath = Path.Combine(imageFolder, fileName);
-
-                Directory.CreateDirectory(imageFolder);
+                string fileName = $"bi_{TxtUserName.Text}_{DateTime.Now:yyyyMMddHHmmss}.pdf";
+                string sharedFolder = @"localhost\\SQLEXPRESS\SharedAppFiles\BIs\Assistant";
+                if (!Directory.Exists(sharedFolder))
+                {
+                    Directory.CreateDirectory(sharedFolder);
+                }
+                string destPath = Path.Combine(sharedFolder, fileName);
                 try
                 {
                     File.Copy(filePath, destPath, true); // true = file overwrite
-                    MessageBox.Show("Arquivo salvo em: " + destPath);
-                    _viewModel.PhotoPath = destPath;
+                    _viewModel.FileBiPath = destPath;
+                    MessageBox.Show("BI salvo em: " + destPath);
                 }
                 catch (Exception ex)
                 {
-
                     MessageBox.Show("Erro ao salvar o arquivo: " + ex.Message);
                 }
             }
         }
 
+        private void btnPhoto_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "Imagem (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png";
+            openFileDialog1.Title = "Selecionar uma foto";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string filePath = openFileDialog1.FileName;
+                string extension = Path.GetExtension(filePath).ToLower();
+                long fileSize = new FileInfo(filePath).Length;
+
+                // Validate extension
+                if (!AllowedImageExtensions.Contains(extension))
+                {
+                    MessageBox.Show("Formato de arquivo inválido. Use JPG, JPEG ou PNG.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                // Validate file size (5 MB max)
+                if (fileSize > MaxFileSize) // 5 MB
+                {
+                    MessageBox.Show("O arquivo é muito grande. O tamanho máximo permitido é de 5 MB.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                string fileName = $"photo_{TxtUserName.Text}_{DateTime.Now:yyyyMMddHHmmss}{Path.GetExtension(filePath)}";
+                string sharedFolder = @"localhost\\SQLEXPRESS\SharedAppFiles\Photos\Assistant";
+                if (!Directory.Exists(sharedFolder))
+                {
+                    Directory.CreateDirectory(sharedFolder);
+                }
+                string destPath = Path.Combine(sharedFolder, fileName);
+
+                try
+                {
+                    File.Copy(filePath, destPath, true); // true = file overwrite
+                    _viewModel.PhotoPath = destPath;
+                    MessageBox.Show("Foto salva em: " + destPath);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao salvar o arquivo: " + ex.Message);
+                }
+            }
+        }
+        #endregion
+
+        #region Validation
         private void txtUserName_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUserName.Text))
+            if (string.IsNullOrWhiteSpace(TxtUserName.Text))
             {
-                ePUser.SetError(txtUserName, "Nome de usuário é obrigatório.");
+                EpUser.SetError(TxtUserName, "Nome de usuário é obrigatório.");
                 e.Cancel = true;
             }
-            else if (txtUserName.Text.Length < 3)
+            else if (TxtUserName.Text.Length < 3)
             {
-                ePUser.SetError(txtUserName, "O nome de usuário deve ter pelo menos 3 caracteres.");
+                EpUser.SetError(TxtUserName, "O nome de usuário deve ter pelo menos 3 caracteres.");
+                e.Cancel = true;
+            }
+            else if (TxtUserName.Text.Contains(' '))
+            {
+                EpUser.SetError(TxtUserName, "Não deve ter espaço no nome do usuário.");
+                e.Cancel = true;
+            }
+            else if (!TxtUserName.Text.Equals(TxtUserName.Text.ToLower()))
+            {
+                EpUser.SetError(TxtUserName, "O nome de usuário deve ser escrito com letras minúsculas.");
                 e.Cancel = true;
             }
             else
             {
-                ePUser.SetError(txtUserName, "");
+                EpUser.SetError(TxtUserName, "");
+                e.Cancel = false;
             }
         }
 
         private void txtFullName_Validating(object sender, CancelEventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(txtFullName.Text))
+            string fullName = TxtFullName.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(fullName))
             {
-                ePFullName.SetError(txtFullName, "Nome completo é obrigatório.");
+                EpFullName.SetError(TxtFullName, "Nome completo é obrigatório.");
                 e.Cancel = true;
-            }
-            else if(txtFullName.Text.Length < 8)
-            {
-                ePFullName.SetError(txtFullName, "O nome completo de ter pelo menos 2 nomes (o primeiro nome e o sobrenome).");
             }
             else
             {
-                ePFullName.SetError(txtFullName, "");
+                var nomes = fullName.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                if (nomes.Length < 2)
+                {
+                    EpFullName.SetError(TxtFullName, "O nome completo deve ter pelo menos 2 nomes (primeiro nome e sobrenome).");
+                    e.Cancel = true;
+                }
+                else
+                {
+                    EpFullName.SetError(TxtFullName, "");
+                    e.Cancel = false;
+                }
             }
         }
+        private void TxtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(TxtEmail.Text))
+            {
+                var emailValidator = new EmailAddressAttribute();
+                if (!emailValidator.IsValid(TxtEmail.Text))
+                {
+                    EpEmail.SetError(TxtEmail, "Email inválido.");
+                    e.Cancel = true;
+                }
+                else
+                {
+                    EpEmail.SetError(TxtEmail, "");
+                    e.Cancel = false;
+                }
+            }
+        }
+        private void TxtPhone_Validating(object sender, CancelEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(TxtPhone.Text))
+            {
+                var phoneRegex = new Regex(@"^[\d\s\+\-\(\)]{7,15}$");
+                if (!phoneRegex.IsMatch(TxtPhone.Text))
+                {
+                    EpPhone.SetError(TxtPhone, "Telefone inválido.");
+                    e.Cancel = true;
+                }
+                else
+                {
+                    EpPhone.SetError(TxtPhone, "");
+                    e.Cancel = false;
+                }
+            }
+        }
+
+        private void TxtNBI_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TxtNBI.Text))
+            {
+                EpNBI.SetError(TxtNBI, "Bilhete de identidade é obrigatório.");
+                e.Cancel = true;
+            }
+            // Regex
+            var biRegex = new Regex(@"^[A-Z0-9]{6,15}$", RegexOptions.IgnoreCase);
+            if (!biRegex.IsMatch(TxtNBI.Text))
+            {
+                EpNBI.SetError(TxtNBI, "Bilhete de identidade inválido.");
+                e.Cancel = true;
+            }
+            else
+            {
+                EpNBI.SetError(TxtNBI, "");
+                e.Cancel = false;
+            }
+        }
+        #endregion
+        private async void Register()
+        {
+            if (ValidateChildren(ValidationConstraints.Enabled))
+            {
+                _viewModel.RoleID = 3; // Set default role ID for Administrative Assistant
+                _viewModel.IsStaff = true; // Set default IsStaff ID for Administrative Assistant
+                await _viewModel.AddUser();
+            }
+        }
+        private void BtnRegister_Click(object sender, EventArgs e)
+        {
+            Register();
+        }
+
+        
     }
 }

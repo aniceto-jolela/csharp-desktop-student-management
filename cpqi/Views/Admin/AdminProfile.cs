@@ -14,11 +14,40 @@ namespace cpqi.Views.Admin
 {
     public partial class AdminProfile : Form
     {
-        private readonly UserViewModel _userViewModel;
-        public AdminProfile(UserViewModel userViewModel)
+        private readonly AuthenticatedUserViewModel _userViewModel;
+        public AdminProfile(AuthenticatedUserViewModel userViewModel)
         {
             InitializeComponent();
             _userViewModel = userViewModel;
+            
+            LoadUser();
+        }
+        private void LoadUser()
+        {
+            // Check if the user is logged in
+            LblUser.Text = _userViewModel.UserName;
+            LblFullName.Text = _userViewModel.FullName;
+            LblSex.Text = _userViewModel.Sex;
+            LblEmail.Text = _userViewModel.Email;
+            LblPhone.Text = _userViewModel.Phone;
+            LblRole.Text = _userViewModel.RoleName;
+            LblNBI.Text = _userViewModel.Bi;
+            LblBirthDay.Text = _userViewModel.DateOfBirth.ToShortDateString();
+            LblIssuedOn.Text = _userViewModel.IssuedOn.ToShortDateString();
+            LblValidUntil.Text = _userViewModel.ValidUntil.ToShortDateString();
+            PbPhoto.Image = Image.FromFile(_userViewModel.PhotoPath ?? "default.png"); // Use a default image if PhotoPath is null
+
+            // Load the user data into the text boxes for editing
+            TxtUser.Text = _userViewModel.UserName;
+            TxtFullName.Text = _userViewModel.FullName;
+            CbSex.SelectedItem = _userViewModel.Sex;
+            TxtEmail.Text = _userViewModel.Email;
+            TxtPhone.Text = _userViewModel.Phone;
+            TxtNBI.Text = _userViewModel.Bi;
+            DtpDateOfBirth.Value = _userViewModel.DateOfBirth;
+            DtpIssuedOn.Value = _userViewModel.IssuedOn;
+            DtpValidUntil.Value = _userViewModel.ValidUntil;
+            
         }
 
         private void btnBI_Click(object sender, EventArgs e)

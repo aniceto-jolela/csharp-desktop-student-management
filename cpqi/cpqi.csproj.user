@@ -34,7 +34,7 @@
     <Compile Update="Views\Admin\AdminViewRegistrationForms.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\Admin\AdminViewRules.cs">
+    <Compile Update="Views\Admin\AdminViewRoles.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\Admin\AdminViewStudents.cs">

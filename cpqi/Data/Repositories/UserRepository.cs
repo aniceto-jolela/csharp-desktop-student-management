@@ -22,12 +22,12 @@ namespace cpqi.Data.Repositories
         {
             _contextFactory = contextFactory;
         }
-        public User? GetUserByUsername(string username)
+        public async Task<User?> GetUserByUsername(string username)
         {
             using var context = _contextFactory.CreateDbContext();
-            return context.Users
+            return await context.Users
                 .Include(u => u.Role)
-                .FirstOrDefault(u => u.UserName == username);
+                .FirstOrDefaultAsync(u => u.UserName == username);
         }
 
         public async Task<List<User>> GetAllUsersAsync()

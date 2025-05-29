@@ -13,11 +13,11 @@ namespace cpqi
 {
     public class FormManager
     {
-        private readonly UserViewModel _userViewModel;
+        private readonly AuthenticatedUserViewModel _userViewModel;
         private readonly IServiceProvider _serviceProvider;
 
 
-        public FormManager(UserViewModel userViewModel, IServiceProvider serviceProvider)
+        public FormManager(AuthenticatedUserViewModel userViewModel, IServiceProvider serviceProvider)
         {
             _userViewModel = userViewModel;
             _serviceProvider = serviceProvider;
@@ -49,24 +49,30 @@ namespace cpqi
             }
             var dbContext = _serviceProvider.GetRequiredService<CpqiDbContext>();
 
-            switch (user.Role.RoleName)
+            switch (user.Role.RoleID)
             {
-                case "Administrador":
+                case 1:
                     ShowAdminHomeForm(user);
                     break;
-                case "Assistente administrativa":
-                    new AdminHome(user, this, _userViewModel).Show();
+                case 2:
+                    ShowAdminHomeForm(user);
                     break;
-                case "Professor":
+                case 3:
                     new AdminHome(user, this, _userViewModel).Show();
                     break;
                 default:
-                    MessageBox.Show("Acesso não autorizado para este papel.");
+                    MessageBox.Show("Acesso não autorizado.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Application.Exit();
                     break;
             }
         }
         public void ShowAdminHomeForm(User user)
         {
+            if (user.Role == null || user.Role.RoleName != "Administrador" || user.Role.RoleID != 1)
+            {
+                MessageBox.Show("Acesso negado.", "STOP", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
             ShowUniqueForm<AdminHome>(modal: false, user, this, _userViewModel);
         }
         public void ShowLoginForm()
@@ -89,7 +95,7 @@ namespace cpqi
         }
         public void ShowAdminRolesForm()
         {
-            ShowUniqueForm<AdminViewRules>();
+            ShowUniqueForm<AdminViewRoles>();
         }
         public void ShowAdminViewAdministrativeAssistantForm()
         {

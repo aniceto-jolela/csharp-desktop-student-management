@@ -6,8 +6,8 @@ namespace cpqi
     public partial class Login : Form
     {
         private readonly FormManager _formManager;
-        private readonly UserViewModel _userViewModel;
-        public Login(FormManager formManager, UserViewModel userViewModel)
+        private readonly AuthenticatedUserViewModel _userViewModel;
+        public Login(FormManager formManager, AuthenticatedUserViewModel userViewModel)
         {
             InitializeComponent();
             _formManager = formManager;
@@ -19,8 +19,10 @@ namespace cpqi
         {
             // Here you would typically validate the username and password
             // For demonstration purposes, we will just open the AdminHome form directly
-            var username = TxtUserName.Text.Trim();
+            var username = TxtUserName.Text;
             var password = TxtPassword.Text;
+
+           
 
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
@@ -30,15 +32,8 @@ namespace cpqi
             PbLoading.Visible = true;
             this.UseWaitCursor = true;
 
-            bool success = false;
-
-            await Task.Run(() =>
-            {
-                // Simulates processing time
-                Thread.Sleep(500);
-                success = _userViewModel.Login(username, password);
-            });
-
+            bool success = await _userViewModel.LoginAsync(username, password);
+            
             PbLoading.Visible = false;
             this.UseWaitCursor = false;
 
