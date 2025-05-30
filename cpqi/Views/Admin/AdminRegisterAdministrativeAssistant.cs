@@ -153,6 +153,7 @@ namespace cpqi.Views.Admin
                 // Validate file size (5 MB max)
                 if (fileSize > MaxFileSize) // 5 MB
                 {
+                    
                     MessageBox.Show("O arquivo é muito grande. O tamanho máximo permitido é de 5 MB.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }

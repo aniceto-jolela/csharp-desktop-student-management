@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminProfile));
             PbPhoto = new Krypton.Toolkit.KryptonPictureBox();
             splitContainer1 = new SplitContainer();
+            LblValidUntil = new Krypton.Toolkit.KryptonLabel();
+            LblIssuedOn = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
+            kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             LblNBI = new Krypton.Toolkit.KryptonLabel();
             LblRole = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel32 = new Krypton.Toolkit.KryptonLabel();
@@ -46,6 +50,7 @@
             kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             LblUser = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            CxbPassword = new Krypton.Toolkit.KryptonCheckBox();
             TxtNBI = new Krypton.Toolkit.KryptonTextBox();
             kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
             CbSex = new Krypton.Toolkit.KryptonComboBox();
@@ -58,7 +63,7 @@
             TxtPassword = new Krypton.Toolkit.KryptonTextBox();
             btnCV = new Krypton.Toolkit.KryptonButton();
             btnBI = new Krypton.Toolkit.KryptonButton();
-            kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            BtnEdit = new Krypton.Toolkit.KryptonButton();
             DtpDateOfBirth = new Krypton.Toolkit.KryptonDateTimePicker();
             TxtPhone = new Krypton.Toolkit.KryptonTextBox();
             TxtEmail = new Krypton.Toolkit.KryptonTextBox();
@@ -82,10 +87,6 @@
             openFileDialog1 = new OpenFileDialog();
             openFileDialog2 = new OpenFileDialog();
             openFileDialog3 = new OpenFileDialog();
-            kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
-            kryptonLabel6 = new Krypton.Toolkit.KryptonLabel();
-            LblIssuedOn = new Krypton.Toolkit.KryptonLabel();
-            LblValidUntil = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)PbPhoto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -98,7 +99,7 @@
             // 
             // PbPhoto
             // 
-            PbPhoto.Image = (Image)resources.GetObject("PbPhoto.Image");
+            PbPhoto.Image = Properties.Resources.administrator;
             PbPhoto.Location = new Point(99, 34);
             PbPhoto.Name = "PbPhoto";
             PbPhoto.Size = new Size(175, 140);
@@ -141,6 +142,7 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.BackColor = SystemColors.GradientActiveCaption;
+            splitContainer1.Panel2.Controls.Add(CxbPassword);
             splitContainer1.Panel2.Controls.Add(TxtNBI);
             splitContainer1.Panel2.Controls.Add(kryptonLabel3);
             splitContainer1.Panel2.Controls.Add(CbSex);
@@ -153,7 +155,7 @@
             splitContainer1.Panel2.Controls.Add(TxtPassword);
             splitContainer1.Panel2.Controls.Add(btnCV);
             splitContainer1.Panel2.Controls.Add(btnBI);
-            splitContainer1.Panel2.Controls.Add(kryptonButton1);
+            splitContainer1.Panel2.Controls.Add(BtnEdit);
             splitContainer1.Panel2.Controls.Add(DtpDateOfBirth);
             splitContainer1.Panel2.Controls.Add(TxtPhone);
             splitContainer1.Panel2.Controls.Add(TxtEmail);
@@ -180,6 +182,38 @@
             splitContainer1.SplitterDistance = 390;
             splitContainer1.SplitterWidth = 1;
             splitContainer1.TabIndex = 7;
+            // 
+            // LblValidUntil
+            // 
+            LblValidUntil.Location = new Point(290, 494);
+            LblValidUntil.Name = "LblValidUntil";
+            LblValidUntil.Size = new Size(73, 20);
+            LblValidUntil.TabIndex = 57;
+            LblValidUntil.Values.Text = "12/12/2025";
+            // 
+            // LblIssuedOn
+            // 
+            LblIssuedOn.Location = new Point(105, 494);
+            LblIssuedOn.Name = "LblIssuedOn";
+            LblIssuedOn.Size = new Size(73, 20);
+            LblIssuedOn.TabIndex = 56;
+            LblIssuedOn.Values.Text = "08/12/2025";
+            // 
+            // kryptonLabel6
+            // 
+            kryptonLabel6.Location = new Point(213, 494);
+            kryptonLabel6.Name = "kryptonLabel6";
+            kryptonLabel6.Size = new Size(83, 20);
+            kryptonLabel6.TabIndex = 55;
+            kryptonLabel6.Values.Text = "VALIDO ATÉ :";
+            // 
+            // kryptonLabel4
+            // 
+            kryptonLabel4.Location = new Point(26, 494);
+            kryptonLabel4.Name = "kryptonLabel4";
+            kryptonLabel4.Size = new Size(86, 20);
+            kryptonLabel4.TabIndex = 53;
+            kryptonLabel4.Values.Text = "EMITIDO EM :";
             // 
             // LblNBI
             // 
@@ -303,6 +337,15 @@
             kryptonLabel2.TabIndex = 7;
             kryptonLabel2.Values.Text = "USUÁRIO :";
             // 
+            // CxbPassword
+            // 
+            CxbPassword.Location = new Point(523, 451);
+            CxbPassword.Name = "CxbPassword";
+            CxbPassword.Size = new Size(19, 13);
+            CxbPassword.TabIndex = 59;
+            CxbPassword.Values.Text = "";
+            CxbPassword.CheckedChanged += CxbPassword_CheckedChanged;
+            // 
             // TxtNBI
             // 
             TxtNBI.Location = new Point(158, 411);
@@ -413,15 +456,15 @@
             btnBI.Values.Text = "";
             btnBI.Click += btnBI_Click;
             // 
-            // kryptonButton1
+            // BtnEdit
             // 
-            kryptonButton1.Cursor = Cursors.Hand;
-            kryptonButton1.Location = new Point(254, 489);
-            kryptonButton1.Name = "kryptonButton1";
-            kryptonButton1.Size = new Size(90, 25);
-            kryptonButton1.TabIndex = 38;
-            kryptonButton1.Values.DropDownArrowColor = Color.Empty;
-            kryptonButton1.Values.Text = "EDITAR";
+            BtnEdit.Cursor = Cursors.Hand;
+            BtnEdit.Location = new Point(254, 489);
+            BtnEdit.Name = "BtnEdit";
+            BtnEdit.Size = new Size(90, 25);
+            BtnEdit.TabIndex = 38;
+            BtnEdit.Values.DropDownArrowColor = Color.Empty;
+            BtnEdit.Values.Text = "EDITAR";
             // 
             // DtpDateOfBirth
             // 
@@ -599,38 +642,6 @@
             // 
             openFileDialog3.FileName = "FOTO DE PERFIL";
             // 
-            // kryptonLabel4
-            // 
-            kryptonLabel4.Location = new Point(26, 494);
-            kryptonLabel4.Name = "kryptonLabel4";
-            kryptonLabel4.Size = new Size(86, 20);
-            kryptonLabel4.TabIndex = 53;
-            kryptonLabel4.Values.Text = "EMITIDO EM :";
-            // 
-            // kryptonLabel6
-            // 
-            kryptonLabel6.Location = new Point(213, 494);
-            kryptonLabel6.Name = "kryptonLabel6";
-            kryptonLabel6.Size = new Size(83, 20);
-            kryptonLabel6.TabIndex = 55;
-            kryptonLabel6.Values.Text = "VALIDO ATÉ :";
-            // 
-            // LblIssuedOn
-            // 
-            LblIssuedOn.Location = new Point(105, 494);
-            LblIssuedOn.Name = "LblIssuedOn";
-            LblIssuedOn.Size = new Size(73, 20);
-            LblIssuedOn.TabIndex = 56;
-            LblIssuedOn.Values.Text = "08/12/2025";
-            // 
-            // LblValidUntil
-            // 
-            LblValidUntil.Location = new Point(290, 494);
-            LblValidUntil.Name = "LblValidUntil";
-            LblValidUntil.Size = new Size(73, 20);
-            LblValidUntil.TabIndex = 57;
-            LblValidUntil.Values.Text = "12/12/2025";
-            // 
             // AdminProfile
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -692,7 +703,7 @@
         private Krypton.Toolkit.KryptonTextBox TxtEmail;
         private Krypton.Toolkit.KryptonTextBox TxtPhone;
         private Krypton.Toolkit.KryptonDateTimePicker DtpDateOfBirth;
-        private Krypton.Toolkit.KryptonButton kryptonButton1;
+        private Krypton.Toolkit.KryptonButton BtnEdit;
         private OpenFileDialog openFileDialog1;
         private OpenFileDialog openFileDialog2;
         private Krypton.Toolkit.KryptonButton btnCV;
@@ -715,5 +726,6 @@
         private Krypton.Toolkit.KryptonLabel LblIssuedOn;
         private Krypton.Toolkit.KryptonLabel kryptonLabel6;
         private Krypton.Toolkit.KryptonLabel kryptonLabel4;
+        private Krypton.Toolkit.KryptonCheckBox CxbPassword;
     }
 }

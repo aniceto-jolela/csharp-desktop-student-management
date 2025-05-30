@@ -63,6 +63,16 @@ namespace cpqi.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap administrator {
+            get {
+                object obj = ResourceManager.GetObject("administrator", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap arcticons__classchartsstudents {
             get {
                 object obj = ResourceManager.GetObject("arcticons--classchartsstudents", resourceCulture);
@@ -73,29 +83,9 @@ namespace cpqi.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap backgraoundWave {
-            get {
-                object obj = ResourceManager.GetObject("backgraoundWave", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap backgreoundBlue {
             get {
                 object obj = ResourceManager.GetObject("backgreoundBlue", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap backgroundLine {
-            get {
-                object obj = ResourceManager.GetObject("backgroundLine", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

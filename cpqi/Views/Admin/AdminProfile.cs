@@ -19,7 +19,7 @@ namespace cpqi.Views.Admin
         {
             InitializeComponent();
             _userViewModel = userViewModel;
-            
+
             LoadUser();
         }
         private void LoadUser()
@@ -35,7 +35,14 @@ namespace cpqi.Views.Admin
             LblBirthDay.Text = _userViewModel.DateOfBirth.ToShortDateString();
             LblIssuedOn.Text = _userViewModel.IssuedOn.ToShortDateString();
             LblValidUntil.Text = _userViewModel.ValidUntil.ToShortDateString();
-            PbPhoto.Image = Image.FromFile(_userViewModel.PhotoPath ?? "default.png"); // Use a default image if PhotoPath is null
+            if (string.IsNullOrWhiteSpace(_userViewModel.PhotoPath) || !File.Exists(_userViewModel.PhotoPath))
+            {
+                PbPhoto.Image = Properties.Resources.administrator; // Use a default image if PhotoPath is null
+            }
+            else
+            {
+                PbPhoto.Image = Image.FromFile(_userViewModel.PhotoPath);
+            }
 
             // Load the user data into the text boxes for editing
             TxtUser.Text = _userViewModel.UserName;
@@ -47,7 +54,7 @@ namespace cpqi.Views.Admin
             DtpDateOfBirth.Value = _userViewModel.DateOfBirth;
             DtpIssuedOn.Value = _userViewModel.IssuedOn;
             DtpValidUntil.Value = _userViewModel.ValidUntil;
-            
+
         }
 
         private void btnBI_Click(object sender, EventArgs e)
@@ -99,6 +106,18 @@ namespace cpqi.Views.Admin
         private void kryptonTextBox4_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void CxbPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CxbPassword.Checked == false)
+            {
+                TxtPassword.UseSystemPasswordChar = false; // Show password
+            }
+            else
+            {
+                TxtPassword.UseSystemPasswordChar = true; // Hide password
+            }
         }
     }
 }
