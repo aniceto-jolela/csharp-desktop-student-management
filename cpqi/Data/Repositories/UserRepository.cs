@@ -11,6 +11,8 @@ using System.ComponentModel.DataAnnotations;
 using cpqi.Models;
 using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace cpqi.Data.Repositories
 {
@@ -48,8 +50,40 @@ namespace cpqi.Data.Repositories
         public async Task UpdateUserAsync(User user)
         {
             using var context = _contextFactory.CreateDbContext();
-            context.Users.Update(user);
-            await context.SaveChangesAsync();
+
+            var existingUser = await context.Users.FindAsync(user.UserID);
+            if (existingUser == null) return;
+            
+            context.Entry(existingUser).CurrentValues.SetValues(user);
+
+            existingUser.UserName = user.UserName;
+            existingUser.FullName = user.FullName;
+            existingUser.Sex = user.Sex;
+            existingUser.Email = user.Email;
+            existingUser.Phone = user.Phone;
+            existingUser.Bi = user.Bi;
+            existingUser.PhotoPath = user.PhotoPath;
+            existingUser.DateOfBirth = user.DateOfBirth;
+            existingUser.FileBiPath = user.FileBiPath;
+            existingUser.IssuedOn = user.IssuedOn;
+            existingUser.ValidUntil = user.ValidUntil;
+            existingUser.FileCvPath = user.FileCvPath;
+            existingUser.RoleID = user.RoleID;
+            existingUser.IsActive = user.IsActive;
+            existingUser.IsStaff = user.IsStaff;
+            existingUser.IsSuperUser = user.IsSuperUser;
+            existingUser.UpdatedAt = DateTime.Now;
+            existingUser.UpdatedBy = user.UpdatedBy;
+            
+            if (user.PasswordHash != null && user.Salt != null)
+            {
+                if (!user.PasswordHash.SequenceEqual(existingUser.PasswordHash) ||
+                    !user.Salt.SequenceEqual(existingUser.Salt))
+                {
+                    existingUser.PasswordHash = user.PasswordHash;
+                    existingUser.Salt = user.Salt;
+                }
+            }await context.SaveChangesAsync();
         }
         public async Task DeleteUserAsync(int userId)
         {

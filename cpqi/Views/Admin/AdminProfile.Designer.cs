@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminProfile));
             PbPhoto = new Krypton.Toolkit.KryptonPictureBox();
             splitContainer1 = new SplitContainer();
@@ -50,6 +51,8 @@
             kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             LblUser = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            PbLoading = new Krypton.Toolkit.KryptonPictureBox();
+            LblStatusMessage = new Krypton.Toolkit.KryptonLabel();
             CxbPassword = new Krypton.Toolkit.KryptonCheckBox();
             TxtNBI = new Krypton.Toolkit.KryptonTextBox();
             kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
@@ -68,7 +71,7 @@
             TxtPhone = new Krypton.Toolkit.KryptonTextBox();
             TxtEmail = new Krypton.Toolkit.KryptonTextBox();
             TxtFullName = new Krypton.Toolkit.KryptonTextBox();
-            TxtUser = new Krypton.Toolkit.KryptonTextBox();
+            TxtUserName = new Krypton.Toolkit.KryptonTextBox();
             kryptonLabel27 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             PbCv = new Krypton.Toolkit.KryptonPictureBox();
@@ -87,14 +90,18 @@
             openFileDialog1 = new OpenFileDialog();
             openFileDialog2 = new OpenFileDialog();
             openFileDialog3 = new OpenFileDialog();
+            ErrorProvider = new ErrorProvider(components);
+            StatusTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)PbPhoto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
             splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PbLoading).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CbSex).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PbCv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PbBI).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // PbPhoto
@@ -142,6 +149,8 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.BackColor = SystemColors.GradientActiveCaption;
+            splitContainer1.Panel2.Controls.Add(PbLoading);
+            splitContainer1.Panel2.Controls.Add(LblStatusMessage);
             splitContainer1.Panel2.Controls.Add(CxbPassword);
             splitContainer1.Panel2.Controls.Add(TxtNBI);
             splitContainer1.Panel2.Controls.Add(kryptonLabel3);
@@ -160,7 +169,7 @@
             splitContainer1.Panel2.Controls.Add(TxtPhone);
             splitContainer1.Panel2.Controls.Add(TxtEmail);
             splitContainer1.Panel2.Controls.Add(TxtFullName);
-            splitContainer1.Panel2.Controls.Add(TxtUser);
+            splitContainer1.Panel2.Controls.Add(TxtUserName);
             splitContainer1.Panel2.Controls.Add(kryptonLabel27);
             splitContainer1.Panel2.Controls.Add(kryptonLabel1);
             splitContainer1.Panel2.Controls.Add(PbCv);
@@ -337,8 +346,31 @@
             kryptonLabel2.TabIndex = 7;
             kryptonLabel2.Values.Text = "USUÁRIO :";
             // 
+            // PbLoading
+            // 
+            PbLoading.Image = Properties.Resources.Loading;
+            PbLoading.Location = new Point(350, 474);
+            PbLoading.Name = "PbLoading";
+            PbLoading.Size = new Size(100, 50);
+            PbLoading.SizeMode = PictureBoxSizeMode.Zoom;
+            PbLoading.TabIndex = 61;
+            PbLoading.TabStop = false;
+            PbLoading.Visible = false;
+            // 
+            // LblStatusMessage
+            // 
+            LblStatusMessage.Location = new Point(185, 12);
+            LblStatusMessage.Name = "LblStatusMessage";
+            LblStatusMessage.Size = new Size(185, 20);
+            LblStatusMessage.StateNormal.ShortText.Color1 = Color.Green;
+            LblStatusMessage.StateNormal.ShortText.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LblStatusMessage.TabIndex = 60;
+            LblStatusMessage.Values.Text = "Perfil atualizado com sucesso!";
+            LblStatusMessage.Visible = false;
+            // 
             // CxbPassword
             // 
+            CxbPassword.Cursor = Cursors.Hand;
             CxbPassword.Location = new Point(523, 451);
             CxbPassword.Name = "CxbPassword";
             CxbPassword.Size = new Size(19, 13);
@@ -357,9 +389,10 @@
             // 
             kryptonLabel3.Location = new Point(26, 411);
             kryptonLabel3.Name = "kryptonLabel3";
-            kryptonLabel3.Size = new Size(66, 20);
+            kryptonLabel3.Size = new Size(69, 20);
+            kryptonLabel3.StateNormal.ShortText.Color1 = Color.DarkRed;
             kryptonLabel3.TabIndex = 57;
-            kryptonLabel3.Values.Text = "Nº DO BI :";
+            kryptonLabel3.Values.Text = "Nº DO BI *";
             // 
             // CbSex
             // 
@@ -385,9 +418,10 @@
             // 
             kryptonLabel29.Location = new Point(337, 316);
             kryptonLabel29.Name = "kryptonLabel29";
-            kryptonLabel29.Size = new Size(83, 20);
+            kryptonLabel29.Size = new Size(89, 20);
+            kryptonLabel29.StateNormal.ShortText.Color1 = Color.DarkRed;
             kryptonLabel29.TabIndex = 54;
-            kryptonLabel29.Values.Text = "VALIDO ATÉ :";
+            kryptonLabel29.Values.Text = "VALIDO ATÉ  *";
             // 
             // btnPhoto
             // 
@@ -420,19 +454,20 @@
             // 
             kryptonLabel30.Location = new Point(22, 318);
             kryptonLabel30.Name = "kryptonLabel30";
-            kryptonLabel30.Size = new Size(108, 20);
+            kryptonLabel30.Size = new Size(110, 20);
+            kryptonLabel30.StateNormal.ShortText.Color1 = Color.DarkRed;
             kryptonLabel30.TabIndex = 52;
-            kryptonLabel30.Values.Text = "BI - EMITIDO EM :";
+            kryptonLabel30.Values.Text = "BI - EMITIDO EM *";
             // 
             // TxtPassword
             // 
+            TxtPassword.Enabled = false;
             TxtPassword.Location = new Point(158, 445);
             TxtPassword.Name = "TxtPassword";
             TxtPassword.PasswordChar = '●';
             TxtPassword.Size = new Size(360, 23);
             TxtPassword.TabIndex = 41;
             TxtPassword.UseSystemPasswordChar = true;
-            TxtPassword.TextChanged += kryptonTextBox5_TextChanged;
             // 
             // btnCV
             // 
@@ -465,6 +500,7 @@
             BtnEdit.TabIndex = 38;
             BtnEdit.Values.DropDownArrowColor = Color.Empty;
             BtnEdit.Values.Text = "EDITAR";
+            BtnEdit.Click += BtnEdit_Click;
             // 
             // DtpDateOfBirth
             // 
@@ -480,7 +516,6 @@
             TxtPhone.Name = "TxtPhone";
             TxtPhone.Size = new Size(360, 23);
             TxtPhone.TabIndex = 36;
-            TxtPhone.TextChanged += kryptonTextBox4_TextChanged;
             // 
             // TxtEmail
             // 
@@ -495,22 +530,22 @@
             TxtFullName.Name = "TxtFullName";
             TxtFullName.Size = new Size(360, 23);
             TxtFullName.TabIndex = 33;
-            TxtFullName.TextChanged += kryptonTextBox2_TextChanged;
             // 
-            // TxtUser
+            // TxtUserName
             // 
-            TxtUser.Location = new Point(158, 207);
-            TxtUser.Name = "TxtUser";
-            TxtUser.Size = new Size(360, 23);
-            TxtUser.TabIndex = 32;
+            TxtUserName.Location = new Point(158, 207);
+            TxtUserName.Name = "TxtUserName";
+            TxtUserName.Size = new Size(360, 23);
+            TxtUserName.TabIndex = 32;
             // 
             // kryptonLabel27
             // 
             kryptonLabel27.Location = new Point(22, 445);
             kryptonLabel27.Name = "kryptonLabel27";
-            kryptonLabel27.Size = new Size(106, 20);
+            kryptonLabel27.Size = new Size(108, 20);
+            kryptonLabel27.StateNormal.ShortText.Color1 = Color.DarkRed;
             kryptonLabel27.TabIndex = 31;
-            kryptonLabel27.Values.Text = "PALAVRA PASSE :";
+            kryptonLabel27.Values.Text = "PALAVRA PASSE *";
             // 
             // kryptonLabel1
             // 
@@ -562,9 +597,10 @@
             // 
             kryptonLabel19.Location = new Point(279, 264);
             kryptonLabel19.Name = "kryptonLabel19";
-            kryptonLabel19.Size = new Size(146, 20);
+            kryptonLabel19.Size = new Size(149, 20);
+            kryptonLabel19.StateNormal.ShortText.Color1 = Color.DarkRed;
             kryptonLabel19.TabIndex = 25;
-            kryptonLabel19.Values.Text = "DATA DE NASCIMENTO :";
+            kryptonLabel19.Values.Text = "DATA DE NASCIMENTO *";
             // 
             // kryptonLabel20
             // 
@@ -586,25 +622,28 @@
             // 
             kryptonLabel22.Location = new Point(22, 263);
             kryptonLabel22.Name = "kryptonLabel22";
-            kryptonLabel22.Size = new Size(46, 20);
+            kryptonLabel22.Size = new Size(48, 20);
+            kryptonLabel22.StateNormal.ShortText.Color1 = Color.DarkRed;
             kryptonLabel22.TabIndex = 22;
-            kryptonLabel22.Values.Text = "SEXO :";
+            kryptonLabel22.Values.Text = "SEXO *";
             // 
             // kryptonLabel23
             // 
             kryptonLabel23.Location = new Point(22, 235);
             kryptonLabel23.Name = "kryptonLabel23";
-            kryptonLabel23.Size = new Size(52, 20);
+            kryptonLabel23.Size = new Size(121, 20);
+            kryptonLabel23.StateNormal.ShortText.Color1 = Color.DarkRed;
             kryptonLabel23.TabIndex = 21;
-            kryptonLabel23.Values.Text = "NOME :";
+            kryptonLabel23.Values.Text = "NOME COMPLETO *";
             // 
             // kryptonLabel24
             // 
             kryptonLabel24.Location = new Point(22, 207);
             kryptonLabel24.Name = "kryptonLabel24";
-            kryptonLabel24.Size = new Size(68, 20);
+            kryptonLabel24.Size = new Size(71, 20);
+            kryptonLabel24.StateNormal.ShortText.Color1 = Color.DarkRed;
             kryptonLabel24.TabIndex = 20;
-            kryptonLabel24.Values.Text = "USUÁRIO :";
+            kryptonLabel24.Values.Text = "USUÁRIO *";
             // 
             // kryptonLabel18
             // 
@@ -632,15 +671,24 @@
             // 
             // openFileDialog1
             // 
-            openFileDialog1.FileName = "BILHETE DE IDENTIDADE";
+            openFileDialog1.FileName = "FOTO DE PERFIL";
             // 
             // openFileDialog2
             // 
-            openFileDialog2.FileName = "CURRICULUM VITAE";
+            openFileDialog2.FileName = "BILHETE DE IDENTIDADE";
             // 
             // openFileDialog3
             // 
-            openFileDialog3.FileName = "FOTO DE PERFIL";
+            openFileDialog3.FileName = "CURRICULUM VITAE";
+            // 
+            // ErrorProvider
+            // 
+            ErrorProvider.ContainerControl = this;
+            // 
+            // StatusTimer
+            // 
+            StatusTimer.Interval = 3000;
+            StatusTimer.Tick += StatusTimer_Tick;
             // 
             // AdminProfile
             // 
@@ -662,9 +710,11 @@
             splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)PbLoading).EndInit();
             ((System.ComponentModel.ISupportInitialize)CbSex).EndInit();
             ((System.ComponentModel.ISupportInitialize)PbCv).EndInit();
             ((System.ComponentModel.ISupportInitialize)PbBI).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -698,7 +748,7 @@
         private Krypton.Toolkit.KryptonPictureBox PbCv;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel27;
-        private Krypton.Toolkit.KryptonTextBox TxtUser;
+        private Krypton.Toolkit.KryptonTextBox TxtUserName;
         private Krypton.Toolkit.KryptonTextBox TxtFullName;
         private Krypton.Toolkit.KryptonTextBox TxtEmail;
         private Krypton.Toolkit.KryptonTextBox TxtPhone;
@@ -727,5 +777,9 @@
         private Krypton.Toolkit.KryptonLabel kryptonLabel6;
         private Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private Krypton.Toolkit.KryptonCheckBox CxbPassword;
+        private ErrorProvider ErrorProvider;
+        private Krypton.Toolkit.KryptonLabel LblStatusMessage;
+        private System.Windows.Forms.Timer StatusTimer;
+        private Krypton.Toolkit.KryptonPictureBox PbLoading;
     }
 }

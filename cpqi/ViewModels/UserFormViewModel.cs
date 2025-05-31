@@ -10,6 +10,7 @@ public partial class UserFormViewModel : ObservableObject
 {
     private readonly UserRepository _userRepository;
     public ObservableCollection<User> Users { get; } = new();
+    public User? LoggedUser { get; private set; }
 
     public event EventHandler<string>? OnValidationFailed;
     public event EventHandler<string>? OnErrorOccurred;
@@ -99,45 +100,47 @@ public partial class UserFormViewModel : ObservableObject
     }
 
 
-    public async Task UpdateSelectedUser()
+    public async Task<bool> UpdateSelectedUser()
     {
-        if (SelectedUser == null) return;
+        if (SelectedUser == null) return false;
+
+        if (!await ValidateFieldsAsync(isUpdate: true))
+            return false;
+
+        SelectedUser.UserName = this.UserName;
+        SelectedUser.FullName = this.FullName;
+        SelectedUser.Email = this.Email;
+        SelectedUser.Phone = this.Phone;
+        SelectedUser.Bi = this.Bi;
+        SelectedUser.PhotoPath = this.PhotoPath;
+        SelectedUser.DateOfBirth = this.DateOfBirth;
+        SelectedUser.IssuedOn = this.IssuedOn;
+        SelectedUser.ValidUntil = this.ValidUntil;
+        SelectedUser.Sex = this.Sex;
+        SelectedUser.FileBiPath = this.FileBiPath;
+        SelectedUser.FileCvPath = this.FileCvPath;
+
+        if (!string.IsNullOrWhiteSpace(this.Password))
+        {
+            SelectedUser.PasswordHash = HashPassword(this.Password, out var salt);
+            SelectedUser.Salt = salt;
+        }
+        SelectedUser.UpdatedAt = DateTime.Now;
+        SelectedUser.UpdatedBy = this.UpdatedBy;
 
         try
         {
-            if (!await ValidateFieldsAsync(isUpdate: true))
-                return;
-
-            SelectedUser.UserName = UserName;
-            SelectedUser.FullName = FullName;
-            SelectedUser.Sex = Sex;
-            SelectedUser.Email = Email;
-            SelectedUser.Phone = Phone;
-            SelectedUser.Bi = Bi;
-
-            if (!string.IsNullOrWhiteSpace(Password))
-            {
-                SelectedUser.PasswordHash = HashPassword(Password, out var salt);
-                SelectedUser.Salt = salt;
-            }
-
-            SelectedUser.PhotoPath = PhotoPath;
-            SelectedUser.DateOfBirth = DateOfBirth;
-            SelectedUser.IsStaff = IsStaff;
-            SelectedUser.IsActive = IsActive;
-            SelectedUser.IsSuperUser = IsSuperUser;
-            SelectedUser.RoleID = RoleID;
-            SelectedUser.UpdatedBy = UpdatedBy ?? Environment.UserName;
-            SelectedUser.UpdatedAt = DateTime.Now;
-
+            if(MessageBox.Show("Tem certeza que deseja atualizar este usuário?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return false;
             await _userRepository.UpdateUserAsync(SelectedUser);
             await LoadUsers();
             ClearFields();
-            OnSucessMessage?.Invoke(this, "Usuário atualizado com sucesso!");
+            return true;
         }
         catch (Exception ex)
         {
             OnErrorOccurred?.Invoke(this, $"Erro ao atualizar: {ex.Message}");
+            return false;
         }
     }
 
@@ -189,7 +192,60 @@ public partial class UserFormViewModel : ObservableObject
         UpdatedBy = user.UpdatedBy;
     }
 
-#endregion
+    #endregion
+
+    public void ApplyFormDataToSelectedUser()
+    {
+        if (SelectedUser == null) return;
+
+        SelectedUser.UserName = UserName;
+        SelectedUser.FullName = FullName;
+        SelectedUser.Email = Email;
+        SelectedUser.Phone = Phone;
+        SelectedUser.Bi = Bi;
+        SelectedUser.PhotoPath = PhotoPath;
+        SelectedUser.DateOfBirth = DateOfBirth;
+        SelectedUser.IssuedOn = IssuedOn;
+        SelectedUser.ValidUntil = ValidUntil;
+        SelectedUser.Sex = Sex;
+        SelectedUser.FileBiPath = FileBiPath;
+        SelectedUser.FileCvPath = FileCvPath;
+        SelectedUser.UpdatedBy = UpdatedBy;
+        SelectedUser.UpdatedAt = DateTime.Now;
+
+        if (!string.IsNullOrWhiteSpace(Password))
+        {
+            SelectedUser.PasswordHash = HashPassword(Password, out var salt);
+            SelectedUser.Salt = salt;
+        }
+    }
+    public void LoadFromAuthenticatedUser(AuthenticatedUserViewModel user)
+    {
+        try
+        {
+            if (user == null || user.LoggedUser == null) return;
+
+            UserName = user.UserName;
+            FullName = user.FullName;
+            Email = user.Email;
+            Sex = user.Sex;
+            Phone = user.Phone;
+            Bi = user.Bi;
+            DateOfBirth = user.DateOfBirth;
+            IssuedOn = user.IssuedOn;
+            ValidUntil = user.ValidUntil;
+            PhotoPath = user.PhotoPath;
+            RoleName = user.RoleName;
+
+            LoggedUser = user.LoggedUser;
+            SelectedUser = user.LoggedUser;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Load form Edit usuário: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+       
+    }
 
     #region Support
     private void ClearFields()
