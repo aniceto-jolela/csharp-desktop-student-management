@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using cpqi.Data;
+using cpqi.Helpers;
 using cpqi.Models;
 using cpqi.ViewModels;
 
@@ -35,7 +36,7 @@ namespace cpqi.Views.Admin
             timer.Start();
 
             lblFullName.Text = $"Bem-vindo, {_user.FullName}";
-
+            LoadPhoto.ProfilePhoto(_user.PhotoPath, PbProfile);
         }
         private void Timer_Tick(object? sender, EventArgs e)
         {

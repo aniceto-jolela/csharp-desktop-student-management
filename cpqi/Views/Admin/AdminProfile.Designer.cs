@@ -87,9 +87,7 @@
             kryptonLabel18 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel17 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel16 = new Krypton.Toolkit.KryptonLabel();
-            openFileDialog1 = new OpenFileDialog();
-            openFileDialog2 = new OpenFileDialog();
-            openFileDialog3 = new OpenFileDialog();
+            openFileDialog = new OpenFileDialog();
             ErrorProvider = new ErrorProvider(components);
             StatusTimer = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)PbPhoto).BeginInit();
@@ -149,6 +147,7 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.BackColor = SystemColors.GradientActiveCaption;
+            splitContainer1.Panel2.Controls.Add(BtnEdit);
             splitContainer1.Panel2.Controls.Add(PbLoading);
             splitContainer1.Panel2.Controls.Add(LblStatusMessage);
             splitContainer1.Panel2.Controls.Add(CxbPassword);
@@ -164,7 +163,6 @@
             splitContainer1.Panel2.Controls.Add(TxtPassword);
             splitContainer1.Panel2.Controls.Add(btnCV);
             splitContainer1.Panel2.Controls.Add(btnBI);
-            splitContainer1.Panel2.Controls.Add(BtnEdit);
             splitContainer1.Panel2.Controls.Add(DtpDateOfBirth);
             splitContainer1.Panel2.Controls.Add(TxtPhone);
             splitContainer1.Panel2.Controls.Add(TxtEmail);
@@ -349,7 +347,7 @@
             // PbLoading
             // 
             PbLoading.Image = Properties.Resources.Loading;
-            PbLoading.Location = new Point(350, 474);
+            PbLoading.Location = new Point(318, 476);
             PbLoading.Name = "PbLoading";
             PbLoading.Size = new Size(100, 50);
             PbLoading.SizeMode = PictureBoxSizeMode.Zoom;
@@ -381,6 +379,7 @@
             // TxtNBI
             // 
             TxtNBI.Location = new Point(158, 411);
+            TxtNBI.MaxLength = 14;
             TxtNBI.Name = "TxtNBI";
             TxtNBI.Size = new Size(360, 23);
             TxtNBI.TabIndex = 58;
@@ -463,6 +462,7 @@
             // 
             TxtPassword.Enabled = false;
             TxtPassword.Location = new Point(158, 445);
+            TxtPassword.MaxLength = 500;
             TxtPassword.Name = "TxtPassword";
             TxtPassword.PasswordChar = '●';
             TxtPassword.Size = new Size(360, 23);
@@ -513,6 +513,7 @@
             // TxtPhone
             // 
             TxtPhone.Location = new Point(158, 344);
+            TxtPhone.MaxLength = 20;
             TxtPhone.Name = "TxtPhone";
             TxtPhone.Size = new Size(360, 23);
             TxtPhone.TabIndex = 36;
@@ -520,6 +521,7 @@
             // TxtEmail
             // 
             TxtEmail.Location = new Point(158, 288);
+            TxtEmail.MaxLength = 100;
             TxtEmail.Name = "TxtEmail";
             TxtEmail.Size = new Size(360, 23);
             TxtEmail.TabIndex = 34;
@@ -527,6 +529,7 @@
             // TxtFullName
             // 
             TxtFullName.Location = new Point(158, 235);
+            TxtFullName.MaxLength = 100;
             TxtFullName.Name = "TxtFullName";
             TxtFullName.Size = new Size(360, 23);
             TxtFullName.TabIndex = 33;
@@ -534,6 +537,7 @@
             // TxtUserName
             // 
             TxtUserName.Location = new Point(158, 207);
+            TxtUserName.MaxLength = 50;
             TxtUserName.Name = "TxtUserName";
             TxtUserName.Size = new Size(360, 23);
             TxtUserName.TabIndex = 32;
@@ -565,6 +569,7 @@
             PbCv.SizeMode = PictureBoxSizeMode.Zoom;
             PbCv.TabIndex = 29;
             PbCv.TabStop = false;
+            PbCv.Click += PbCv_Click;
             // 
             // PbBI
             // 
@@ -576,6 +581,7 @@
             PbBI.SizeMode = PictureBoxSizeMode.Zoom;
             PbBI.TabIndex = 28;
             PbBI.TabStop = false;
+            PbBI.Click += PbBI_Click;
             // 
             // kryptonLabel26
             // 
@@ -669,18 +675,6 @@
             kryptonLabel16.TabIndex = 1;
             kryptonLabel16.Values.Text = "BILHETE DE IDENTIDADE : ";
             // 
-            // openFileDialog1
-            // 
-            openFileDialog1.FileName = "FOTO DE PERFIL";
-            // 
-            // openFileDialog2
-            // 
-            openFileDialog2.FileName = "BILHETE DE IDENTIDADE";
-            // 
-            // openFileDialog3
-            // 
-            openFileDialog3.FileName = "CURRICULUM VITAE";
-            // 
             // ErrorProvider
             // 
             ErrorProvider.ContainerControl = this;
@@ -754,14 +748,12 @@
         private Krypton.Toolkit.KryptonTextBox TxtPhone;
         private Krypton.Toolkit.KryptonDateTimePicker DtpDateOfBirth;
         private Krypton.Toolkit.KryptonButton BtnEdit;
-        private OpenFileDialog openFileDialog1;
-        private OpenFileDialog openFileDialog2;
+        private OpenFileDialog openFileDialog;
         private Krypton.Toolkit.KryptonButton btnCV;
         private Krypton.Toolkit.KryptonButton btnBI;
         private Krypton.Toolkit.KryptonTextBox TxtPassword;
         private Krypton.Toolkit.KryptonButton btnPhoto;
         private Krypton.Toolkit.KryptonLabel kryptonLabel28;
-        private OpenFileDialog openFileDialog3;
         private Krypton.Toolkit.KryptonDateTimePicker DtpValidUntil;
         private Krypton.Toolkit.KryptonLabel kryptonLabel29;
         private Krypton.Toolkit.KryptonDateTimePicker DtpIssuedOn;

@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using cpqi.Helpers;
 using cpqi.ViewModels;
 using Krypton.Toolkit;
 
@@ -22,7 +23,6 @@ namespace cpqi.Views.Admin
         private readonly BindingSource _bindingSource = new();
 
         private const long MaxFileSize = 5 * 1024 * 1024; // 5 MB
-        private readonly string[] AllowedDocumentExtensions = { ".pdf" };
         public AdminProfile(AuthenticatedUserViewModel authUser, UserFormViewModel viewModel)
         {
             InitializeComponent();
@@ -71,59 +71,52 @@ namespace cpqi.Views.Admin
             LblBirthDay.Text = _viewModel.DateOfBirth.ToShortDateString();
             LblIssuedOn.Text = _viewModel.IssuedOn.ToShortDateString();
             LblValidUntil.Text = _viewModel.ValidUntil.ToShortDateString();
-
-            LoadUserPhoto(_viewModel.PhotoPath);
+            LoadPhoto.ProfilePhoto(_viewModel.PhotoPath, PbPhoto);
 
             _viewModel.SelectedUser = _authUser.LoggedUser;
-            
+
             _viewModel.OnValidationFailed += (s, msg) => MessageBox.Show(msg, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             _viewModel.OnErrorOccurred += (s, msg) => MessageBox.Show(msg, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             _viewModel.OnSucessMessage += (s, msg) => MessageBox.Show(msg, "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-        }
-        private void LoadUserPhoto(string photoPath)
-        {
-            if (!string.IsNullOrWhiteSpace(photoPath) && File.Exists(photoPath))
-                PbPhoto.Image = Image.FromFile(photoPath);
-            else
-                PbPhoto.Image = Properties.Resources.administrator;
-        }
 
-        private void btnBI_Click(object sender, EventArgs e)
-        {
-            if (UploadFile("Documento (*.pdf)|*.pdf", @"localhost\\SQLEXPRESS\SharedAppFiles\BIs\Assistant", "bi", (path) => _viewModel.FileBiPath = path))
-            {
-                MessageBox.Show("CV carregado com sucesso.");
-            }
-        }
-
-        private void btnCV_Click(object sender, EventArgs e)
-        {
-            if (UploadFile("Documento (*.pdf)|*.pdf", @"localhost\\SQLEXPRESS\SharedAppFiles\CVs\Assistant", "cv", (path) => _viewModel.FileBiPath = path))
-            {
-                MessageBox.Show("BI carregado com sucesso.");
-            }
         }
         private void btnPhoto_Click(object sender, EventArgs e)
         {
-            if (UploadFile("Imagem (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png", @"localhost\\SQLEXPRESS\SharedAppFiles\Photos\Assistant", "foto", (path) => _viewModel.FileBiPath = path))
+            openFileDialog.FileName = "FOTO DE PERFIL";
+            if (UploadFile("Imagem (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png", @"localhost\\SQLEXPRESS\SharedAppFiles\Photos\Assistant", "foto", (path) => _viewModel.PhotoPath = path))
             {
-                MessageBox.Show("Foto carregado com sucesso.");
+                btnPhoto.PaletteMode = PaletteMode.Office2010Black; // Indicate success
+            }
+        }
+        private void btnBI_Click(object sender, EventArgs e)
+        {
+            openFileDialog.FileName = "BILHETE DE IDENTIDADE";
+            if (UploadFile("Documento (*.pdf)|*.pdf", @"localhost\\SQLEXPRESS\SharedAppFiles\BIs\Assistant", "bi", (path) => _viewModel.FileBiPath = path))
+            {
+                btnBI.PaletteMode = PaletteMode.Office2010Black; // Indicate success
+            }
+        }
+        private void btnCV_Click(object sender, EventArgs e)
+        {
+            openFileDialog.FileName = "CURRICULUM VITAE";
+            if (UploadFile("Documento (*.pdf)|*.pdf", @"localhost\\SQLEXPRESS\SharedAppFiles\CVs\Assistant", "cv", (path) => _viewModel.FileCvPath = path))
+            {
+                btnCV.PaletteMode = PaletteMode.Office2010Black; // Indicate success
             }
         }
         private bool UploadFile(string filter, string folderPath, string fileNamePrefix, Action<string> setFilePath)
         {
-            openFileDialog1.Filter = filter;
-            openFileDialog1.Title = "Selecionar arquivo";
+            openFileDialog.Filter = filter;
+            openFileDialog.Title = "Selecionar arquivo";
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                string filePath = openFileDialog1.FileName;
+                string filePath = openFileDialog.FileName;
                 string extension = Path.GetExtension(filePath).ToLower();
                 long fileSize = new FileInfo(filePath).Length;
 
                 // Validate extension
-                if (!AllowedDocumentExtensions.Contains(extension))
+                if (!filter.Contains(extension))
                 {
                     MessageBox.Show("Formato de arquivo inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -146,7 +139,6 @@ namespace cpqi.Views.Admin
                 {
                     File.Copy(filePath, destPath, true); // true = overwrite
                     setFilePath(destPath);
-                    MessageBox.Show($"{fileNamePrefix} salvo em: " + destPath);
                     return true;
                 }
                 catch (Exception ex)
@@ -169,7 +161,7 @@ namespace cpqi.Views.Admin
                 TxtPassword.Enabled = false; // Hide password
             }
         }
-       
+
         private async void BtnEdit_Click(object sender, EventArgs e)
         {
             if (!ValidateFormVisual()) return;
@@ -192,6 +184,10 @@ namespace cpqi.Views.Admin
                     _authUser.UpdateLoggedUser(_viewModel.SelectedUser); // Update _authUser.LoggedUser with new data (sync)
                     LoadUserData(); // Reflects changes in the interface
                     ShowStatusMessage("Perfil atualizado com sucesso!");
+
+                    btnPhoto.PaletteMode = PaletteMode.Global;
+                    btnCV.PaletteMode = PaletteMode.Global;
+                    btnBI.PaletteMode = PaletteMode.Global;
                 }
             }
             catch (Exception ex)
@@ -338,6 +334,36 @@ namespace cpqi.Views.Admin
             return isValid;
         }
 
-        
+        private void PbBI_Click(object sender, EventArgs e)
+        {
+            if(_viewModel.FileBiPath != null && File.Exists(_viewModel.FileBiPath))
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = _viewModel.FileBiPath,
+                    UseShellExecute = true
+                });
+            }
+            else
+            {
+                MessageBox.Show("BI não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void PbCv_Click(object sender, EventArgs e)
+        {
+            if (_viewModel.FileCvPath != null && File.Exists(_viewModel.FileCvPath))
+            {
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = _viewModel.FileCvPath,
+                    UseShellExecute = true
+                });
+            }
+            else
+            {
+                MessageBox.Show("CV não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

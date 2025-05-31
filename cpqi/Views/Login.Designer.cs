@@ -39,7 +39,7 @@
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox4 = new PictureBox();
-            Btn_login = new Krypton.Toolkit.KryptonButton();
+            BtnLogin = new Krypton.Toolkit.KryptonButton();
             PbExit = new Krypton.Toolkit.KryptonPictureBox();
             PbLoading = new Krypton.Toolkit.KryptonPictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -150,16 +150,16 @@
             pictureBox4.TabIndex = 12;
             pictureBox4.TabStop = false;
             // 
-            // Btn_login
+            // BtnLogin
             // 
-            Btn_login.Cursor = Cursors.Hand;
-            Btn_login.Location = new Point(361, 289);
-            Btn_login.Name = "Btn_login";
-            Btn_login.Size = new Size(90, 25);
-            Btn_login.TabIndex = 13;
-            Btn_login.Values.DropDownArrowColor = Color.Empty;
-            Btn_login.Values.Text = "ENTRAR";
-            Btn_login.Click += Btn_login_Click;
+            BtnLogin.Cursor = Cursors.Hand;
+            BtnLogin.Location = new Point(361, 289);
+            BtnLogin.Name = "BtnLogin";
+            BtnLogin.Size = new Size(90, 25);
+            BtnLogin.TabIndex = 13;
+            BtnLogin.Values.DropDownArrowColor = Color.Empty;
+            BtnLogin.Values.Text = "ENTRAR";
+            BtnLogin.Click += BtnLogin_Click;
             // 
             // PbExit
             // 
@@ -191,7 +191,7 @@
             ClientSize = new Size(704, 450);
             Controls.Add(PbLoading);
             Controls.Add(PbExit);
-            Controls.Add(Btn_login);
+            Controls.Add(BtnLogin);
             Controls.Add(pictureBox4);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox1);
@@ -228,7 +228,7 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private PictureBox pictureBox4;
-        private Krypton.Toolkit.KryptonButton Btn_login;
+        private Krypton.Toolkit.KryptonButton BtnLogin;
         private Krypton.Toolkit.KryptonPictureBox PbExit;
         private Krypton.Toolkit.KryptonPictureBox PbLoading;
     }
