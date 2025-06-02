@@ -93,6 +93,16 @@ namespace cpqi
         {
             ShowUniqueForm<AdminProfile>();
         }
+        public void ShowAdminAssistantProfile(User selectedUser)
+        {
+            var viewModel = _serviceProvider.GetRequiredService<UserFormViewModel>();
+            viewModel.LoadUserData(selectedUser);
+            viewModel.SelectedUser = selectedUser;
+
+            _userViewModel.UpdateLoggedUser(selectedUser); 
+
+            ShowUniqueForm<AdminAssistantProfile>(modal: true, _userViewModel, viewModel);
+        }
         public void ShowAdminRolesForm()
         {
             ShowUniqueForm<AdminViewRoles>();

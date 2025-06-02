@@ -10,20 +10,18 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using cpqi.Helpers;
-using cpqi.ViewModels;
-using Krypton.Toolkit;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace cpqi.Views.Admin
 {
-    public partial class AdminProfile : Form
+    public partial class AdminAssistantProfile : Form
     {
-
         private readonly AuthenticatedUserViewModel _authUser;
         private readonly UserFormViewModel _viewModel;
         private readonly BindingSource _bindingSource = new();
 
         private const long MaxFileSize = 5 * 1024 * 1024; // 5 MB
-        public AdminProfile(AuthenticatedUserViewModel authUser, UserFormViewModel viewModel)
+        public AdminAssistantProfile(AuthenticatedUserViewModel authUser, UserFormViewModel viewModel)
         {
             InitializeComponent();
             _authUser = authUser;
@@ -80,6 +78,7 @@ namespace cpqi.Views.Admin
             _viewModel.OnSucessMessage += (s, msg) => MessageBox.Show(msg, "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
+
         private void btnPhoto_Click(object sender, EventArgs e)
         {
             openFileDialog.FileName = "FOTO DE PERFIL";
@@ -88,6 +87,7 @@ namespace cpqi.Views.Admin
                 FileButtonColor.SuccessButton(btnPhoto);
             }
         }
+
         private void btnBI_Click(object sender, EventArgs e)
         {
             openFileDialog.FileName = "BILHETE DE IDENTIDADE";
@@ -96,6 +96,7 @@ namespace cpqi.Views.Admin
                 FileButtonColor.SuccessButton(btnBI);
             }
         }
+
         private void btnCV_Click(object sender, EventArgs e)
         {
             openFileDialog.FileName = "CURRICULUM VITAE";
@@ -164,7 +165,7 @@ namespace cpqi.Views.Admin
 
         private async void BtnEdit_Click(object sender, EventArgs e)
         {
-             await HandleEditClickAsync();
+            await HandleEditClickAsync();
         }
         private async Task HandleEditClickAsync()
         {
@@ -199,11 +200,12 @@ namespace cpqi.Views.Admin
                 ProcessingButton.ToggleUI(true, BtnEdit, PbLoading);
             }
         }
+
         private void StatusTimer_Tick(object sender, EventArgs e)
         {
             ShowStatusMessage.StatusTimerTick(LblStatusMessage, StatusTimer);
         }
-        
+
         #region Validation
         private bool ValidateFormVisual()
         {
@@ -237,6 +239,7 @@ namespace cpqi.Views.Admin
             
             if (!text.Equals(text.ToLower()))
                 return ErrorProviderView.SetError(TxtUserName, "O nome de usuário deve estar em letras minúsculas.", ErrorProvider);
+            
 
             return true;
         }
@@ -252,7 +255,6 @@ namespace cpqi.Views.Admin
             }
             return true;
         }
-       
         private bool ValidatePassword()
         {
             if (!CxbPassword.Checked)
@@ -276,11 +278,10 @@ namespace cpqi.Views.Admin
 
             if (!Regex.IsMatch(password, @"[\W_]"))
                 return ErrorProviderView.SetError(TxtPassword, "Deve conter símbolo.", ErrorProvider);
-
             return true;
         }
-        
         #endregion
+
         private void PbBI_Click(object sender, EventArgs e)
         {
             LoadFileView.ProfileFile(_viewModel.FileBiPath, "Bilhete de Identidade");

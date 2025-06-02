@@ -17,14 +17,14 @@ namespace cpqi.Views.Admin
     public partial class AdminViewAdministrativeAssistant : Form
     {
         private readonly UserFormViewModel _viewModel;
-        public AdminViewAdministrativeAssistant(UserFormViewModel viewModel)
+        private readonly FormManager _formManage;
+        public AdminViewAdministrativeAssistant(UserFormViewModel viewModel, FormManager formManager)
         {
             InitializeComponent();
             _viewModel = viewModel;
+            _formManage = formManager;
             LoadData();
 
-            dgvAdminAssistant.CellValueChanged += dgvAdminAssistant_CellValueChanged;
-            dgvAdminAssistant.UserDeletingRow += dgvAdminAssistant_UserDeletingRow;
         }
         private async void LoadData()
         {
@@ -35,17 +35,16 @@ namespace cpqi.Views.Admin
                 dgvAdminAssistant.AutoGenerateColumns = false;
                 ConfigureGridColumns();
                 dgvAdminAssistant.DataSource = _viewModel.Users;
+
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Erro ao carregar dados: " + ex.Message);
             }
         }
         private void ConfigureGridColumns()
         {
             dgvAdminAssistant.Columns.Clear();
-
             dgvAdminAssistant.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "USUÁRIO",
@@ -86,29 +85,48 @@ namespace cpqi.Views.Admin
                 Name = "RoleName",
                 ReadOnly = true
             });
+
+            dgvAdminAssistant.Columns.Add(new DataGridViewButtonColumn
+            {
+                Name = "Perfil",
+                HeaderText = "",
+                Text = "Perfil",
+                UseColumnTextForButtonValue = true,
+                Width = 80
+            });
+
+            dgvAdminAssistant.Columns.Add(new DataGridViewButtonColumn
+            {
+                Name = "Eliminar",
+                HeaderText = "",
+                Text = "Eliminar",
+                UseColumnTextForButtonValue = true,
+                Width = 80
+            });
         }
-
-        private void ViewAdministrativeAssistant_Load(object sender, EventArgs e)
+        private async void dgvAdminAssistant_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*
-          cbSex.DataSource = new string[] { "MASCULINO", "FEMININO", "OUTRO" };
-          cbRole.DataSource = _viewModel.Roles;
-          cbRole.DisplayMember = "RoleName";
-          cbRole.ValueMember = "RoleID";
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
-          dgvUsers.DataSource = _viewModel.Users;
-          dgvUsers.SelectionChanged += (s, e) =>
-          {
-              if (dgvUsers.CurrentRow?.DataBoundItem is User user)
-                  _viewModel.SelectedUser = user;
-              else
-                  _viewModel.SelectedUser = null;
-          };
+            var user = dgvAdminAssistant.Rows[e.RowIndex].DataBoundItem as User;
+            if (user == null) return;
 
-          // Botões
-          btnAdd.Click += (s, e) => _viewModel.AddUserCommand.Execute(null);
-          btnUpdate.Click += (s, e) => _viewModel.UpdateUserCommand.Execute(null);
-          btnDelete.Click += (s, e) => _viewModel.DeleteUserCommand.Execute(null);*/
+            var column = dgvAdminAssistant.Columns[e.ColumnIndex];
+
+            if (column.Name == "Perfil")
+            {
+                _viewModel.LoadUserData(user); // Loads data into the ViewModel and opens the form
+                _formManage.ShowAdminAssistantProfile(user);
+            }
+            else if (column.Name == "Eliminar")
+            {
+                var confirm = MessageBox.Show("Tem certeza que deseja eliminar este usuário?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (confirm == DialogResult.Yes)
+                {
+                    await _viewModel.DeleteUserFromGrid(user.UserID);
+                    LoadData(); // Update grid
+                }
+            }
         }
 
         private async void dgvAdminAssistant_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -139,5 +157,7 @@ namespace cpqi.Views.Admin
                 }
             }
         }
+
+       
     }
 }

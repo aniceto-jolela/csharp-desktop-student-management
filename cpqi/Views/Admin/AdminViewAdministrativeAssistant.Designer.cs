@@ -50,6 +50,7 @@
             dgvAdminAssistant.ReadOnly = true;
             dgvAdminAssistant.Size = new Size(1261, 332);
             dgvAdminAssistant.TabIndex = 5;
+            dgvAdminAssistant.CellContentClick += dgvAdminAssistant_CellContentClick;
             dgvAdminAssistant.CellValueChanged += dgvAdminAssistant_CellValueChanged;
             dgvAdminAssistant.UserDeletingRow += dgvAdminAssistant_UserDeletingRow;
             // 
@@ -67,7 +68,7 @@
             // kryptonPictureBox1
             // 
             kryptonPictureBox1.Image = Properties.Resources.flat_color_icons__assistant;
-            kryptonPictureBox1.Location = new Point(239, 13);
+            kryptonPictureBox1.Location = new Point(494, 13);
             kryptonPictureBox1.Name = "kryptonPictureBox1";
             kryptonPictureBox1.Size = new Size(21, 23);
             kryptonPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -76,7 +77,7 @@
             // 
             // kryptonLabel1
             // 
-            kryptonLabel1.Location = new Point(262, 11);
+            kryptonLabel1.Location = new Point(517, 11);
             kryptonLabel1.Name = "kryptonLabel1";
             kryptonLabel1.Size = new Size(308, 30);
             kryptonLabel1.StateNormal.ShortText.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -97,7 +98,6 @@
             Name = "AdminViewAdministrativeAssistant";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ViewRegisterAdministrativeAssistant";
-            Load += ViewAdministrativeAssistant_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAdminAssistant).EndInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).EndInit();
             kryptonPanel1.ResumeLayout(false);
@@ -111,6 +111,5 @@
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonPictureBox kryptonPictureBox1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
-        private DataGridViewTextBoxColumn roleDataGridViewTextBoxColumn;
     }
 }
