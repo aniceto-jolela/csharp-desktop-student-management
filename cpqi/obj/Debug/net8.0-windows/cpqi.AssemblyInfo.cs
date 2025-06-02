@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("cpqi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27a6d26b8304accdb86a3fdcbfba8f6b2f949bf8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+61bd2d39e411a92cda8052ffd6d990579620694a")]
 [assembly: System.Reflection.AssemblyProductAttribute("cpqi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("cpqi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0")]

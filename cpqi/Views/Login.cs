@@ -1,3 +1,4 @@
+using cpqi.Helpers;
 using cpqi.ViewModels;
 using cpqi.Views.Admin;
 
@@ -34,19 +35,17 @@ namespace cpqi
                 MessageBox.Show("Preencha nome de usuário e senha.");
                 return;
             }
-            BtnLogin.Enabled = false;
-            PbLoading.Visible = true;
+            ProcessingButton.ToggleUI(false, BtnLogin, PbLoading);
             this.UseWaitCursor = true;
 
             bool success = await _userViewModel.LoginAsync(username, password);
 
-            PbLoading.Visible = false;
+            ProcessingButton.ToggleUI(true, BtnLogin, PbLoading);
             this.UseWaitCursor = false;
-            BtnLogin.Enabled = true;
 
             if (!success)
             {
-                MessageBox.Show("Credenciais inválidas. Verifique seu nome de usuário ou senha.");
+                MessageBox.Show("Credenciais inválidas. Verifique seu nome de usuário ou senha.","AVISO",MessageBoxButtons.OK);
                 return;
             }
 

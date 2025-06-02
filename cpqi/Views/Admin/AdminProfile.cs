@@ -71,7 +71,7 @@ namespace cpqi.Views.Admin
             LblBirthDay.Text = _viewModel.DateOfBirth.ToShortDateString();
             LblIssuedOn.Text = _viewModel.IssuedOn.ToShortDateString();
             LblValidUntil.Text = _viewModel.ValidUntil.ToShortDateString();
-            LoadPhoto.ProfilePhoto(_viewModel.PhotoPath, PbPhoto);
+            LoadPhotoView.ProfilePhoto(_viewModel.PhotoPath, PbPhoto);
 
             _viewModel.SelectedUser = _authUser.LoggedUser;
 
@@ -85,7 +85,7 @@ namespace cpqi.Views.Admin
             openFileDialog.FileName = "FOTO DE PERFIL";
             if (UploadFile("Imagem (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png", @"localhost\\SQLEXPRESS\SharedAppFiles\Photos\Assistant", "foto", (path) => _viewModel.PhotoPath = path))
             {
-                btnPhoto.PaletteMode = PaletteMode.Office2010Black; // Indicate success
+                FileButtonColor.SuccessButton(btnPhoto);
             }
         }
         private void btnBI_Click(object sender, EventArgs e)
@@ -93,7 +93,7 @@ namespace cpqi.Views.Admin
             openFileDialog.FileName = "BILHETE DE IDENTIDADE";
             if (UploadFile("Documento (*.pdf)|*.pdf", @"localhost\\SQLEXPRESS\SharedAppFiles\BIs\Assistant", "bi", (path) => _viewModel.FileBiPath = path))
             {
-                btnBI.PaletteMode = PaletteMode.Office2010Black; // Indicate success
+                FileButtonColor.SuccessButton(btnBI);
             }
         }
         private void btnCV_Click(object sender, EventArgs e)
@@ -101,7 +101,7 @@ namespace cpqi.Views.Admin
             openFileDialog.FileName = "CURRICULUM VITAE";
             if (UploadFile("Documento (*.pdf)|*.pdf", @"localhost\\SQLEXPRESS\SharedAppFiles\CVs\Assistant", "cv", (path) => _viewModel.FileCvPath = path))
             {
-                btnCV.PaletteMode = PaletteMode.Office2010Black; // Indicate success
+                FileButtonColor.SuccessButton(btnCV);
             }
         }
         private bool UploadFile(string filter, string folderPath, string fileNamePrefix, Action<string> setFilePath)
@@ -164,6 +164,10 @@ namespace cpqi.Views.Admin
 
         private async void BtnEdit_Click(object sender, EventArgs e)
         {
+             await HandleEditClickAsync();
+        }
+        private async Task HandleEditClickAsync()
+        {
             if (!ValidateFormVisual()) return;
 
             if (_viewModel.SelectedUser == null)
@@ -171,9 +175,7 @@ namespace cpqi.Views.Admin
                 MessageBox.Show("Usuário não está autenticado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            BtnEdit.Enabled = false;
-            PbLoading.Visible = true;
+            ProcessingButton.ToggleUI(false, BtnEdit, PbLoading);
 
             try
             {
@@ -183,11 +185,9 @@ namespace cpqi.Views.Admin
                 {
                     _authUser.UpdateLoggedUser(_viewModel.SelectedUser); // Update _authUser.LoggedUser with new data (sync)
                     LoadUserData(); // Reflects changes in the interface
-                    ShowStatusMessage("Perfil atualizado com sucesso!");
+                    ShowStatusMessage.ShowMessage(LblStatusMessage, "Perfil atualizado com sucesso!", StatusTimer);
 
-                    btnPhoto.PaletteMode = PaletteMode.Global;
-                    btnCV.PaletteMode = PaletteMode.Global;
-                    btnBI.PaletteMode = PaletteMode.Global;
+                    FileButtonColor.ResetCustomButtonStyles(btnPhoto, btnBI, btnCV);
                 }
             }
             catch (Exception ex)
@@ -196,174 +196,96 @@ namespace cpqi.Views.Admin
             }
             finally
             {
-                BtnEdit.Enabled = true;
-                PbLoading.Visible = false;
+                ProcessingButton.ToggleUI(true, BtnEdit, PbLoading);
             }
-        }
-        private void ShowStatusMessage(string message)
-        {
-            LblStatusMessage.Text = message;
-            LblStatusMessage.Visible = true;
-            LblStatusMessage.ForeColor = Color.Green;
-            StatusTimer.Start();
         }
         private void StatusTimer_Tick(object sender, EventArgs e)
         {
-            StatusTimer.Stop();
-            LblStatusMessage.Visible = false;
+            ShowStatusMessage.StatusTimerTick(LblStatusMessage, StatusTimer);
         }
+        
+        #region Validation
         private bool ValidateFormVisual()
         {
-            bool isValid = true;
             ErrorProvider.Clear();
+            bool isValid = true;
 
-            // User name
-            if (string.IsNullOrWhiteSpace(TxtUserName.Text))
-            {
-                ErrorProvider.SetError(TxtUserName, "Nome de usuário é obrigatório.");
-                isValid = false;
-            }
-            else if (TxtUserName.Text.Length < 3)
-            {
-                ErrorProvider.SetError(TxtUserName, "Mínimo de 3 caracteres.");
-                isValid = false;
-            }
-            else if (TxtUserName.Text.Contains(" "))
-            {
-                ErrorProvider.SetError(TxtUserName, "Não deve conter espaços.");
-                isValid = false;
-            }
+            isValid &= ValidateUserName();
+            isValid &= ValidateView.ValidateFullName(TxtFullName, ErrorProvider);
+            isValid &= ValidateView.ValidateBI(TxtNBI, ErrorProvider);
+            isValid &= ValidateView.ValidateBIssueDates(DtpIssuedOn, DtpValidUntil, ErrorProvider);
+            isValid &= ValidateEmail();
+            isValid &= ValidateView.ValidatePhone(TxtPhone, ErrorProvider);
+            isValid &= ValidatePassword();
 
-            // Full Name
-            if (string.IsNullOrWhiteSpace(TxtFullName.Text))
-            {
-                ErrorProvider.SetError(TxtFullName, "Nome completo é obrigatório.");
-                isValid = false;
-            }
-            else if (TxtFullName.Text.Trim().Split(' ').Length < 2)
-            {
-                ErrorProvider.SetError(TxtFullName, "Informe pelo menos nome e sobrenome.");
-                isValid = false;
-            }
-
-            // BI
-            if (string.IsNullOrWhiteSpace(TxtNBI.Text))
-            {
-                ErrorProvider.SetError(TxtNBI, "BI é obrigatório.");
-                isValid = false;
-            }
-            else if (!Regex.IsMatch(TxtNBI.Text.Trim(), @"^[A-Z0-9]{6,15}$", RegexOptions.IgnoreCase))
-            {
-                ErrorProvider.SetError(TxtNBI, "Formato de BI inválido.");
-                isValid = false;
-            }
-
-            // Data BI
-            if (DtpIssuedOn.Value > DateTime.Today)
-            {
-                ErrorProvider.SetError(DtpIssuedOn, "Data de emissão não pode ser futura.");
-                isValid = false;
-            }
-
-            if (DtpValidUntil.Value <= DtpIssuedOn.Value)
-            {
-                ErrorProvider.SetError(DtpValidUntil, "Validade deve ser posterior à emissão.");
-                isValid = false;
-            }
-
-            // Email
-            if (!string.IsNullOrWhiteSpace(TxtEmail.Text))
-            {
-                var emailAttr = new EmailAddressAttribute();
-                if (!emailAttr.IsValid(TxtEmail.Text))
-                {
-                    ErrorProvider.SetError(TxtEmail, "Email inválido.");
-                    isValid = false;
-                }
-            }
-
-            // Phone
-            if (!string.IsNullOrWhiteSpace(TxtPhone.Text))
-            {
-                if (!Regex.IsMatch(TxtPhone.Text, @"^[\d\s\+\-\(\)]{7,15}$"))
-                {
-                    ErrorProvider.SetError(TxtPhone, "Telefone inválido.");
-                    isValid = false;
-                }
-            }
-
-            // Password
-            if (CxbPassword.Checked)
-            {
-                string password = TxtPassword.Text;
-
-                if (string.IsNullOrWhiteSpace(password))
-                {
-                    ErrorProvider.SetError(TxtPassword, "Senha é obrigatória.");
-                    isValid = false;
-                }
-                else
-                {
-                    if (password.Length < 8)
-                    {
-                        ErrorProvider.SetError(TxtPassword, "Mínimo 8 caracteres.");
-                        isValid = false;
-                    }
-                    else if (!Regex.IsMatch(password, @"[A-Z]"))
-                    {
-                        ErrorProvider.SetError(TxtPassword, "Deve conter letra MAIÚSCULA.");
-                        isValid = false;
-                    }
-                    else if (!Regex.IsMatch(password, @"[a-z]"))
-                    {
-                        ErrorProvider.SetError(TxtPassword, "Deve conter letra minúscula.");
-                        isValid = false;
-                    }
-                    else if (!Regex.IsMatch(password, @"\d"))
-                    {
-                        ErrorProvider.SetError(TxtPassword, "Deve conter número.");
-                        isValid = false;
-                    }
-                    else if (!Regex.IsMatch(password, @"[\W_]"))
-                    {
-                        ErrorProvider.SetError(TxtPassword, "Deve conter símbolo.");
-                        isValid = false;
-                    }
-                }
-            }
             return isValid;
         }
+        private bool ValidateUserName()
+        {
+            var text = TxtUserName.Text;
+            if (string.IsNullOrWhiteSpace(text))
+                return ErrorProviderView.SetError(TxtUserName, "Nome de usuário é obrigatório.", ErrorProvider);
 
+            if (text.Length < 3)
+                return ErrorProviderView.SetError(TxtUserName, "Mínimo de 3 caracteres.", ErrorProvider);
+
+            if (text.Contains(" "))
+                return ErrorProviderView.SetError(TxtUserName, "Não deve conter espaços.", ErrorProvider);
+
+            if (!RegexRules.UserName.IsMatch(text))
+                return ErrorProviderView.SetError(TxtUserName, "Use apenas letras, números e underline (_).", ErrorProvider);
+
+            return true;
+        }
+
+        private bool ValidateEmail()
+        {
+            var email = TxtEmail.Text;
+            if (!string.IsNullOrWhiteSpace(email))
+            {
+                var emailAttr = new EmailAddressAttribute();
+                if (!emailAttr.IsValid(email))
+                    return ErrorProviderView.SetError(TxtEmail, "Email inválido.", ErrorProvider);
+            }
+            return true;
+        }
+       
+        private bool ValidatePassword()
+        {
+            if (!CxbPassword.Checked)
+                return true;
+
+            var password = TxtPassword.Text;
+            if (string.IsNullOrWhiteSpace(password))
+                return ErrorProviderView.SetError(TxtPassword, "Senha é obrigatória.", ErrorProvider);
+
+            if (password.Length < 8)
+                return ErrorProviderView.SetError(TxtPassword, "Mínimo 8 caracteres.", ErrorProvider);
+
+            if (!Regex.IsMatch(password, @"[A-Z]"))
+                return ErrorProviderView.SetError(TxtPassword, "Deve conter letra MAIÚSCULA.", ErrorProvider);
+
+            if (!Regex.IsMatch(password, @"[a-z]"))
+                return ErrorProviderView.SetError(TxtPassword, "Deve conter letra minúscula.", ErrorProvider);
+
+            if (!Regex.IsMatch(password, @"\d"))
+                return ErrorProviderView.SetError(TxtPassword, "Deve conter número.", ErrorProvider);
+
+            if (!Regex.IsMatch(password, @"[\W_]"))
+                return ErrorProviderView.SetError(TxtPassword, "Deve conter símbolo.", ErrorProvider);
+
+            return true;
+        }
+        
+        #endregion
         private void PbBI_Click(object sender, EventArgs e)
         {
-            if(_viewModel.FileBiPath != null && File.Exists(_viewModel.FileBiPath))
-            {
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                {
-                    FileName = _viewModel.FileBiPath,
-                    UseShellExecute = true
-                });
-            }
-            else
-            {
-                MessageBox.Show("BI não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            LoadFileView.ProfileFile(_viewModel.FileBiPath, "Bilhete de Identidade");
         }
 
         private void PbCv_Click(object sender, EventArgs e)
         {
-            if (_viewModel.FileCvPath != null && File.Exists(_viewModel.FileCvPath))
-            {
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                {
-                    FileName = _viewModel.FileCvPath,
-                    UseShellExecute = true
-                });
-            }
-            else
-            {
-                MessageBox.Show("CV não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            LoadFileView.ProfileFile(_viewModel.FileCvPath, "Curriculum Vitae");
         }
     }
 }

@@ -63,6 +63,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "FluentValidation/12.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/FluentValidation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/FluentValidation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -2205,6 +2218,21 @@
         "lib/netstandard2.1/CommunityToolkit.Mvvm.dll",
         "lib/netstandard2.1/CommunityToolkit.Mvvm.pdb",
         "lib/netstandard2.1/CommunityToolkit.Mvvm.xml"
+      ]
+    },
+    "FluentValidation/12.0.0": {
+      "sha512": "8NVLxtMUXynRHJIX3Hn1ACovaqZIJASufXIIFkD0EUbcd5PmMsL1xUD5h548gCezJ5BzlITaR9CAMrGe29aWpA==",
+      "type": "package",
+      "path": "fluentvalidation/12.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.12.0.0.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net8.0/FluentValidation.dll",
+        "lib/net8.0/FluentValidation.xml"
       ]
     },
     "Humanizer.Core/2.14.1": {
@@ -5589,6 +5617,7 @@
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
       "CommunityToolkit.Mvvm >= 8.4.0",
+      "FluentValidation >= 12.0.0",
       "Krypton.Docking >= 95.25.4.111",
       "Krypton.Navigator >= 95.25.4.111",
       "Krypton.Ribbon >= 95.25.4.111",
@@ -5656,6 +5685,10 @@
           "CommunityToolkit.Mvvm": {
             "target": "Package",
             "version": "[8.4.0, )"
+          },
+          "FluentValidation": {
+            "target": "Package",
+            "version": "[12.0.0, )"
           },
           "Krypton.Docking": {
             "target": "Package",

@@ -8,6 +8,7 @@
 [![quest pdf](https://img.shields.io/badge/quest_pdf-2025.5.0-red)](https://www.nuget.org/packages/QuestPDF)
 [![microsoft entity framework core](https://img.shields.io/badge/microsoft_entity_framework_core-9.0.5-blue)](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/9.0.5)
 [![microsoft entity framework core sqlserver](https://img.shields.io/badge/microsoft_entity_framework_core_sqlserver-9.0.5-blue)](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/9.0.5)
+[![fluent validation](https://img.shields.io/badge/fluent_validation-12.0.0-crimson)](https://www.nuget.org/packages/FluentValidation/12.0.0?_src=template)
 
 
 Toolbox

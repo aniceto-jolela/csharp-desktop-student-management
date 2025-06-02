@@ -36,7 +36,7 @@ namespace cpqi.Views.Admin
             timer.Start();
 
             lblFullName.Text = $"Bem-vindo, {_user.FullName}";
-            LoadPhoto.ProfilePhoto(_user.PhotoPath, PbProfile);
+            LoadPhotoView.ProfilePhoto(_user.PhotoPath, PbProfile);
         }
         private void Timer_Tick(object? sender, EventArgs e)
         {

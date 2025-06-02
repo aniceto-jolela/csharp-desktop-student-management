@@ -9,6 +9,7 @@
       "cpqi/1.0.0": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.4.0",
+          "FluentValidation": "12.0.0",
           "Krypton.Docking": "95.25.4.111",
           "Krypton.Navigator": "95.25.4.111",
           "Krypton.Ribbon": "95.25.4.111",
@@ -66,6 +67,14 @@
           "lib/net8.0/CommunityToolkit.Mvvm.dll": {
             "assemblyVersion": "8.4.0.0",
             "fileVersion": "8.4.0.1"
+          }
+        }
+      },
+      "FluentValidation/12.0.0": {
+        "runtime": {
+          "lib/net8.0/FluentValidation.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.0.0"
           }
         }
       },
@@ -1519,6 +1528,13 @@
       "sha512": "sha512-tqVU8yc/ADO9oiTRyTnwhFN68hCwvkliMierptWOudIAvWY1mWCh5VFh+guwHJmpMwfg0J0rY+yyd5Oy7ty9Uw==",
       "path": "communitytoolkit.mvvm/8.4.0",
       "hashPath": "communitytoolkit.mvvm.8.4.0.nupkg.sha512"
+    },
+    "FluentValidation/12.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8NVLxtMUXynRHJIX3Hn1ACovaqZIJASufXIIFkD0EUbcd5PmMsL1xUD5h548gCezJ5BzlITaR9CAMrGe29aWpA==",
+      "path": "fluentvalidation/12.0.0",
+      "hashPath": "fluentvalidation.12.0.0.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",

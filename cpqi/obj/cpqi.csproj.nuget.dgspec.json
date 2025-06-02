@@ -54,6 +54,10 @@
               "target": "Package",
               "version": "[8.4.0, )"
             },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[12.0.0, )"
+            },
             "Krypton.Docking": {
               "target": "Package",
               "version": "[95.25.4.111, )"

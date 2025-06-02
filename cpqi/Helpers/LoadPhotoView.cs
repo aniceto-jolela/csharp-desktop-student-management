@@ -7,7 +7,7 @@ using Krypton.Toolkit;
 
 namespace cpqi.Helpers
 {
-    public class LoadPhoto
+    public static class LoadPhotoView
     {
         public static void ProfilePhoto(string? photoPath, KryptonPictureBox PbPhoto)
         {

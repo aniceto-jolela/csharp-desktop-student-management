@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "RH/DE1A6c4w=",
+  "dgSpecHash": "MYB4+qr9osA=",
   "success": true,
   "projectFilePath": "C:\\Users\\Other\\Documents\\Dev\\csharp-desktop-student-management\\cpqi\\cpqi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Other\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Other\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
     "C:\\Users\\Other\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+    "C:\\Users\\Other\\.nuget\\packages\\fluentvalidation\\12.0.0\\fluentvalidation.12.0.0.nupkg.sha512",
     "C:\\Users\\Other\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Other\\.nuget\\packages\\krypton.docking\\95.25.4.111\\krypton.docking.95.25.4.111.nupkg.sha512",
     "C:\\Users\\Other\\.nuget\\packages\\krypton.navigator\\95.25.4.111\\krypton.navigator.95.25.4.111.nupkg.sha512",
