@@ -52,14 +52,12 @@ public partial class UserFormViewModel : ObservableObject
     }
 
     #region Database Operations
-    public async Task AddUser()
+    public async Task<bool> AddUser()
     {
         try
         {
             if (!await ValidateFieldsAsync(isUpdate: false))
-            {
-                return;
-            }
+                return false;
 
             var passwordHash = HashPassword(Password, out var salt);
 
@@ -91,11 +89,12 @@ public partial class UserFormViewModel : ObservableObject
             await _userRepository.AddUserAsync(user);
             await LoadUsers();
             ClearFields();
-            OnSucessMessage?.Invoke(this, "Usuário cadastrado com sucesso!");
+            return true;
         }
         catch (Exception ex)
         {
             OnErrorOccurred?.Invoke(this, $"Erro ao cadastrar usuário: {ex.Message}");
+            return false;
         }
     }
 
@@ -416,7 +415,11 @@ public partial class UserFormViewModel : ObservableObject
             OnValidationFailed?.Invoke(this, "Bilhete de identidade já está cadastrado.");
             return false;
         }
-
+        if (string.IsNullOrWhiteSpace(Email))
+        {
+            OnValidationFailed?.Invoke(this, "Email de usuário é obrigatório.");
+            return false;
+        }
         if (!string.IsNullOrWhiteSpace(Email))
         {
             var emailValidator = new EmailAddressAttribute();
@@ -426,6 +429,16 @@ public partial class UserFormViewModel : ObservableObject
                 return false;
             }
         }
+        var emailExists = existingUsers.Any(u =>
+           u.Email != null &&
+           u.Email.Equals(Email, StringComparison.OrdinalIgnoreCase) &&
+           (!isUpdate || u.UserID != SelectedUser?.UserID));
+
+            if (emailExists)
+            {
+                OnValidationFailed?.Invoke(this, "Este email já está cadastrado.");
+                return false;
+            }
 
         if (!string.IsNullOrWhiteSpace(Phone))
         {

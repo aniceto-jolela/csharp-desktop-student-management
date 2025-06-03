@@ -51,6 +51,7 @@
             kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
             LblUser = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            BtnEdit = new Krypton.Toolkit.KryptonButton();
             PbLoading = new Krypton.Toolkit.KryptonPictureBox();
             LblStatusMessage = new Krypton.Toolkit.KryptonLabel();
             CxbPassword = new Krypton.Toolkit.KryptonCheckBox();
@@ -59,14 +60,13 @@
             CbSex = new Krypton.Toolkit.KryptonComboBox();
             DtpValidUntil = new Krypton.Toolkit.KryptonDateTimePicker();
             kryptonLabel29 = new Krypton.Toolkit.KryptonLabel();
-            btnPhoto = new Krypton.Toolkit.KryptonButton();
+            BtnPhoto = new Krypton.Toolkit.KryptonButton();
             DtpIssuedOn = new Krypton.Toolkit.KryptonDateTimePicker();
             kryptonLabel28 = new Krypton.Toolkit.KryptonLabel();
             kryptonLabel30 = new Krypton.Toolkit.KryptonLabel();
             TxtPassword = new Krypton.Toolkit.KryptonTextBox();
-            btnCV = new Krypton.Toolkit.KryptonButton();
-            btnBI = new Krypton.Toolkit.KryptonButton();
-            BtnEdit = new Krypton.Toolkit.KryptonButton();
+            BtnCV = new Krypton.Toolkit.KryptonButton();
+            BtnBI = new Krypton.Toolkit.KryptonButton();
             DtpDateOfBirth = new Krypton.Toolkit.KryptonDateTimePicker();
             TxtPhone = new Krypton.Toolkit.KryptonTextBox();
             TxtEmail = new Krypton.Toolkit.KryptonTextBox();
@@ -156,13 +156,13 @@
             splitContainer1.Panel2.Controls.Add(CbSex);
             splitContainer1.Panel2.Controls.Add(DtpValidUntil);
             splitContainer1.Panel2.Controls.Add(kryptonLabel29);
-            splitContainer1.Panel2.Controls.Add(btnPhoto);
+            splitContainer1.Panel2.Controls.Add(BtnPhoto);
             splitContainer1.Panel2.Controls.Add(DtpIssuedOn);
             splitContainer1.Panel2.Controls.Add(kryptonLabel28);
             splitContainer1.Panel2.Controls.Add(kryptonLabel30);
             splitContainer1.Panel2.Controls.Add(TxtPassword);
-            splitContainer1.Panel2.Controls.Add(btnCV);
-            splitContainer1.Panel2.Controls.Add(btnBI);
+            splitContainer1.Panel2.Controls.Add(BtnCV);
+            splitContainer1.Panel2.Controls.Add(BtnBI);
             splitContainer1.Panel2.Controls.Add(DtpDateOfBirth);
             splitContainer1.Panel2.Controls.Add(TxtPhone);
             splitContainer1.Panel2.Controls.Add(TxtEmail);
@@ -344,6 +344,17 @@
             kryptonLabel2.TabIndex = 7;
             kryptonLabel2.Values.Text = "USUÁRIO :";
             // 
+            // BtnEdit
+            // 
+            BtnEdit.Cursor = Cursors.Hand;
+            BtnEdit.Location = new Point(254, 489);
+            BtnEdit.Name = "BtnEdit";
+            BtnEdit.Size = new Size(90, 25);
+            BtnEdit.TabIndex = 38;
+            BtnEdit.Values.DropDownArrowColor = Color.Empty;
+            BtnEdit.Values.Text = "EDITAR";
+            BtnEdit.Click += BtnEdit_Click;
+            // 
             // PbLoading
             // 
             PbLoading.Image = Properties.Resources.Loading;
@@ -422,16 +433,16 @@
             kryptonLabel29.TabIndex = 54;
             kryptonLabel29.Values.Text = "VALIDO ATÉ  *";
             // 
-            // btnPhoto
+            // BtnPhoto
             // 
-            btnPhoto.Cursor = Cursors.Hand;
-            btnPhoto.Location = new Point(214, 375);
-            btnPhoto.Name = "btnPhoto";
-            btnPhoto.Size = new Size(46, 25);
-            btnPhoto.TabIndex = 43;
-            btnPhoto.Values.DropDownArrowColor = Color.Empty;
-            btnPhoto.Values.Text = "";
-            btnPhoto.Click += btnPhoto_Click;
+            BtnPhoto.Cursor = Cursors.Hand;
+            BtnPhoto.Location = new Point(214, 375);
+            BtnPhoto.Name = "BtnPhoto";
+            BtnPhoto.Size = new Size(46, 25);
+            BtnPhoto.TabIndex = 43;
+            BtnPhoto.Values.DropDownArrowColor = Color.Empty;
+            BtnPhoto.Values.Text = "";
+            BtnPhoto.Click += BtnPhoto_Click;
             // 
             // DtpIssuedOn
             // 
@@ -469,38 +480,27 @@
             TxtPassword.TabIndex = 41;
             TxtPassword.UseSystemPasswordChar = true;
             // 
-            // btnCV
+            // BtnCV
             // 
-            btnCV.Cursor = Cursors.Hand;
-            btnCV.Location = new Point(464, 375);
-            btnCV.Name = "btnCV";
-            btnCV.Size = new Size(54, 25);
-            btnCV.TabIndex = 40;
-            btnCV.Values.DropDownArrowColor = Color.Empty;
-            btnCV.Values.Text = "";
-            btnCV.Click += btnCV_Click;
+            BtnCV.Cursor = Cursors.Hand;
+            BtnCV.Location = new Point(464, 375);
+            BtnCV.Name = "BtnCV";
+            BtnCV.Size = new Size(54, 25);
+            BtnCV.TabIndex = 40;
+            BtnCV.Values.DropDownArrowColor = Color.Empty;
+            BtnCV.Values.Text = "";
+            BtnCV.Click += BtnCV_Click;
             // 
-            // btnBI
+            // BtnBI
             // 
-            btnBI.Cursor = Cursors.Hand;
-            btnBI.Location = new Point(322, 375);
-            btnBI.Name = "btnBI";
-            btnBI.Size = new Size(48, 25);
-            btnBI.TabIndex = 39;
-            btnBI.Values.DropDownArrowColor = Color.Empty;
-            btnBI.Values.Text = "";
-            btnBI.Click += btnBI_Click;
-            // 
-            // BtnEdit
-            // 
-            BtnEdit.Cursor = Cursors.Hand;
-            BtnEdit.Location = new Point(254, 489);
-            BtnEdit.Name = "BtnEdit";
-            BtnEdit.Size = new Size(90, 25);
-            BtnEdit.TabIndex = 38;
-            BtnEdit.Values.DropDownArrowColor = Color.Empty;
-            BtnEdit.Values.Text = "EDITAR";
-            BtnEdit.Click += BtnEdit_Click;
+            BtnBI.Cursor = Cursors.Hand;
+            BtnBI.Location = new Point(322, 375);
+            BtnBI.Name = "BtnBI";
+            BtnBI.Size = new Size(48, 25);
+            BtnBI.TabIndex = 39;
+            BtnBI.Values.DropDownArrowColor = Color.Empty;
+            BtnBI.Values.Text = "";
+            BtnBI.Click += BtnBI_Click;
             // 
             // DtpDateOfBirth
             // 
@@ -620,9 +620,10 @@
             // 
             kryptonLabel21.Location = new Point(22, 291);
             kryptonLabel21.Name = "kryptonLabel21";
-            kryptonLabel21.Size = new Size(51, 20);
+            kryptonLabel21.Size = new Size(53, 20);
+            kryptonLabel21.StateNormal.ShortText.Color1 = Color.DarkRed;
             kryptonLabel21.TabIndex = 23;
-            kryptonLabel21.Values.Text = "EMAIL :";
+            kryptonLabel21.Values.Text = "EMAIL *";
             // 
             // kryptonLabel22
             // 
@@ -749,10 +750,10 @@
         private Krypton.Toolkit.KryptonDateTimePicker DtpDateOfBirth;
         private Krypton.Toolkit.KryptonButton BtnEdit;
         private OpenFileDialog openFileDialog;
-        private Krypton.Toolkit.KryptonButton btnCV;
-        private Krypton.Toolkit.KryptonButton btnBI;
+        private Krypton.Toolkit.KryptonButton BtnCV;
+        private Krypton.Toolkit.KryptonButton BtnBI;
         private Krypton.Toolkit.KryptonTextBox TxtPassword;
-        private Krypton.Toolkit.KryptonButton btnPhoto;
+        private Krypton.Toolkit.KryptonButton BtnPhoto;
         private Krypton.Toolkit.KryptonLabel kryptonLabel28;
         private Krypton.Toolkit.KryptonDateTimePicker DtpValidUntil;
         private Krypton.Toolkit.KryptonLabel kryptonLabel29;

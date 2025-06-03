@@ -33,6 +33,7 @@ namespace cpqi.Views.Admin
             dgvAdminAssistant.CellMouseLeave += dgvAdminAssistant_CellMouseLeave;
             dgvAdminAssistant.CellMouseDown += dgvAdminAssistant_CellMouseDown;
             dgvAdminAssistant.CellMouseUp += dgvAdminAssistant_CellMouseUp;
+            TxtSearch.TextChanged += TxtSearch_TextChanged;
             LoadData();
         }
         private async void LoadData()
@@ -44,7 +45,7 @@ namespace cpqi.Views.Admin
                 dgvAdminAssistant.AutoGenerateColumns = false;
                 ConfigureGridColumns();
                 dgvAdminAssistant.DataSource = _viewModel.Users;
-                
+
                 // Load images for the "Profile" and "Delete" columns
                 foreach (DataGridViewRow row in dgvAdminAssistant.Rows)
                 {
@@ -72,7 +73,7 @@ namespace cpqi.Views.Admin
             {
                 HeaderText = "NOME COMPLETO",
                 DataPropertyName = "FullName",
-                Width = 460,
+                Width = 330,
                 Name = "FullName"
             });
 
@@ -80,7 +81,7 @@ namespace cpqi.Views.Admin
             {
                 HeaderText = "SEXO",
                 DataPropertyName = "Sex",
-                Width = 100,
+                Width = 95,
                 Name = "Sex"
             });
 
@@ -88,7 +89,7 @@ namespace cpqi.Views.Admin
             {
                 HeaderText = "EMAIL",
                 DataPropertyName = "Email",
-                Width = 330,
+                Width = 280,
                 Name = "Email"
             });
 
@@ -121,7 +122,7 @@ namespace cpqi.Views.Admin
                 Name = "Eliminar",
                 HeaderText = "ELIMINAR",
                 ImageLayout = DataGridViewImageCellLayout.Zoom,
-                Width = 50
+                Width = 70
             });
         }
         private async void dgvAdminAssistant_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -153,20 +154,8 @@ namespace cpqi.Views.Admin
                 var confirm = MessageBox.Show("Tem certeza que deseja eliminar este usuário?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (confirm == DialogResult.Yes)
                 {
-                    //await _viewModel.DeleteUserFromGrid(user.UserID);
+                    await _viewModel.DeleteUserFromGrid(user.UserID);
                     LoadData(); // Update grid
-                }
-            }
-        }
-
-        private async void dgvAdminAssistant_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var user = dgvAdminAssistant.Rows[e.RowIndex].DataBoundItem as User;
-                if (user != null)
-                {
-                    //await _viewModel.UpdateUserFromGrid(user);
                 }
             }
         }
@@ -206,7 +195,7 @@ namespace cpqi.Views.Admin
                 // Hover
                 if (e.RowIndex == _hoveredRowIndex)
                     backColor = user.IsStaff ? Color.ForestGreen : Color.LightGray;
-                    
+
                 // press
                 if (e.RowIndex == _pressedRowIndex)
                     backColor = user.IsStaff ? Color.DarkGreen : Color.Gray;
@@ -266,6 +255,27 @@ namespace cpqi.Views.Admin
             {
                 _pressedRowIndex = -1;
                 dgvAdminAssistant.InvalidateCell(e.ColumnIndex, e.RowIndex);
+            }
+        }
+
+        private void TxtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchTerm = TxtSearch.Text.Trim().ToLower();
+
+            var filteredUsers = _viewModel.Users
+                .Where(user =>
+                    (!string.IsNullOrEmpty(user.UserName) && user.UserName.ToLower().Contains(searchTerm)) ||
+                    (!string.IsNullOrEmpty(user.FullName) && user.FullName.ToLower().Contains(searchTerm)) ||
+                    (!string.IsNullOrEmpty(user.Email) && user.Email.ToLower().Contains(searchTerm)) ||
+                    (!string.IsNullOrEmpty(user.Sex) && user.Sex.ToLower().Contains(searchTerm)) ||
+                    (!string.IsNullOrEmpty(user.RoleName) && user.RoleName.ToLower().Contains(searchTerm)))
+                .ToList();
+
+            dgvAdminAssistant.DataSource = new BindingList<User>(filteredUsers);
+            foreach (DataGridViewRow row in dgvAdminAssistant.Rows)
+            {
+                row.Cells["Perfil"].Value = Properties.Resources.profile_icon;
+                row.Cells["Eliminar"].Value = Properties.Resources.delete_icon;
             }
         }
     }

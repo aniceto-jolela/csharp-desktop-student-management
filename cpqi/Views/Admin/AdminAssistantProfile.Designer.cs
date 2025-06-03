@@ -620,9 +620,10 @@
             // 
             kryptonLabel21.Location = new Point(22, 291);
             kryptonLabel21.Name = "kryptonLabel21";
-            kryptonLabel21.Size = new Size(51, 20);
+            kryptonLabel21.Size = new Size(53, 20);
+            kryptonLabel21.StateNormal.ShortText.Color1 = Color.DarkRed;
             kryptonLabel21.TabIndex = 23;
-            kryptonLabel21.Values.Text = "EMAIL :";
+            kryptonLabel21.Values.Text = "EMAIL *";
             // 
             // kryptonLabel22
             // 

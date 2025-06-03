@@ -80,28 +80,29 @@ namespace cpqi.Views.Admin
             _viewModel.OnSucessMessage += (s, msg) => MessageBox.Show(msg, "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
-        private void btnPhoto_Click(object sender, EventArgs e)
+        private void BtnPhoto_Click(object sender, EventArgs e)
         {
             openFileDialog.FileName = "FOTO DE PERFIL";
             if (UploadFile("Imagem (*.jpg;*.jpeg;*.png)|*.jpg;*.jpeg;*.png", @"localhost\\SQLEXPRESS\SharedAppFiles\Photos\Assistant", "foto", (path) => _viewModel.PhotoPath = path))
             {
-                FileButtonColor.SuccessButton(btnPhoto);
+                FileButtonColor.SuccessButton(BtnPhoto);
             }
         }
-        private void btnBI_Click(object sender, EventArgs e)
+        private void BtnBI_Click(object sender, EventArgs e)
         {
             openFileDialog.FileName = "BILHETE DE IDENTIDADE";
             if (UploadFile("Documento (*.pdf)|*.pdf", @"localhost\\SQLEXPRESS\SharedAppFiles\BIs\Assistant", "bi", (path) => _viewModel.FileBiPath = path))
             {
-                FileButtonColor.SuccessButton(btnBI);
+                FileButtonColor.SuccessButton(BtnBI);
             }
         }
-        private void btnCV_Click(object sender, EventArgs e)
+
+        private void BtnCV_Click(object sender, EventArgs e)
         {
             openFileDialog.FileName = "CURRICULUM VITAE";
             if (UploadFile("Documento (*.pdf)|*.pdf", @"localhost\\SQLEXPRESS\SharedAppFiles\CVs\Assistant", "cv", (path) => _viewModel.FileCvPath = path))
             {
-                FileButtonColor.SuccessButton(btnCV);
+                FileButtonColor.SuccessButton(BtnCV);
             }
         }
         private bool UploadFile(string filter, string folderPath, string fileNamePrefix, Action<string> setFilePath)
@@ -164,7 +165,7 @@ namespace cpqi.Views.Admin
 
         private async void BtnEdit_Click(object sender, EventArgs e)
         {
-             await HandleEditClickAsync();
+            await HandleEditClickAsync();
         }
         private async Task HandleEditClickAsync()
         {
@@ -186,8 +187,7 @@ namespace cpqi.Views.Admin
                     _authUser.UpdateLoggedUser(_viewModel.SelectedUser); // Update _authUser.LoggedUser with new data (sync)
                     LoadUserData(); // Reflects changes in the interface
                     ShowStatusMessage.ShowMessage(LblStatusMessage, "Perfil atualizado com sucesso!", StatusTimer);
-
-                    FileButtonColor.ResetCustomButtonStyles(btnPhoto, btnBI, btnCV);
+                    FileButtonColor.ResetCustomButtonStyles(BtnPhoto, BtnBI, BtnCV);
                 }
             }
             catch (Exception ex)
@@ -203,7 +203,7 @@ namespace cpqi.Views.Admin
         {
             ShowStatusMessage.StatusTimerTick(LblStatusMessage, StatusTimer);
         }
-        
+
         #region Validation
         private bool ValidateFormVisual()
         {
@@ -234,7 +234,7 @@ namespace cpqi.Views.Admin
 
             if (!RegexRules.UserName.IsMatch(text))
                 return ErrorProviderView.SetError(TxtUserName, "Use apenas letras, números e underline (_).", ErrorProvider);
-            
+
             if (!text.Equals(text.ToLower()))
                 return ErrorProviderView.SetError(TxtUserName, "O nome de usuário deve estar em letras minúsculas.", ErrorProvider);
 
@@ -252,7 +252,7 @@ namespace cpqi.Views.Admin
             }
             return true;
         }
-       
+
         private bool ValidatePassword()
         {
             if (!CxbPassword.Checked)
@@ -279,7 +279,7 @@ namespace cpqi.Views.Admin
 
             return true;
         }
-        
+
         #endregion
         private void PbBI_Click(object sender, EventArgs e)
         {
@@ -290,5 +290,6 @@ namespace cpqi.Views.Admin
         {
             LoadFileView.ProfileFile(_viewModel.FileCvPath, "Curriculum Vitae");
         }
+
     }
 }

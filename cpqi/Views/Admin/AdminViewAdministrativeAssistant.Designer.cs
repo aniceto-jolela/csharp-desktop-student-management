@@ -33,6 +33,8 @@
             kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             kryptonPictureBox1 = new Krypton.Toolkit.KryptonPictureBox();
             kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            TxtSearch = new Krypton.Toolkit.KryptonTextBox();
+            kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)dgvAdminAssistant).BeginInit();
             ((System.ComponentModel.ISupportInitialize)kryptonPanel1).BeginInit();
             kryptonPanel1.SuspendLayout();
@@ -42,6 +44,8 @@
             // dgvAdminAssistant
             // 
             dgvAdminAssistant.AllowUserToDeleteRows = false;
+            dgvAdminAssistant.AllowUserToResizeColumns = false;
+            dgvAdminAssistant.AllowUserToResizeRows = false;
             dgvAdminAssistant.AutoGenerateKryptonColumns = false;
             dgvAdminAssistant.BorderStyle = BorderStyle.None;
             dgvAdminAssistant.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -56,7 +60,6 @@
             dgvAdminAssistant.CellMouseLeave += dgvAdminAssistant_CellMouseLeave;
             dgvAdminAssistant.CellMouseUp += dgvAdminAssistant_CellMouseUp;
             dgvAdminAssistant.CellPainting += dgvAdminAssistant_CellPainting;
-            dgvAdminAssistant.CellValueChanged += dgvAdminAssistant_CellValueChanged;
             dgvAdminAssistant.UserDeletingRow += dgvAdminAssistant_UserDeletingRow;
             // 
             // kryptonPanel1
@@ -89,11 +92,29 @@
             kryptonLabel1.TabIndex = 4;
             kryptonLabel1.Values.Text = "ASSISTENTE ADMINISTRATIVO(A)S";
             // 
+            // TxtSearch
+            // 
+            TxtSearch.Location = new Point(992, 68);
+            TxtSearch.Name = "TxtSearch";
+            TxtSearch.Size = new Size(269, 23);
+            TxtSearch.TabIndex = 7;
+            TxtSearch.TextChanged += TxtSearch_TextChanged;
+            // 
+            // kryptonLabel2
+            // 
+            kryptonLabel2.Location = new Point(907, 71);
+            kryptonLabel2.Name = "kryptonLabel2";
+            kryptonLabel2.Size = new Size(79, 20);
+            kryptonLabel2.TabIndex = 8;
+            kryptonLabel2.Values.Text = "PESQUISAR :";
+            // 
             // AdminViewAdministrativeAssistant
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1273, 459);
+            Controls.Add(kryptonLabel2);
+            Controls.Add(TxtSearch);
             Controls.Add(kryptonPanel1);
             Controls.Add(dgvAdminAssistant);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -109,6 +130,7 @@
             kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)kryptonPictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -116,5 +138,7 @@
         private Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private Krypton.Toolkit.KryptonPictureBox kryptonPictureBox1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel1;
+        private Krypton.Toolkit.KryptonTextBox TxtSearch;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
     }
 }

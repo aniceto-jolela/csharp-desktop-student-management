@@ -44,8 +44,17 @@ namespace cpqi.Data.Repositories
         public async Task AddUserAsync(User user)
         {
             using var context = _contextFactory.CreateDbContext();
-            context.Users.Add(user);
-            await context.SaveChangesAsync();
+            try
+            {
+                context.Users.Add(user);
+                await context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                var inner = ex.InnerException?.Message ?? ex.Message;
+                throw new Exception($"Erro ao salvar o usuário: {inner}", ex);
+            }
+
         }
         public async Task UpdateUserAsync(User user)
         {
@@ -53,7 +62,6 @@ namespace cpqi.Data.Repositories
 
             var existingUser = await context.Users.FindAsync(user.UserID);
             if (existingUser == null) return;
-            
             context.Entry(existingUser).CurrentValues.SetValues(user);
 
             existingUser.UserName = user.UserName;
