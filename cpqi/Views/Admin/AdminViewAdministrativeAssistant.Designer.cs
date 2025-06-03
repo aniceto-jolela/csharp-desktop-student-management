@@ -51,6 +51,11 @@
             dgvAdminAssistant.Size = new Size(1261, 332);
             dgvAdminAssistant.TabIndex = 5;
             dgvAdminAssistant.CellContentClick += dgvAdminAssistant_CellContentClick;
+            dgvAdminAssistant.CellMouseDown += dgvAdminAssistant_CellMouseDown;
+            dgvAdminAssistant.CellMouseEnter += dgvAdminAssistant_CellMouseEnter;
+            dgvAdminAssistant.CellMouseLeave += dgvAdminAssistant_CellMouseLeave;
+            dgvAdminAssistant.CellMouseUp += dgvAdminAssistant_CellMouseUp;
+            dgvAdminAssistant.CellPainting += dgvAdminAssistant_CellPainting;
             dgvAdminAssistant.CellValueChanged += dgvAdminAssistant_CellValueChanged;
             dgvAdminAssistant.UserDeletingRow += dgvAdminAssistant_UserDeletingRow;
             // 

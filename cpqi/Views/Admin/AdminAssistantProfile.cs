@@ -240,7 +240,6 @@ namespace cpqi.Views.Admin
             if (!text.Equals(text.ToLower()))
                 return ErrorProviderView.SetError(TxtUserName, "O nome de usuário deve estar em letras minúsculas.", ErrorProvider);
             
-
             return true;
         }
 

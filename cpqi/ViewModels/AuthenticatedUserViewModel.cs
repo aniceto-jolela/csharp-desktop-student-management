@@ -13,7 +13,6 @@ public class AuthenticatedUserViewModel : ObservableObject
     {
         _userRepository = userRepository;
     }
-
     public async Task<bool> LoginAsync(string username, string password)
     {
         var user = await _userRepository.GetUserByUsername(username);

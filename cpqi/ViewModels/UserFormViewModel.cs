@@ -144,29 +144,67 @@ public partial class UserFormViewModel : ObservableObject
         }
     }
 
-    public async Task DeleteSelectedUser()
+
+    #region standard system administrator functionality
+    public async Task SuperUserFromGrid(int userId, bool status)
     {
         if (SelectedUser == null) return;
 
+        if(LoggedUser?.IsSuperUser == false && !LoggedUser.UserName.Equals("admin"))
+        {
+            OnErrorOccurred?.Invoke(this, "Você não tem permissão para alterar o status de adminitrador.");
+            return;
+        }
         try
         {
-            await _userRepository.DeleteUserAsync(SelectedUser.UserID);
+            await _userRepository.SuperUserAsync(userId, status);
             await LoadUsers();
             ClearFields();
-            OnSucessMessage?.Invoke(this, "Usuário excluído com sucesso!");
+            OnSucessMessage?.Invoke(this, "Parabéns agora já és um administrador do sistema!");
         }
         catch (Exception ex)
         {
-            OnErrorOccurred?.Invoke(this, $"Erro ao excluir: {ex.Message}");
+            OnErrorOccurred?.Invoke(this, $"Erro ao atribuir cargo: {ex.Message}");
         }
     }
 
+    public async Task RecoverUserFromGrid(int userId)
+    {
+        if (SelectedUser == null) return;
+
+        if (LoggedUser?.IsSuperUser == false && !LoggedUser.UserName.Equals("admin"))
+        {
+            OnErrorOccurred?.Invoke(this, "Você não tem permissão para recuperar usuário.");
+            return;
+        }
+
+        try
+        {
+            await _userRepository.RecoverUserAsync(userId);
+            await LoadUsers();
+            ClearFields();
+            OnSucessMessage?.Invoke(this, "Usuário recuperado com sucesso!");
+        }
+        catch (Exception ex)
+        {
+            OnErrorOccurred?.Invoke(this, $"Erro ao recuperar usuário: {ex.Message}");
+        }
+    }
+
+    #endregion
+
     // Used by DataGridView directly
-    public async Task UpdateUserFromGrid(User user) => await _userRepository.UpdateUserAsync(user);
     public async Task DeleteUserFromGrid(int userId)
     {
         await _userRepository.DeleteUserAsync(userId);
         await LoadUsers();
+        ClearFields();
+    }
+    public async Task AccessUserFromGrid(int userId, bool status)
+    {
+        await _userRepository.AccessUserAsync(userId, status);
+        await LoadUsers();
+        ClearFields();
     }
     // copy login data
     public void LoadUserData(User user)

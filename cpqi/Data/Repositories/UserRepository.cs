@@ -95,5 +95,35 @@ namespace cpqi.Data.Repositories
                 await context.SaveChangesAsync();
             }
         }
+        public async Task AccessUserAsync(int userId, bool status)
+        {
+            using var context = _contextFactory.CreateDbContext();
+            var user = await context.Users.FindAsync(userId);
+            if (user is not null)
+            {
+                user.IsStaff = status; // Soft delete
+                await context.SaveChangesAsync();
+            }
+        }
+        public async Task RecoverUserAsync(int userId)
+        {
+            using var context = _contextFactory.CreateDbContext();
+            var user = await context.Users.FindAsync(userId);
+            if (user is not null)
+            {
+                user.IsActive = true; // Soft recover
+                await context.SaveChangesAsync();
+            }
+        }
+        public async Task SuperUserAsync(int userId, bool status)
+        {
+            using var context = _contextFactory.CreateDbContext();
+            var user = await context.Users.FindAsync(userId);
+            if (user is not null)
+            {
+                user.IsSuperUser = status; // Soft IsSuperUser | "total access"
+                await context.SaveChangesAsync();
+            }
+        }
     }
 }

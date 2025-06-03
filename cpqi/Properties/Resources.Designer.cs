@@ -111,6 +111,16 @@ namespace cpqi.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] delete_icon {
+            get {
+                object obj = ResourceManager.GetObject("delete_icon", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap flat_color_icons__assistant {
@@ -237,6 +247,16 @@ namespace cpqi.Properties {
             get {
                 object obj = ResourceManager.GetObject("ph--lock-key-thin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] profile_icon {
+            get {
+                object obj = ResourceManager.GetObject("profile_icon", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
