@@ -44,6 +44,7 @@ namespace cpqi.Views.Admin
             DtpDateOfBirth.DataBindings.Add("Value", _bindingSource, nameof(_viewModel.DateOfBirth), true, DataSourceUpdateMode.OnPropertyChanged);
             DtpIssuedOn.DataBindings.Add("Value", _bindingSource, nameof(_viewModel.IssuedOn), true, DataSourceUpdateMode.OnPropertyChanged);
             DtpValidUntil.DataBindings.Add("Value", _bindingSource, nameof(_viewModel.ValidUntil), true, DataSourceUpdateMode.OnPropertyChanged);
+
         }
         private void LoadUserData()
         {
@@ -160,6 +161,7 @@ namespace cpqi.Views.Admin
             else
             {
                 TxtPassword.Enabled = false; // Hide password
+                TxtPassword.Text = string.Empty; // Clear password field
             }
         }
 
@@ -180,6 +182,15 @@ namespace cpqi.Views.Admin
 
             try
             {
+                if (CxbPassword.Checked)
+                {
+                    _viewModel.Password = TxtPassword.Text;
+                }
+                else
+                {
+                    _viewModel.Password = string.Empty;
+                }
+                _viewModel.UpdatedBy = _authUser.UserName; // Set the user who is updating
                 _viewModel.ApplyFormDataToSelectedUser();
                 bool updated = await _viewModel.UpdateSelectedUser();
                 if (updated)

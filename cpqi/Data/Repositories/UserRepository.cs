@@ -29,15 +29,16 @@ namespace cpqi.Data.Repositories
             using var context = _contextFactory.CreateDbContext();
             return await context.Users
                 .Include(u => u.Role)
+                .Where(u => u.IsActive && !u.IsStaff.Equals(false))
                 .FirstOrDefaultAsync(u => u.UserName == username);
         }
-
+ 
         public async Task<List<User>> GetAllUsersAsync()
         {
             using var context = _contextFactory.CreateDbContext();
             return await context.Users
                 .Include(u => u.Role)
-                .Where(u => u.IsActive)
+                .Where(u => u.IsActive && !u.UserName.Equals("admin"))
                 .ToListAsync();
         }
     
@@ -62,8 +63,7 @@ namespace cpqi.Data.Repositories
 
             var existingUser = await context.Users.FindAsync(user.UserID);
             if (existingUser == null) return;
-            context.Entry(existingUser).CurrentValues.SetValues(user);
-
+            
             existingUser.UserName = user.UserName;
             existingUser.FullName = user.FullName;
             existingUser.Sex = user.Sex;
@@ -83,15 +83,19 @@ namespace cpqi.Data.Repositories
             existingUser.UpdatedAt = DateTime.Now;
             existingUser.UpdatedBy = user.UpdatedBy;
             
-            if (user.PasswordHash != null && user.Salt != null)
+            if (user.PasswordHash != null && user.Salt != null &&
+                (!user.PasswordHash.SequenceEqual(existingUser.PasswordHash) || !user.Salt.SequenceEqual(existingUser.Salt)))
             {
-                if (!user.PasswordHash.SequenceEqual(existingUser.PasswordHash) ||
-                    !user.Salt.SequenceEqual(existingUser.Salt))
-                {
-                    existingUser.PasswordHash = user.PasswordHash;
-                    existingUser.Salt = user.Salt;
-                }
-            }await context.SaveChangesAsync();
+                existingUser.PasswordHash = user.PasswordHash;
+                existingUser.Salt = user.Salt;
+
+                context.Entry(existingUser).Property(u => u.PasswordHash).IsModified = true;
+                context.Entry(existingUser).Property(u => u.Salt).IsModified = true;
+            }
+            MessageBox.Show("Hash (new): " + Convert.ToBase64String(user.PasswordHash) + "Hash (existing): " + Convert.ToBase64String(existingUser.PasswordHash));
+            MessageBox.Show("Salt (new): " + Convert.ToBase64String(user.Salt) + "Salt (existing): " + Convert.ToBase64String(existingUser.Salt));
+          
+            await context.SaveChangesAsync();
         }
         public async Task DeleteUserAsync(int userId)
         {

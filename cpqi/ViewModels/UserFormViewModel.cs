@@ -1,9 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using cpqi.Data.Repositories;
+using cpqi.Helpers;
 using cpqi.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
+using System.Security.Policy;
 using System.Text.RegularExpressions;
 
 public partial class UserFormViewModel : ObservableObject
@@ -59,7 +61,7 @@ public partial class UserFormViewModel : ObservableObject
             if (!await ValidateFieldsAsync(isUpdate: false))
                 return false;
 
-            var passwordHash = HashPassword(Password, out var salt);
+            PasswordHelper.CreatePasswordHash(Password, out var hash, out var salt);
 
             var user = new User
             {
@@ -69,7 +71,7 @@ public partial class UserFormViewModel : ObservableObject
                 Email = Email,
                 Phone = Phone,
                 Bi = Bi,
-                PasswordHash = passwordHash,
+                PasswordHash = hash,
                 Salt = salt,
                 PhotoPath = PhotoPath,
                 DateOfBirth = DateOfBirth,
@@ -121,7 +123,11 @@ public partial class UserFormViewModel : ObservableObject
 
         if (!string.IsNullOrWhiteSpace(this.Password))
         {
-            SelectedUser.PasswordHash = HashPassword(this.Password, out var salt);
+            if(MessageBox.Show("Você está prestes a alterar a senha deste usuário. Deseja continuar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                return false;
+
+            PasswordHelper.CreatePasswordHash(Password, out var hash, out var salt);
+            SelectedUser.PasswordHash = hash;
             SelectedUser.Salt = salt;
         }
         SelectedUser.UpdatedAt = DateTime.Now;
@@ -131,6 +137,7 @@ public partial class UserFormViewModel : ObservableObject
         {
             if(MessageBox.Show("Tem certeza que deseja atualizar este usuário?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return false;
+
             await _userRepository.UpdateUserAsync(SelectedUser);
             await LoadUsers();
             ClearFields();
@@ -252,7 +259,8 @@ public partial class UserFormViewModel : ObservableObject
 
         if (!string.IsNullOrWhiteSpace(Password))
         {
-            SelectedUser.PasswordHash = HashPassword(Password, out var salt);
+            PasswordHelper.CreatePasswordHash(Password, out var hash, out var salt);
+            SelectedUser.PasswordHash = hash;
             SelectedUser.Salt = salt;
         }
     }
@@ -336,14 +344,6 @@ public partial class UserFormViewModel : ObservableObject
         UpdatedBy = value.UpdatedBy;
     }
     #endregion
-
-    private byte[] HashPassword(string password, out byte[] salt)
-    {
-        salt = new byte[16];
-        RandomNumberGenerator.Fill(salt);
-        using var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100_000, HashAlgorithmName.SHA256);
-        return pbkdf2.GetBytes(32);
-    }
 
     #region Validation
     public async Task<bool> ValidateFieldsAsync(bool isUpdate = false)

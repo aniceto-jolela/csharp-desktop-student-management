@@ -89,7 +89,7 @@ namespace cpqi.Views.Admin
             {
                 HeaderText = "EMAIL",
                 DataPropertyName = "Email",
-                Width = 280,
+                Width = 268,
                 Name = "Email"
             });
 

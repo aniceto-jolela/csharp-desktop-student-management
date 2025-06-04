@@ -180,6 +180,7 @@ namespace cpqi.Views.Admin
 
             try
             {
+                _viewModel.Password = TxtPassword.Text;
                 _viewModel.ApplyFormDataToSelectedUser();
                 bool updated = await _viewModel.UpdateSelectedUser();
                 if (updated)
