@@ -7,6 +7,8 @@ using cpqi.Data;
 using cpqi.Models;
 using cpqi.ViewModels;
 using cpqi.Views.Admin;
+using cpqi.Views.Assistant;
+using cpqi.Views.Teacher;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace cpqi
@@ -55,10 +57,10 @@ namespace cpqi
                     ShowAdminHomeForm(user);
                     break;
                 case 2:
-                    ShowAdminHomeForm(user);
+                    ShowTeacherHomeForm(user);
                     break;
                 case 3:
-                    new AdminHome(user, this, _userViewModel).Show();
+                    ShowAssistantHomeForm(user);
                     break;
                 default:
                     MessageBox.Show("Acesso não autorizado.", "AVISO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -66,6 +68,7 @@ namespace cpqi
                     break;
             }
         }
+        #region Admin
         public void ShowAdminHomeForm(User user)
         {
             if (user.Role == null || user.Role.RoleName != "Administrador" || user.Role.RoleID != 1)
@@ -111,13 +114,42 @@ namespace cpqi
         {
             ShowUniqueForm<AdminViewAdministrativeAssistant>();
         }
+        #endregion
         /// <summary>
         /// Admin Assistant
         /// </summary>
+        #region Assistant
+        public void ShowAssistantHomeForm(User user)
+        {
+            if (user.Role == null || user.Role.RoleName != "Assistente administrativo" || user.Role.RoleID != 3)
+            {
+                MessageBox.Show("Acesso negado.", "STOP", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            ShowUniqueForm<AssistantHome>(modal: false, user, this, _userViewModel);
+        }
+        //-------> Register
 
+        //-------> View
 
+        #endregion
         /// <summary>
         /// Teacher
         /// </summary>
+        #region Teacher
+        public void ShowTeacherHomeForm(User user)
+        {
+            if (user.Role == null || user.Role.RoleName != "Professor" || user.Role.RoleID != 2)
+            {
+                MessageBox.Show("Acesso negado.", "STOP", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            ShowUniqueForm<TeacherHome>(modal: false, user, this, _userViewModel);
+        }
+        //-------> Register
+
+        //-------> View
+
+        #endregion
     }
 }

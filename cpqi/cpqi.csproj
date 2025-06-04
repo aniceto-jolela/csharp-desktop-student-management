@@ -9,10 +9,15 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>Resources\Icons\cpqi.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Resources\profile_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Icons\cpqi.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,8 +52,6 @@
     <Folder Include="Resources\Images\Admin\" />
     <Folder Include="Resources\Images\Teacher\" />
     <Folder Include="Services\" />
-    <Folder Include="Views\Assistant\" />
-    <Folder Include="Views\Teacher\" />
   </ItemGroup>
 
   <ItemGroup>

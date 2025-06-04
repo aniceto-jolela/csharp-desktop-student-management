@@ -253,3 +253,5 @@ C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\ne
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.AdminViewRoles.resources
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\bin\Debug\net8.0-windows\FluentValidation.dll
 C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Admin.AdminAssistantProfile.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Assistant.AssistantHome.resources
+C:\Users\Other\Documents\Dev\csharp-desktop-student-management\cpqi\obj\Debug\net8.0-windows\cpqi.Views.Teacher.TeacherHome.resources

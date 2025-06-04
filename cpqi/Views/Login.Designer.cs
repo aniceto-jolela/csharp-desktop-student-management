@@ -111,7 +111,7 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = Properties.Resources.cpqi;
+            pictureBox1.Image = Properties.Resources.cpqi1;
             pictureBox1.Location = new Point(18, 96);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(209, 218);
