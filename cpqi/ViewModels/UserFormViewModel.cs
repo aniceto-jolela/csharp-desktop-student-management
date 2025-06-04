@@ -126,7 +126,7 @@ public partial class UserFormViewModel : ObservableObject
             if(MessageBox.Show("Você está prestes a alterar a senha deste usuário. Deseja continuar?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return false;
 
-            PasswordHelper.CreatePasswordHash(Password, out var hash, out var salt);
+            PasswordHelper.CreatePasswordHash(this.Password, out var hash, out var salt);
             SelectedUser.PasswordHash = hash;
             SelectedUser.Salt = salt;
         }

@@ -92,9 +92,6 @@ namespace cpqi.Data.Repositories
                 context.Entry(existingUser).Property(u => u.PasswordHash).IsModified = true;
                 context.Entry(existingUser).Property(u => u.Salt).IsModified = true;
             }
-            MessageBox.Show("Hash (new): " + Convert.ToBase64String(user.PasswordHash) + "Hash (existing): " + Convert.ToBase64String(existingUser.PasswordHash));
-            MessageBox.Show("Salt (new): " + Convert.ToBase64String(user.Salt) + "Salt (existing): " + Convert.ToBase64String(existingUser.Salt));
-          
             await context.SaveChangesAsync();
         }
         public async Task DeleteUserAsync(int userId)

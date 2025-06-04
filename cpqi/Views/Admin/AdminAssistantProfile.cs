@@ -183,19 +183,16 @@ namespace cpqi.Views.Admin
             try
             {
                 if (CxbPassword.Checked)
-                {
                     _viewModel.Password = TxtPassword.Text;
-                }
                 else
-                {
                     _viewModel.Password = string.Empty;
-                }
-                _viewModel.UpdatedBy = _authUser.UserName; // Set the user who is updating
+
+                _viewModel.UpdatedBy = _authUser?.LoggedUser?.UserName; // Set the user who is updating
                 _viewModel.ApplyFormDataToSelectedUser();
                 bool updated = await _viewModel.UpdateSelectedUser();
                 if (updated)
                 {
-                    _authUser.UpdateLoggedUser(_viewModel.SelectedUser); // Update _authUser.LoggedUser with new data (sync)
+                    _authUser?.UpdateLoggedUser(_viewModel.SelectedUser); // Update _authUser.LoggedUser with new data (sync)
                     LoadUserData(); // Reflects changes in the interface
                     ShowStatusMessage.ShowMessage(LblStatusMessage, "Perfil atualizado com sucesso!", StatusTimer);
 
