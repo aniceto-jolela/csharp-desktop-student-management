@@ -118,35 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="delete_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delete_icon.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="mdi--register-outline" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mdi--register-outline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="material-icon-theme--pdf" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\material-icon-theme--pdf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="uis--grid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\uis--grid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="arcticons--classchartsstudents" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arcticons--classchartsstudents.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="backgreoundBlue" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backgreoundBlue.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="delete_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\delete_icon.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="medical-icon--i-registration" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\medical-icon--i-registration.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cpqi" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Assets\Images\cpqi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wpf--add-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wpf--add-user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="healthicons--health-worker-form" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\healthicons--health-worker-form.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="profile_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\profile_icon.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="hugeicons--identity-card" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hugeicons--identity-card.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="basil--invoice-solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\basil--invoice-solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,11 +148,17 @@
   <data name="mingcute--user-3-fill" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mingcute--user-3-fill.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="material-symbols--all-out-rounded" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\material-symbols--all-out-rounded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="wpf--add-user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wpf--add-user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="administrator" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\administrator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="marketeq--work" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\marketeq--work.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arcticons--classchartsstudents" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arcticons--classchartsstudents.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="flat-color-icons--assistant" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\flat-color-icons--assistant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,20 +169,20 @@
   <data name="mdi--user-tie" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mdi--user-tie.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="healthicons--health-worker-form" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\healthicons--health-worker-form.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="streamline--business-user-curriculum" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\streamline--business-user-curriculum.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="marketeq--work" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\marketeq--work.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="material-symbols--all-out-rounded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\material-symbols--all-out-rounded.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="noto--teacher-dark-skin-tone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\noto--teacher-dark-skin-tone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="hugeicons--identity-card" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\hugeicons--identity-card.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="material-icon-theme--pdf" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\material-icon-theme--pdf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cpqi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cpqi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="twemoji--printer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\twemoji--printer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,7 +190,7 @@
   <data name="ph--lock-key-thin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ph--lock-key-thin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cpqi1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cpqi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="line-md--logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\line-md--logout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -88,12 +88,7 @@ namespace cpqi.Views.Admin
             Application.Exit();
         }
 
-        private void kryptonPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void kryptonPage1_Click(object sender, EventArgs e)
+        private void BtnRTeacher_Click(object sender, EventArgs e)
         {
 
         }

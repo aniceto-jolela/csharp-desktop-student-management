@@ -111,16 +111,6 @@ namespace cpqi.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap cpqi1 {
-            get {
-                object obj = ResourceManager.GetObject("cpqi1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Byte[].
         /// </summary>
         internal static byte[] delete_icon {
@@ -156,6 +146,16 @@ namespace cpqi.Properties {
         internal static System.Drawing.Bitmap hugeicons__identity_card {
             get {
                 object obj = ResourceManager.GetObject("hugeicons--identity-card", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap line_md__logout {
+            get {
+                object obj = ResourceManager.GetObject("line-md--logout", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

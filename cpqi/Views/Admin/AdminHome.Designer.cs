@@ -82,7 +82,7 @@
             lbl_datatime.Anchor = AnchorStyles.Top;
             lbl_datatime.AutoSize = true;
             lbl_datatime.Font = new Font("Segoe UI", 12F);
-            lbl_datatime.Location = new Point(496, 7);
+            lbl_datatime.Location = new Point(502, 7);
             lbl_datatime.Name = "lbl_datatime";
             lbl_datatime.Size = new Size(77, 21);
             lbl_datatime.TabIndex = 13;
@@ -99,7 +99,7 @@
             kryptonNavigator1.Pages.AddRange(new Krypton.Navigator.KryptonPage[] { kryptonPage1, kryptonPage2, kryptonPage3 });
             kryptonNavigator1.PaletteMode = Krypton.Toolkit.PaletteMode.ProfessionalSystem;
             kryptonNavigator1.SelectedIndex = 0;
-            kryptonNavigator1.Size = new Size(1125, 464);
+            kryptonNavigator1.Size = new Size(1137, 428);
             kryptonNavigator1.StateNormal.Panel.Color1 = SystemColors.Window;
             kryptonNavigator1.TabIndex = 16;
             kryptonNavigator1.Text = "kryptonNavigator1";
@@ -112,11 +112,10 @@
             kryptonPage1.LastVisibleSet = true;
             kryptonPage1.MinimumSize = new Size(150, 50);
             kryptonPage1.Name = "kryptonPage1";
-            kryptonPage1.Size = new Size(1125, 464);
+            kryptonPage1.Size = new Size(1137, 428);
             kryptonPage1.Text = "kryptonPage1";
             kryptonPage1.ToolTipTitle = "Page ToolTip";
             kryptonPage1.UniqueName = "9d355c6fb8ef4fb4a0606d0717e1c6ce";
-            kryptonPage1.Click += kryptonPage1_Click;
             // 
             // kryptonLabel1
             // 
@@ -138,7 +137,7 @@
             kryptonPage2.LastVisibleSet = true;
             kryptonPage2.MinimumSize = new Size(150, 50);
             kryptonPage2.Name = "kryptonPage2";
-            kryptonPage2.Size = new Size(1111, 506);
+            kryptonPage2.Size = new Size(1137, 428);
             kryptonPage2.Text = "kryptonPage2";
             kryptonPage2.ToolTipTitle = "Page ToolTip";
             kryptonPage2.UniqueName = "dddca1eda0b54d9d8f68b502055e0a4e";
@@ -174,6 +173,7 @@
             BtnRTeacher.Values.DropDownArrowColor = Color.Empty;
             BtnRTeacher.Values.Image = Properties.Resources.wpf__add_user;
             BtnRTeacher.Values.Text = "PROFESSOR";
+            BtnRTeacher.Click += BtnRTeacher_Click;
             // 
             // BtnRAssistant
             // 
@@ -213,7 +213,7 @@
             kryptonPage3.LastVisibleSet = true;
             kryptonPage3.MinimumSize = new Size(150, 50);
             kryptonPage3.Name = "kryptonPage3";
-            kryptonPage3.Size = new Size(1119, 482);
+            kryptonPage3.Size = new Size(1133, 440);
             kryptonPage3.Text = "kryptonPage3";
             kryptonPage3.ToolTipTitle = "Page ToolTip";
             kryptonPage3.UniqueName = "1b3fc701b155449fa45b707b4ed2400f";
@@ -294,6 +294,7 @@
             // 
             // kryptonButton3
             // 
+            kryptonButton3.Cursor = Cursors.Hand;
             kryptonButton3.Location = new Point(856, 158);
             kryptonButton3.Name = "kryptonButton3";
             kryptonButton3.Size = new Size(208, 79);
@@ -328,17 +329,17 @@
             // kryptonPictureBox1
             // 
             kryptonPictureBox1.Image = Properties.Resources.cpqi;
-            kryptonPictureBox1.Location = new Point(39, 0);
+            kryptonPictureBox1.Location = new Point(23, 3);
             kryptonPictureBox1.Name = "kryptonPictureBox1";
-            kryptonPictureBox1.Size = new Size(115, 80);
-            kryptonPictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            kryptonPictureBox1.Size = new Size(157, 133);
+            kryptonPictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             kryptonPictureBox1.TabIndex = 0;
             kryptonPictureBox1.TabStop = false;
             // 
             // BtnPag1
             // 
             BtnPag1.Cursor = Cursors.Hand;
-            BtnPag1.Location = new Point(3, 106);
+            BtnPag1.Location = new Point(3, 139);
             BtnPag1.Name = "BtnPag1";
             BtnPag1.Size = new Size(194, 46);
             BtnPag1.TabIndex = 1;
@@ -355,14 +356,13 @@
             kryptonPanel1.Dock = DockStyle.Left;
             kryptonPanel1.Location = new Point(0, 0);
             kryptonPanel1.Name = "kryptonPanel1";
-            kryptonPanel1.Size = new Size(200, 464);
+            kryptonPanel1.Size = new Size(200, 428);
             kryptonPanel1.TabIndex = 17;
-            kryptonPanel1.Paint += kryptonPanel1_Paint;
             // 
             // BtnPag3
             // 
             BtnPag3.Cursor = Cursors.Hand;
-            BtnPag3.Location = new Point(3, 214);
+            BtnPag3.Location = new Point(3, 247);
             BtnPag3.Name = "BtnPag3";
             BtnPag3.Size = new Size(194, 51);
             BtnPag3.TabIndex = 16;
@@ -373,7 +373,7 @@
             // BtnPag2
             // 
             BtnPag2.Cursor = Cursors.Hand;
-            BtnPag2.Location = new Point(3, 158);
+            BtnPag2.Location = new Point(3, 191);
             BtnPag2.Name = "BtnPag2";
             BtnPag2.Size = new Size(194, 50);
             BtnPag2.TabIndex = 15;
@@ -390,7 +390,7 @@
             kryptonPanel2.Dock = DockStyle.Top;
             kryptonPanel2.Location = new Point(200, 0);
             kryptonPanel2.Name = "kryptonPanel2";
-            kryptonPanel2.Size = new Size(1125, 36);
+            kryptonPanel2.Size = new Size(1137, 36);
             kryptonPanel2.StateNormal.Color1 = SystemColors.ButtonFace;
             kryptonPanel2.TabIndex = 18;
             // 
@@ -407,8 +407,8 @@
             // 
             PbProfile.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             PbProfile.Cursor = Cursors.Hand;
-            PbProfile.Image = (Image)resources.GetObject("PbProfile.Image");
-            PbProfile.Location = new Point(1021, 3);
+            PbProfile.Image = Properties.Resources.administrator;
+            PbProfile.Location = new Point(1033, 3);
             PbProfile.Name = "PbProfile";
             PbProfile.Size = new Size(33, 30);
             PbProfile.SizeMode = PictureBoxSizeMode.Zoom;
@@ -421,7 +421,7 @@
             PbLogout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             PbLogout.Cursor = Cursors.Hand;
             PbLogout.Image = (Image)resources.GetObject("PbLogout.Image");
-            PbLogout.Location = new Point(1083, 5);
+            PbLogout.Location = new Point(1095, 5);
             PbLogout.Name = "PbLogout";
             PbLogout.Size = new Size(19, 28);
             PbLogout.SizeMode = PictureBoxSizeMode.Zoom;
@@ -433,7 +433,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1325, 464);
+            ClientSize = new Size(1337, 428);
             Controls.Add(kryptonPanel2);
             Controls.Add(kryptonNavigator1);
             Controls.Add(kryptonPanel1);

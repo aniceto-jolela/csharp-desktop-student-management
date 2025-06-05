@@ -13,10 +13,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\profile_icon.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Resources\Icons\cpqi.ico" />
   </ItemGroup>
 
@@ -45,12 +41,6 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="Resources\Documents\Assistant\" />
-    <Folder Include="Resources\Documents\Admin\" />
-    <Folder Include="Resources\Documents\Teacher\" />
-    <Folder Include="Resources\Images\Assistant\" />
-    <Folder Include="Resources\Images\Admin\" />
-    <Folder Include="Resources\Images\Teacher\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
