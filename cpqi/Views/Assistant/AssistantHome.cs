@@ -28,7 +28,6 @@ namespace cpqi.Views.Assistant
             _formManager = formManager;
             _userViewModel = userViewModel;
 
-
             // TIMEZONE
             timer.Interval = 1000;
             timer.Tick += Timer_Tick;

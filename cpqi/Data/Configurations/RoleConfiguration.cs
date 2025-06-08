@@ -14,7 +14,7 @@ namespace cpqi.Data.Configurations
 
             builder.Property(r => r.RoleName).IsRequired().HasMaxLength(100);
             builder.Property(r => r.Description).HasMaxLength(500);
-
+            // Seed data
             builder.HasData(
                 new Role { RoleID = 1, RoleName = "Administrador", Description = "Usuário com acesso total ao sistema" },
                 new Role { RoleID = 2, RoleName = "Professor", Description = "Usuário com permissões de professor" },

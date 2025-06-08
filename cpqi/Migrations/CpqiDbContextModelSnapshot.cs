@@ -22,6 +22,642 @@ namespace cpqi.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("cpqi.Models.ClassRoom", b =>
+                {
+                    b.Property<int>("ClassRoomID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClassRoomID"));
+
+                    b.Property<string>("ClassRoomNumber")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int>("MaximumCapacity")
+                        .HasColumnType("int");
+
+                    b.HasKey("ClassRoomID");
+
+                    b.ToTable("ClassRoom", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ClassRoomID = 1,
+                            ClassRoomNumber = "Sala 01",
+                            Location = "Rés-do-chão",
+                            MaximumCapacity = 30
+                        },
+                        new
+                        {
+                            ClassRoomID = 2,
+                            ClassRoomNumber = "Sala 02",
+                            Location = "1º Andar",
+                            MaximumCapacity = 30
+                        },
+                        new
+                        {
+                            ClassRoomID = 3,
+                            ClassRoomNumber = "Sala 03",
+                            Location = "1º Andar",
+                            MaximumCapacity = 30
+                        },
+                        new
+                        {
+                            ClassRoomID = 4,
+                            ClassRoomNumber = "Sala 04",
+                            Location = "1º Andar",
+                            MaximumCapacity = 30
+                        },
+                        new
+                        {
+                            ClassRoomID = 5,
+                            ClassRoomNumber = "Sala 05",
+                            Location = "1º Andar",
+                            MaximumCapacity = 30
+                        },
+                        new
+                        {
+                            ClassRoomID = 6,
+                            ClassRoomNumber = "Sala 06",
+                            Location = "1º Andar",
+                            MaximumCapacity = 30
+                        },
+                        new
+                        {
+                            ClassRoomID = 7,
+                            ClassRoomNumber = "Sala 07",
+                            Location = "1º Andar",
+                            MaximumCapacity = 30
+                        },
+                        new
+                        {
+                            ClassRoomID = 8,
+                            ClassRoomNumber = "Todas as Salas",
+                            Location = "Todos Andares",
+                            MaximumCapacity = 210
+                        });
+                });
+
+            modelBuilder.Entity("cpqi.Models.Classe", b =>
+                {
+                    b.Property<int>("ClasseID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClasseID"));
+
+                    b.Property<string>("ClasseName")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("ClasseID");
+
+                    b.ToTable("Classe", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ClasseID = 1,
+                            ClasseName = "Iniciação"
+                        },
+                        new
+                        {
+                            ClasseID = 2,
+                            ClasseName = "1ª Classe"
+                        },
+                        new
+                        {
+                            ClasseID = 3,
+                            ClasseName = "2ª Classe"
+                        },
+                        new
+                        {
+                            ClasseID = 4,
+                            ClasseName = "3ª Classe"
+                        },
+                        new
+                        {
+                            ClasseID = 5,
+                            ClasseName = "4ª Classe"
+                        },
+                        new
+                        {
+                            ClasseID = 6,
+                            ClasseName = "5ª Classe"
+                        },
+                        new
+                        {
+                            ClasseID = 7,
+                            ClasseName = "6ª Classe"
+                        },
+                        new
+                        {
+                            ClasseID = 8,
+                            ClasseName = "Todas Classes"
+                        });
+                });
+
+            modelBuilder.Entity("cpqi.Models.Discipline", b =>
+                {
+                    b.Property<int>("DisciplineID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DisciplineID"));
+
+                    b.Property<string>("DisciplineCode")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("DisciplineName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("DisciplineID");
+
+                    b.ToTable("Discipline", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            DisciplineID = 1,
+                            DisciplineCode = "MAT",
+                            DisciplineName = "Matemática"
+                        },
+                        new
+                        {
+                            DisciplineID = 2,
+                            DisciplineCode = "HIS",
+                            DisciplineName = "História"
+                        },
+                        new
+                        {
+                            DisciplineID = 3,
+                            DisciplineCode = "GEO",
+                            DisciplineName = "Geografia"
+                        },
+                        new
+                        {
+                            DisciplineID = 4,
+                            DisciplineCode = "EM",
+                            DisciplineName = "Estudo Do Meio"
+                        },
+                        new
+                        {
+                            DisciplineID = 5,
+                            DisciplineCode = "MUS",
+                            DisciplineName = "Educação Musical"
+                        },
+                        new
+                        {
+                            DisciplineID = 6,
+                            DisciplineCode = "CN",
+                            DisciplineName = "Ciência Da Natureza"
+                        },
+                        new
+                        {
+                            DisciplineID = 7,
+                            DisciplineCode = "EMP",
+                            DisciplineName = "Educação Manual E Plástica"
+                        },
+                        new
+                        {
+                            DisciplineID = 8,
+                            DisciplineCode = "LP",
+                            DisciplineName = "Língua Portuguesa"
+                        },
+                        new
+                        {
+                            DisciplineID = 9,
+                            DisciplineCode = "LI",
+                            DisciplineName = "Língua Inglesa"
+                        },
+                        new
+                        {
+                            DisciplineID = 10,
+                            DisciplineCode = "LF",
+                            DisciplineName = "Língua Francesa"
+                        },
+                        new
+                        {
+                            DisciplineID = 11,
+                            DisciplineCode = "LKIK",
+                            DisciplineName = "Língua Kikongo"
+                        },
+                        new
+                        {
+                            DisciplineID = 12,
+                            DisciplineCode = "LUMB",
+                            DisciplineName = "Língua Umbundo"
+                        },
+                        new
+                        {
+                            DisciplineID = 13,
+                            DisciplineCode = "LKIM",
+                            DisciplineName = "Língua Kimbundo"
+                        });
+                });
+
+            modelBuilder.Entity("cpqi.Models.Inscricao", b =>
+                {
+                    b.Property<int>("InscricaoID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("InscricaoID"));
+
+                    b.Property<int>("ClasseID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("DateInscricao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EncarregadoDeEducacao")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("InscricaoNumber")
+                        .IsUnicode(true)
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsStudent")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("PeriodID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Phone1")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Phone2")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("InscricaoID");
+
+                    b.HasIndex("ClasseID");
+
+                    b.HasIndex("FullName")
+                        .IsUnique();
+
+                    b.HasIndex("InscricaoNumber")
+                        .IsUnique();
+
+                    b.HasIndex("PeriodID");
+
+                    b.ToTable("Inscricao", (string)null);
+                });
+
+            modelBuilder.Entity("cpqi.Models.Matricula", b =>
+                {
+                    b.Property<int>("MatriculaID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MatriculaID"));
+
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("BiCedula")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("CopyOfReceitaPath")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("DateMatricula")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FatherName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("HouseNumber")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("InscricaoID")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("IsUsingAnyMedication")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<DateTime>("IssuedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LocalizadoEm")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("MatriculaNumber")
+                        .IsUnicode(true)
+                        .HasColumnType("int");
+
+                    b.Property<string>("MotherName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("NaturalOf")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Patologia")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("PhoneFather")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PhoneMother")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PhotoPath")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("ProvinceID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ResideEm")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Rua")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("TransferidoOfSchool")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("TurmaID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<DateTime>("ValidUntil")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("MatriculaID");
+
+                    b.HasIndex("BiCedula")
+                        .IsUnique()
+                        .HasDatabaseName("IX_Matricula_BiCedula");
+
+                    b.HasIndex("InscricaoID");
+
+                    b.HasIndex("MatriculaNumber")
+                        .IsUnique();
+
+                    b.HasIndex("ProvinceID");
+
+                    b.HasIndex("TurmaID");
+
+                    b.ToTable("Matricula", (string)null);
+                });
+
+            modelBuilder.Entity("cpqi.Models.Period", b =>
+                {
+                    b.Property<int>("PeriodID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PeriodID"));
+
+                    b.Property<string>("PeriodName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("PeriodID");
+
+                    b.ToTable("Period", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            PeriodID = 1,
+                            PeriodName = "Manhã"
+                        },
+                        new
+                        {
+                            PeriodID = 2,
+                            PeriodName = "Tarde"
+                        },
+                        new
+                        {
+                            PeriodID = 3,
+                            PeriodName = "Manhã e Tarde"
+                        });
+                });
+
+            modelBuilder.Entity("cpqi.Models.Province", b =>
+                {
+                    b.Property<int>("ProvinceID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProvinceID"));
+
+                    b.Property<string>("ProvinceName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("ProvinceID");
+
+                    b.ToTable("Province", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            ProvinceID = 1,
+                            ProvinceName = "Província de Luanda, com capital na Ingombota"
+                        },
+                        new
+                        {
+                            ProvinceID = 2,
+                            ProvinceName = "Província de Cabinda, com capital em Cabinda"
+                        },
+                        new
+                        {
+                            ProvinceID = 3,
+                            ProvinceName = "Província do Zaire, com capital em Mbanza Kongo"
+                        },
+                        new
+                        {
+                            ProvinceID = 4,
+                            ProvinceName = "Província do Uíge, com capital no Uíge"
+                        },
+                        new
+                        {
+                            ProvinceID = 5,
+                            ProvinceName = "Província do Bengo, com capital no Dande"
+                        },
+                        new
+                        {
+                            ProvinceID = 6,
+                            ProvinceName = "Província do Icolo e Bengo, com capital em Catete"
+                        },
+                        new
+                        {
+                            ProvinceID = 7,
+                            ProvinceName = "Província do Cuanza - Norte, com capital no Cazengo"
+                        },
+                        new
+                        {
+                            ProvinceID = 8,
+                            ProvinceName = "Província do Cuanza - Sul, com capital no Sumbe"
+                        },
+                        new
+                        {
+                            ProvinceID = 9,
+                            ProvinceName = "Província de Malanje, com capital em Malanje"
+                        },
+                        new
+                        {
+                            ProvinceID = 10,
+                            ProvinceName = "Província da Lunda - Norte, com capital no Dundo"
+                        },
+                        new
+                        {
+                            ProvinceID = 11,
+                            ProvinceName = "Província da Lunda - Sul, com capital em Saurimo"
+                        },
+                        new
+                        {
+                            ProvinceID = 12,
+                            ProvinceName = "Província do Moxico, com capital no Luena"
+                        },
+                        new
+                        {
+                            ProvinceID = 13,
+                            ProvinceName = "Província do Moxico Leste, com capital no Cazombo"
+                        },
+                        new
+                        {
+                            ProvinceID = 14,
+                            ProvinceName = "Província do Bié, com capital no Cuito"
+                        },
+                        new
+                        {
+                            ProvinceID = 15,
+                            ProvinceName = "Província do Huambo, com capital no Huambo"
+                        },
+                        new
+                        {
+                            ProvinceID = 16,
+                            ProvinceName = "Província de Benguela, com capital em Benguela"
+                        },
+                        new
+                        {
+                            ProvinceID = 17,
+                            ProvinceName = "Província do Namibe, com capital em Moçâmedes"
+                        },
+                        new
+                        {
+                            ProvinceID = 18,
+                            ProvinceName = "Província da Huíla, com capital no Lubango"
+                        },
+                        new
+                        {
+                            ProvinceID = 19,
+                            ProvinceName = "Província do Cunene, com capital no Cuanhama"
+                        },
+                        new
+                        {
+                            ProvinceID = 20,
+                            ProvinceName = "Província do Cubango, com capital em Menongue"
+                        },
+                        new
+                        {
+                            ProvinceID = 21,
+                            ProvinceName = "Província do Cuando, com capital em Mavinga"
+                        });
+                });
+
             modelBuilder.Entity("cpqi.Models.Role", b =>
                 {
                     b.Property<int>("RoleID")
@@ -61,6 +697,122 @@ namespace cpqi.Migrations
                             RoleID = 3,
                             Description = "Usuário responsável por tarefas administrativas",
                             RoleName = "Assistente administrativo"
+                        });
+                });
+
+            modelBuilder.Entity("cpqi.Models.Teacher", b =>
+                {
+                    b.Property<int>("TeacherID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TeacherID"));
+
+                    b.Property<int>("DisciplineID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PeriodID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TurmaID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("TeacherID");
+
+                    b.HasIndex("DisciplineID");
+
+                    b.HasIndex("PeriodID");
+
+                    b.HasIndex("TurmaID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("Teacher", (string)null);
+                });
+
+            modelBuilder.Entity("cpqi.Models.Turma", b =>
+                {
+                    b.Property<int>("TurmaID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TurmaID"));
+
+                    b.Property<int>("ClassRoomID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ClasseID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MainTeacher")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("NameTurma")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("TurmaID");
+
+                    b.HasIndex("ClassRoomID");
+
+                    b.HasIndex("ClasseID");
+
+                    b.ToTable("Turma", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            TurmaID = 1,
+                            ClassRoomID = 1,
+                            ClasseID = 1,
+                            NameTurma = "Turma A"
+                        },
+                        new
+                        {
+                            TurmaID = 2,
+                            ClassRoomID = 2,
+                            ClasseID = 2,
+                            NameTurma = "Turma B"
+                        },
+                        new
+                        {
+                            TurmaID = 3,
+                            ClassRoomID = 3,
+                            ClasseID = 3,
+                            NameTurma = "Turma C"
+                        },
+                        new
+                        {
+                            TurmaID = 4,
+                            ClassRoomID = 4,
+                            ClasseID = 4,
+                            NameTurma = "Turma D"
+                        },
+                        new
+                        {
+                            TurmaID = 5,
+                            ClassRoomID = 5,
+                            ClasseID = 5,
+                            NameTurma = "Turma E"
+                        },
+                        new
+                        {
+                            TurmaID = 6,
+                            ClassRoomID = 6,
+                            ClasseID = 6,
+                            NameTurma = "Turma F"
+                        },
+                        new
+                        {
+                            TurmaID = 7,
+                            ClassRoomID = 7,
+                            ClasseID = 7,
+                            NameTurma = "Turma G"
                         });
                 });
 
@@ -219,6 +971,106 @@ namespace cpqi.Migrations
                         });
                 });
 
+            modelBuilder.Entity("cpqi.Models.Inscricao", b =>
+                {
+                    b.HasOne("cpqi.Models.Classe", "Classe")
+                        .WithMany()
+                        .HasForeignKey("ClasseID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("cpqi.Models.Period", "Period")
+                        .WithMany()
+                        .HasForeignKey("PeriodID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Classe");
+
+                    b.Navigation("Period");
+                });
+
+            modelBuilder.Entity("cpqi.Models.Matricula", b =>
+                {
+                    b.HasOne("cpqi.Models.Inscricao", "Inscricao")
+                        .WithMany("Matriculas")
+                        .HasForeignKey("InscricaoID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("cpqi.Models.Province", "Province")
+                        .WithMany()
+                        .HasForeignKey("ProvinceID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("cpqi.Models.Turma", "Turma")
+                        .WithMany()
+                        .HasForeignKey("TurmaID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Inscricao");
+
+                    b.Navigation("Province");
+
+                    b.Navigation("Turma");
+                });
+
+            modelBuilder.Entity("cpqi.Models.Teacher", b =>
+                {
+                    b.HasOne("cpqi.Models.Discipline", "Discipline")
+                        .WithMany()
+                        .HasForeignKey("DisciplineID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("cpqi.Models.Period", "Period")
+                        .WithMany()
+                        .HasForeignKey("PeriodID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("cpqi.Models.Turma", "Turma")
+                        .WithMany()
+                        .HasForeignKey("TurmaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("cpqi.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Discipline");
+
+                    b.Navigation("Period");
+
+                    b.Navigation("Turma");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("cpqi.Models.Turma", b =>
+                {
+                    b.HasOne("cpqi.Models.ClassRoom", "ClassRoom")
+                        .WithMany("Turmas")
+                        .HasForeignKey("ClassRoomID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("cpqi.Models.Classe", "Classe")
+                        .WithMany("Turmas")
+                        .HasForeignKey("ClasseID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ClassRoom");
+
+                    b.Navigation("Classe");
+                });
+
             modelBuilder.Entity("cpqi.Models.User", b =>
                 {
                     b.HasOne("cpqi.Models.Role", "Role")
@@ -228,6 +1080,21 @@ namespace cpqi.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("cpqi.Models.ClassRoom", b =>
+                {
+                    b.Navigation("Turmas");
+                });
+
+            modelBuilder.Entity("cpqi.Models.Classe", b =>
+                {
+                    b.Navigation("Turmas");
+                });
+
+            modelBuilder.Entity("cpqi.Models.Inscricao", b =>
+                {
+                    b.Navigation("Matriculas");
                 });
 #pragma warning restore 612, 618
         }

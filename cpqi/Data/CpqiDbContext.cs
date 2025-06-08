@@ -15,11 +15,29 @@ namespace cpqi.Data
         public CpqiDbContext() { }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Classe> Classes { get; set; }
+        public DbSet<Period> Periods { get; set; }
+        public DbSet<ClassRoom> ClassRooms { get; set; }
+        public DbSet<Turma> Turmas { get; set; }
+        public DbSet<Province> Provinces { get; set; }
+        public DbSet<Discipline> Disciplines { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Inscricao> Inscricoes { get; set; }
+        public DbSet<Matricula> Matriculas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new ClasseConfiguration());
+            modelBuilder.ApplyConfiguration(new PeriodConfiguration());
+            modelBuilder.ApplyConfiguration(new ClassRoomConfiguration());
+            modelBuilder.ApplyConfiguration(new TurmaConfiguration());
+            modelBuilder.ApplyConfiguration(new ProvinceConfiguration());
+            modelBuilder.ApplyConfiguration(new DisciplineConfiguration());
+            modelBuilder.ApplyConfiguration(new TeacherConfiguration());
+            modelBuilder.ApplyConfiguration(new InscricaoConfiguration());
+            modelBuilder.ApplyConfiguration(new MatriculaConfiguration());
         }
     }
 }
