@@ -14,7 +14,11 @@ namespace cpqi
             _formManager = formManager;
             _userViewModel = userViewModel;
 
-            lbl_version.Text = $"Versão : {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
+            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            if (version != null)
+                lbl_version.Text = $"Versão: {version.Major}.{version.Minor}.{version.Build}";
+            else
+                lbl_version.Text = "Versão: desconhecida";
         }
 
         private void PbExit_Click(object sender, EventArgs e)

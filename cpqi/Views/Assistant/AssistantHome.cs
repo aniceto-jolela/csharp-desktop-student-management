@@ -51,7 +51,7 @@ namespace cpqi.Views.Assistant
 
         private void PbProfile_Click(object sender, EventArgs e)
         {
-            _formManager.ShowAdminProfileForm();
+            _formManager.ShowAssistantProfileForm();
         }
 
         private void AssistantHome_FormClosing(object sender, FormClosingEventArgs e)

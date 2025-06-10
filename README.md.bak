@@ -8,6 +8,7 @@
 [![quest pdf](https://img.shields.io/badge/quest_pdf-2025.5.0-red)](https://www.nuget.org/packages/QuestPDF)
 [![microsoft entity framework core](https://img.shields.io/badge/microsoft_entity_framework_core-9.0.5-blue)](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/9.0.5)
 [![microsoft entity framework core sqlserver](https://img.shields.io/badge/microsoft_entity_framework_core_sqlserver-9.0.5-blue)](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer/9.0.5)
+[![fluent validation](https://img.shields.io/badge/fluent_validation-12.0.0-crimson)](https://www.nuget.org/packages/FluentValidation/12.0.0?_src=template)
 
 
 Toolbox
@@ -18,6 +19,10 @@ Toolbox
 [![sql server 2022 express](https://img.shields.io/badge/Krypton_Workspace-95.25.4.111-green)](https://www.nuget.org/packages/Krypton.Workspace)
 [![sql server 2022 express](https://img.shields.io/badge/Krypton_Ribbon-95.25.4.111-green)](https://www.nuget.org/packages/Krypton.Ribbon)
 
+Setup
+[![wix](https://img.shields.io/badge/wix-4.0.6.111-green)](https://www.nuget.org/packages/wix/4.0.6)
+[![heat wave for vs2022](https://img.shields.io/badge/HeatWave_for_VS2022-1.0.6.111-green)](https://marketplace.visualstudio.com/items?itemName=FireGiant.FireGiantHeatWaveDev17)
+
 ##### Entity Framework Core + .NET 8 + WinForms + MVVM + Krypton Toolkit + QuestPDF
 - ORM - [Entity Framework Core](https://learn.microsoft.com/pt-br/ef/core/)
 - Framework - [.NET 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
@@ -25,8 +30,22 @@ Toolbox
 - MVVM - [Community Toolkit MVVM](https://learn.microsoft.com/pt-br/dotnet/communitytoolkit/mvvm/)
 
 - Hash seguro com PBKDF2
+- estrutura MVC/MVVM
 
-- 
+
+##### Assembly version:
+
+Major, Minor, Build and Revision
+```csharp
+	0.0.0.0
+```
+- Major: main version (eg: 1)
+- Minor: secondary version (eg: 2)
+- Build: compilation number (eg: 874)
+- Revision: revision or patch (eg: 0)
+
+#
+
 <p align="center">
   <img width=100 src="cpqi\Assets\Images\cpqi.png" alt="QI primary school" >
 </p>

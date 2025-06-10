@@ -131,6 +131,10 @@ namespace cpqi
         //-------> Register
 
         //-------> View
+        public void ShowAssistantProfileForm()
+        {
+            ShowUniqueForm<AssistantProfile>();
+        }
 
         #endregion
         /// <summary>
